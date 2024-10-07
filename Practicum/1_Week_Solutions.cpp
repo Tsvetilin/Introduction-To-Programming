@@ -185,6 +185,6 @@
 //int main() {
 //	double a, b, c;
 //	std::cin >> a >> b >> c;
-//	int ifTrue = (a * a + b * b == c * c) || (a * a + c * c == b * b) || (b * b + c * c == a * a);
+//	int ifTrue = (a+b>c) || (a+c>b) || (b+c>a);
 //	std::cout << ifTrue;
 //}
