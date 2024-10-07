@@ -1,0 +1,51 @@
+#include <iostream>
+
+int main()
+{
+    /*
+    int first = 7;
+    int second = 2;
+
+    std::cout << 2 * first / (second * (25 / 10)) << std::endl;
+    std::cout << 2 * first / (second * 2.5) << std::endl;
+
+
+
+    int N;
+    std::cin >> N;
+    std::cout << !(N % 2);
+
+
+    int a, b;
+    std::cin >> a >> b;
+    std::cout << a / b << " " << a % b << std::endl;
+
+
+    int celcius;
+    std::cin >> celcius;
+    std::cout << (9 / 5.0) * celcius + 32 << std::endl;
+
+
+    double a, b;
+    std::cin >> a >> b;
+    std::cout << 2 * (a + b) << std::endl << a * b;
+
+
+    int a;
+    std::cin >> a;
+    std::cout << a/86400 <<" dni "<< (a % 86400)/3600<<" chasove "<< ((a % 86400) % 3600)/60<<" minuti "<< ((a % 86400) % 3600) % 60<< " sekudni";
+
+    int n;
+    std::cin >> n;
+    std::cout << n / 10;
+
+    int grade;
+    std::cin >> grade;
+    std::cout << (grade >= 2 && grade<=6);
+
+    */
+
+    int a, b, c, d;
+    std::cin >> a >> b >> c >> d;
+    std::cout << (a <= c || b<=d);
+}
