@@ -1,0 +1,94 @@
+#include <iostream>
+
+
+int main()
+{   
+    //1
+
+    /*int n = 0;
+    std::cout << "Introduce a number: \n";
+    std::cin >> n;
+
+    int modul = n % 2;
+
+    std::cout << (rest == 0);*/
+
+    //2
+
+    /*int num1 = 0;
+    int num2 = 0;
+
+    std::cin >> num1;
+    std::cin >> num2;
+
+    int division = num1 / num2;
+    int modul = num1 % num2;
+
+    std::cout << division << '\n' << modul;*/
+
+    //3
+
+    /*int temperatureC = 0;
+    int temperatureF = 0;
+
+    std::cout << "Temperature in C: ";
+    std::cin >> temperatureC;
+    
+    temperatureF = (9.0 / 5) * temperatureC + 32;
+    std::cout << temperatureF;*/
+
+    //4
+
+    /*float height = 0;
+    float width = 0;
+
+    std::cout << "Height: ";
+    std::cin >> height;
+    std::cout << "Width: ";
+    std::cin >> width;
+
+    float perimeter = 2 * (height + width);
+    float area = height * width;
+
+    std::cout << perimeter << '\n' << area;*/
+
+    //5
+
+    /*int num = 0;
+    std::cout << "Number: ";
+    std::cin >> num;
+    
+    int days = num / 86400;
+    int hours = (num - days * 86400) / 3600;
+    int minutes = (num - (days * 86400) - (hours * 3600)) / 60 ;
+    int seconds = num - (days * 86400) - (hours * 3600) - (minutes * 60);
+    std::cout << days << " days, " << hours << " hours, " << minutes << " minutes and " << seconds << " seconds";*/
+
+    //6
+
+    /*int num = 0;
+    std::cout << "Number: ";
+    std::cin >> num;
+
+    std::cout << num / 10;*/
+
+    //7
+
+    /*int grade = 0;
+
+    std::cout << "Number: ";
+    std::cin >> grade;
+
+    std::cout << (grade >= 2 && grade <= 6);*/
+
+    //8
+
+    int a = 0, b = 0, c = 0, d = 0;
+
+    std::cout << "Introduce 4 numbers: ";
+    std::cin >> a, b, c, d;
+
+    std::cout << (b >= c && b <= d || a >= c && a <= d);
+
+    return 0;
+}
