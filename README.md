@@ -15,6 +15,6 @@
 <agendaAdditional>
 
 - [Ръководство за работа с Visual Studio](<./Additional/vs.md>)
-- [Ръководство за работа с git и GitHub](<./Additional/github.md>)
+- [Ръководство за работа с git и GitHub](<./Additional/git(hub).md>)
 
 </agendaAdditional>
