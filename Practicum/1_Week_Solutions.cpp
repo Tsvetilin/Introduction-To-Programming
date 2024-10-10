@@ -4,7 +4,8 @@
 using namespace std;
 
 int main()
-{
+
+
 	//1
 	/*int number;
 	cin >> number;
