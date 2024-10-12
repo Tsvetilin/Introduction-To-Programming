@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
     /*
     int first = 7;
     int second = 2;
@@ -43,9 +42,111 @@ int main()
     std::cin >> grade;
     std::cout << (grade >= 2 && grade<=6);
 
-    */
+    int a, b, c, d,x=0;
+    std::cin >> a >> b >> c >> d;
+    bool order=(a<b);
+    x=a;
+    a=order*a+!order*b;
+    b=order*b+!order*x;
+    order=(c<d);
+    x=c;
+    c=order*c+!order*d;
+    d=order*d+!order*x;
+    std::cout<<a<<" "<<b<<" "<<c<<" "<<d<<std::endl;
+    std::cout<<(!(b<c || a>d) && (!(a>c&&b<d))&&!(c>a&&d<b))<<std::endl;
 
+
+    int n;
+    std::cin>>n;
+    std::cout<<(n+1)*n/2<<std::endl;
+    
     int a, b, c, d;
     std::cin >> a >> b >> c >> d;
-    std::cout << (a <= c || b<=d);
+    bool ans = true;
+    std::cout << ((b*b==a*c) &&(c*c==b*d));
+
+
+    double a, b;
+    std::cin >> a >> b;
+    a =a+ b;
+    b = a - b;
+    a = a - b;
+    
+        std::cout << a << " " << b;
+
+        ???ИМА ЛИ ДРУГ НАЧИН??? ЗА СРАВНЯВАНЕ НА ДРОБИ
+    double a, b;
+    std::cin >> a >> b;
+    bool bigger;
+    bigger = a > b;
+    std::cout << a * bigger + b * !bigger;
+                
+
+    int a;
+    std::cin >> a;
+    bool isOver100 = (a >=  100);
+    a = a * isOver100 % 10 + a * !isOver100;
+    std::cout << a << std::endl;
+
+    
+
+    int a, b, c, d, e, sum;
+    std::cin >> a >> b >> c >> d >> e;
+    bool uneven;
+    uneven = (a % 2);
+    sum = a * uneven;
+    uneven = (b % 2);
+    sum += b * uneven;
+    uneven = (c % 2);
+    sum += c * uneven;
+    uneven = (d % 2);
+    sum += d * uneven;
+    uneven = (e % 2);
+    sum += e * uneven;
+    std::cout << sum << std::endl;
+
+    
+    int a, b, c ,e;
+    std::cin >> a >> b >> c;
+    bool Bigger=c > b;
+    e = Bigger * c + !Bigger * b;
+    Bigger = e > a;
+    e = Bigger * e + !Bigger * a;
+    std::cout << (2*e<(a+b+c));
+
+    
+
+int n, a;
+std::cin >> n;
+a = n % 3;
+a = n - a;
+n=n / 3;
+std::cout << n << std::endl<<a<<std::endl << (3 + a) * (n) / 2<< std::endl;
+
+
+    
+int n,a,b,c;
+std::cin >> n;
+a= n / 100;
+n = n - a * 100;
+b = n / 10;
+c = n % 10;
+std::cout << c * 100 + b * 10 + (++a) << std::endl;
+
+
+
+int a;
+std::cin >> a;
+bool oneDigit, twoDigit, threeDigit;
+oneDigit = a < 10;
+twoDigit= (10 < a && a< 100);
+threeDigit = a > 999;
+a = a * oneDigit * !twoDigit * !threeDigit + (a%10+1) * !oneDigit * twoDigit * !threeDigit + (a/10) * !oneDigit * !twoDigit * threeDigit;
+std::cout << a << std::endl;    
+
+
+*/
+
+
+    return 0;
 }
