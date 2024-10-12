@@ -8,6 +8,7 @@ int main()
         int num=0;
         std:: cin >> num;
         std::cout << num % 2;*/
+	
 	// 2
         /*int num;
         int num2;
