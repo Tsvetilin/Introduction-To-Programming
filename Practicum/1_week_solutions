@@ -87,7 +87,7 @@ int main()
     std::cout << "Introduce 4 numbers: ";
     std::cin >> a >> b >> c >>d;
 
-    std::cout << ((a>=c && a<=d) || (b>=c && b<=d)) || ((c>=a && c<=b) || (d>=a && d<=b));*/
+    std::cout << ((a >= c && a <= d) || (b >= c && b <= d)) || ((c >= a && c <= b) || (d >= a && d <= b));*/
 
     //9
 
@@ -100,7 +100,71 @@ int main()
 
     //10
 
+    /*int num1, num2, num3, num4;
+
+    std::cout << "Introduce 4 numbers:";
+    std::cin >> num1 >> num2 >> num3 >> num4;
+
+    int x = num2 / num1;
+
+    std::cout << (num3 / num2 == x && num4 / num3 == x);*/
+
+    //11
+
+    /*double num1, num2;
+    std::cout << "Introduce 2 numbers: ";
+    std::cin >> num1 >> num2;
+
+    num1 = num1 + num2;
+    num2 = num1 - num2;
+    num1 = num1 - num2;
+
+    std::cout << num1 << '\n' << num2;*/
+
+    //12
+
+    /*float a, b;
+    std::cout << "Introduce 2 numbers: ";
+    std::cin >> a >> b;
+
+    float biggerNum = (a > b)? a:b;
+
+    std::cout << biggerNum;*/
+
+    //13
+
+    /*int num;
+
+    std::cout << "Introduce a number: ";
+    std::cin >> num;
+
+    int aux = (num / 10 < 10 && num / 10 > 0)? num:num%10;
+
+    std::cout << aux;*/
+
+    //14
+
+    /*int a, b, c, d, e;
+
+    std::cout << "Introduce 5 numbers: ";
+    std::cin >> a >> b >> c >> d >> e;
+
+    int sumTotal = (a % 2 != 0)? a:0;
+    sumTotal += (b % 2 != 0)? b:0;
+    sumTotal += (c % 2 != 0)? c:0;
+    sumTotal += (d % 2 != 0)? d:0;
+    sumTotal += (e % 2 != 0)? e:0;
+
+    std::cout << sumTotal;*/
+
+    //15
+
+    int a, b, c;
     
+    std::cout << "Introduce a number: ";
+    std::cin >> a >> b >> c;
+
+    std::cout << ((a * a) + (b * b) == (c * c))? 1:0;
 
     return 0;
 }
