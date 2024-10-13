@@ -102,7 +102,7 @@
 //	int a,b,c,d;
 //	std::cin >> a>>b>>c>>d;
 //	bool isGeometryPrograssion = (a * c == b * b) && (b * d == c * c);
-//	std::cout << isGP;
+//	std::cout << isGeometryPrograssion;
 //}
 
 //		Задача 11
