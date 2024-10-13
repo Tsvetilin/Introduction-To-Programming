@@ -71,8 +71,8 @@
 //{
 //	int a;
 //	std::cin >> a;
-//	bool isTrue = (a >= 2 && a <= 6);
-//	std::cout << isTrue;
+//	bool is_BG_Grade = (a >= 2 && a <= 6);
+//	std::cout << is_BG_Grade;
 //}
 
 //		Задача 8
@@ -101,8 +101,8 @@
 //{
 //	int a,b,c,d;
 //	std::cin >> a>>b>>c>>d;
-//	bool isGeometryPrograssion = (a * c == b * b) && (b * d == c * c);
-//	std::cout << isGeometryPrograssion;
+//	bool isGeometricProgression = (a * c == b * b) && (b * d == c * c);
+//	std::cout << isGeometricProgression;
 //}
 
 //		Задача 11
