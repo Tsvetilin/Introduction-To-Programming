@@ -21,7 +21,6 @@
 
 //		Задача 3
 
-//Alex Srebrov
 // int main()
 // {
 //    double degreesCelcius;
@@ -32,7 +31,6 @@
 
 //		Задача 4
 
-//Alex Srebrov
 //int main()
 //{
 //	double length, width;
@@ -45,10 +43,9 @@
 
 //		Задача 5
 
-//Alex Srebrov
 //int main()
 //{
-//	int seconds,minutes,hours,days;
+//	int seconds, minutes, hours, days;
 //	std::cin >> seconds;
 // 	days = seconds / (60 * 60 * 24);
 //	seconds -= days * 60 * 60 * 24;
@@ -61,7 +58,6 @@
 
 //		Задача 6
 
-//Alex Srebrov
 //int main()
 //{
 // 	int a;
@@ -71,7 +67,6 @@
 
 //		Задача 7
 
-//Alex Srebrov
 //int main()
 //{
 //	int a;
@@ -106,13 +101,12 @@
 //{
 //	int a,b,c,d;
 //	std::cin >> a>>b>>c>>d;
-//	bool isTrue = (a * c == b * b) && (b * d == c * c);
-//	std::cout << isTrue;
+//	bool isGeometryPrograssion = (a * c == b * b) && (b * d == c * c);
+//	std::cout << isGP;
 //}
 
 //		Задача 11
 
-//Alex Srebrov
 //int main()
 //{
 //	double a, b;
@@ -159,12 +153,11 @@
 
 //		Задача 15
 
-//Alex Srebrov
 //int main() {
-//	double a, b, c;
+//	double a = 0, b = 0, c = 0;
 //	std::cin >> a >> b >> c;
-//	int isTrue = (a + b > c) || (a + c > b) || (b + c > a);
-//	std::cout << isTrue;
+//	int isTriangle = (a + b > c) && (a + c > b) && (b + c > a);
+//	std::cout << isTriangle;
 //}
 
 //		Bonus 1
@@ -176,7 +169,6 @@
 //	std::cout << 3 * lastNumFromProgression * (lastNumFromProgression + 1) / 2; // 3 + 6 + 9 = 3(1 + 2 + 3)
 //}
 
-//Hristiyan-Bengyuzov
 //int main() {
 //	int n = 0, a1 = 3;
 //	std::cin >> n;
@@ -188,7 +180,6 @@
 	
 //		Bonus 2
 
-//Hristiyan-Bengyuzov
 //int main() {
 //	int n = 0;
 //	std::cin >> n;
