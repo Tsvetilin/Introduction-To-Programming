@@ -1,0 +1,98 @@
+1. Въвежда се цяло число. Отпечатайте 1, ако числото е четно и 0, ако е нечетно.
+int num;
+std :: cin >> num;
+std :: cout << !(num % 2);
+
+2. От конзолата се прочитат две цели числа и се отпечатва частното и остатъка им.
+int num1, num2;
+std::cin >> num1 >> num2;
+std::cout << num1 / num2 << std::endl << num1 % num2;
+
+3. Напишете програма, която обръща подадени градуси от Целзий (C) във Фаренхайт (F)! Формулата за това е: F = (9 / 5) * C + 32.
+int tempC;
+std::cin >> tempC;
+float tempF = (9.0 / 5.0) * tempC + 32; // = 1.7... * tempC + 32
+std::cout << tempF;
+
+4. Да се прочетат от конзолата 2 реални числа - дължина и широчина на правоъгълник. Да се изведе периметърът и лицето.
+float d;
+float s;
+std::cin>>d >> s;
+std::cout<< 2*(s + d) << "\n" << s*d;
+
+5. Да се напише програма, която чете от конзолата цяло число - брой секунди, и изчислява колко дни, часове, минути и секунди са.
+int time;
+std::cin >> time;
+int days = time / 86400;
+time -= days * 86400;
+int hours = time / 3600;
+time -= hours * 3600;
+int minutes = time / 60;
+time -= minutes * 60;
+std::cout << days << " days " << hours << " hours " << minutes 
+    << " minutes " << time << " seconds" << std::endl;
+
+6. Въвежа се цяло число. Да се отпечата без последната цифра.
+int num;
+std::cin >> num;
+std::cout << num / 10;
+
+7. Въвежа се цяло число. Да се отпечата 1, ако числото е валидна оценка от училище - [2,6], a 0 - ако не е валидна.
+int num;
+std::cin >> num;
+bool isInRange = num >= 2 && num <= 6;
+std::cout << isInRange;
+
+8. Дадени са ви 4 на брой цели числа - a, b, c, d. Да се изведе дали интервалите [a, b] и [c, d] се пресичат.
+int a, b, c, d;
+std::cin >> a >> b >> c >> d;
+bool intersection = !(b<c || a>d);
+std::cout << intersection;
+
+9. Потребителя въвежда число n. Да се изведе сумата на числата от 1 до n
+int num;
+std::cin >> num;
+std::cout << (num * (1 + num)) / 2;
+
+10. Да се напише програма, която приема 4 цели числа и отпечатва 1, ако числата образуват геометрична прогресия в реда, в който са въведени, a 0 - ако съответно не образуват.
+int a, b, c, d;
+std::cin >> a >> b >> c >> d;
+float q = b / a;
+bool geopr = (c = b * q) && (d = c * q);
+std::cout << geopr;
+
+11. Да се напише програма, която чете от конзолата 2 реални числа и разменя стойностите им без допълнителна промелнива.
+float num1, num2;
+std::cin >> num1 >> num2;
+num1 = num1 + num2;
+num2 = num1 - num2;
+num1 = num1 - num2;
+std::cout << num1 << num2;
+
+12. Да се напише програма, която чете от конзолата 2 числа и извежда по-голямото от тях.
+float num1, num2;
+std::cin >> num1 >> num2;
+bool marker = num1 > num2;
+marker && (std::cout << num1) || (std::cout << num2);
+
+13. Напишете програма, която приема цяло число и отпечатва числото, ако е двуцифрено, или последната му цифра, ако не е.
+int num1;
+std::cin >> num1;
+bool marker = (num1 > 9 && num1 < 100);
+marker && (std::cout << num1) || (std::cout << num1 % 10);
+
+14. От конзолата се въвеждат 5 цели числа. Да се изведе сумата на нечетните числа.
+int num1, num2, num3, num4, num5;
+std::cin >> num1 >> num2 >> num3 >> num4 >> num5;
+int sum = 0;
+(num1 % 2 != 0) && (sum += num1) || (0);
+(num2 % 2 != 0) && (sum += num2) || (0);
+(num3 % 2 != 0) && (sum += num3) || (0);
+(num4 % 2 != 0) && (sum += num4) || (0);
+(num5 % 2 != 0) && (sum += num5) || (0);
+std::cout << sum;
+
+15. От конзолата се четат 3 реални числа. Да се изведе дали могат да бъдат страни на триъгълник.
+float num1, num2, num3;
+std::cin >> num1 >> num2 >> num3;
+std::cout << (((num1 + num2) > num3) && ((num2 + num3) > num1) && ((num1 + num3) > num2));
