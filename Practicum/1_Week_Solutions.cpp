@@ -86,9 +86,9 @@
 //{
 // 	int a, b, c, d;
 // 	std::cin >> a >> b >> c >> d;
-// 	bool isTrue = (a <= d && b >= c);
+// 	bool intersect = (a <= d && b >= c);
 //	//or !(a > d || b < c) the same because of de morgan rule ¬(a∨b) = ¬a∧¬b
-// 	std::cout << isTrue;
+// 	std::cout << intersect;
 //}
 
 //		Задача 9
