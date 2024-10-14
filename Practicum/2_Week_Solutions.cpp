@@ -134,4 +134,7 @@ int main()
     std::cin >> (x);
     std::cin >> (y);
     distance = sqrt(x * x + y * y);
+    if (distance <= r) std::cout << ("the point is inside the circle");
+    else ("the point is not inside the circle");
+    return 0;
 }
