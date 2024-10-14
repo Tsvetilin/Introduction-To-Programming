@@ -138,39 +138,6 @@ else {
 
 
 
-/*
-int a, b, c;
-std::cin >> a >> b >> c;
-int help;
-
-if (a > c) {
-    help = c;
-    c = a;
-    a = help;
-    help = 0;
-
-    if (a < b) {
-        help = b;
-        b = a;
-        a = help;
-    }
-}
-else {
-    help = c;
-    c = a;
-    a = help;
-    if (a < b) {
-        help = b;
-        b = a;
-        a = help;
-    }
-}
-
-
-std::cout << a << " " << b << " " << c;
-*/
-
-
 }
 
 
