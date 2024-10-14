@@ -152,6 +152,8 @@ int main()
         n3 = aux;
     }
 
+    std::cout << n3 << " " << n2 << " " << n1;
+
 
 }
 
