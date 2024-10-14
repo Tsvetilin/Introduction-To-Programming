@@ -1,0 +1,94 @@
+// Week2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+
+int main()
+{
+    //1
+    //int num = 0;
+    //std::cin >> num;
+    //if (num > 0) {
+    //    std::cout << "Positive";
+    //}
+    //else if (num < 0) {
+    //    std::cout << "Negative";
+    //}
+    //else {
+    //    std::cout << "Zero";
+    //}
+
+    //2
+    /*int num = 0;
+    std::cin >> num;
+    switch (num)
+    {
+    case 1: std::cout << "I"; break;
+    case 2: std::cout << "II"; break;
+    case 3: std::cout << "III"; break;
+    case 4: std::cout << "IV"; break;
+    case 5: std::cout << "V"; break;
+    case 6: std::cout << "VI"; break;
+    case 7: std::cout << "VII"; break;
+    case 8: std::cout << "VIII"; break;
+    case 9: std::cout << "IX"; break;
+    default: std::cout << "No data";
+    }*/
+
+    //3
+   /* int year = 0;
+    std::cin >> year;
+    if (year % 400 == 0) {
+        std::cout << "Leap year";
+
+    }
+    else if (year % 100 != 0) {
+        std::cout << "Not a leap year";
+    }
+    else if (year % 4 == 0) {
+        std::cout << "Leap year";
+    }
+    else {
+        std::cout << "Not a leap year";
+    }*/
+
+    //4
+ /*   int day = 0;
+    std::cin >> day;
+    switch (day)
+    {
+    case 1: std::cout << "Monday"; break;
+    case 2: std::cout << "Tuesday"; break;
+    case 3: std::cout << "Wednesday"; break;
+    case 4: std::cout << "Thursday"; break;
+    case 5: std::cout << "Friday"; break;
+    case 6: std::cout << "Saturday"; break;
+    case 7: std::cout << "Sunday"; break;
+    default: std::cout << "No data";
+
+    }*/
+
+    //5
+    /*int num1 = 0, num2 = 0;
+    std::cin >> num1 >> num2;
+    std::cout << (num1 > num2 ? num1 : num2);*/
+
+    //6
+    /*char letter;
+    std::cin >> letter;
+    if (letter >= 65 && letter <= 97) {
+        std:: cout << 
+    }*/
+
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
