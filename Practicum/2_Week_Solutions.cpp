@@ -1,6 +1,4 @@
 #include <iostream>
-#include <chrono>
-using namespace std::chrono;
 
 int main()
 {
@@ -9,11 +7,11 @@ int main()
     std::cin >> num;
 
     if (num > 0)
-        std::cout << "Positive";
+    std::cout << "Positive";
     else if (num < 0)
-        std::cout << "Negative";
+    std::cout << "Negative";
     else
-        std::cout << "Null";*/
+    std::cout << "Null";*/
 
 
     // Ex. 2
@@ -46,7 +44,7 @@ int main()
     else
         std::cout << "Not a leap year";*/
 
-    
+
     // Ex. 4
     /*int day;
     std::cin >> day;
@@ -160,7 +158,7 @@ int main()
 
     int fNum = (num / 1000) * 10 + (num % 10);
     int sNum = (num / 100 % 10) * 10 + (num / 10 % 10);
-    
+
     if (fNum == sNum)
         std::cout << fNum << " == " << sNum;
     else if (fNum < sNum)
@@ -212,4 +210,65 @@ int main()
             break;
         default: std::cout << 0; break;
         }*/
+
+    
+    // Ex. 12
+    /*int x1Rec, y1Rec, x2Rec, y2Rec, xDot, yDot;
+    std::cin >> x1Rec >> y1Rec >> x2Rec >> y2Rec >> xDot >> yDot;
+
+    if (xDot >= x1Rec && xDot <= x2Rec && yDot >= y1Rec && yDot <= y2Rec)
+        std::cout << 1;
+    else
+        std::cout << 0;*/
+
+
+    // Ex. 13
+    /*int a, b, c;
+    std::cin >> a >> b >> c;
+
+    int discriminant = b * b - 4 * a * c;
+    if (discriminant > 0)
+        std::cout << 2;
+    else if (discriminant == 0)
+        std::cout << 1;
+    else
+        std::cout << 0;*/
+
+
+    // Ex. 14
+    char upperBoundA, upperBoundB, lowerBoundA, lowerBoundB, letter;
+    std::cin >> upperBoundA >> upperBoundB >> lowerBoundA >> lowerBoundB >> letter;
+    
+    bool unionCheck, sectionCheck, differenceCheck, exclusiveCheck;
+
+    // Check if letter is upper and in between upper letters
+    bool isUpperBetweenUpperBounds = (letter >= upperBoundA && letter <= upperBoundB);
+    // Checks if letter is lower and in between lower letters
+    bool isLowerBetweenLowerBounds = (letter >= lowerBoundA && letter <= lowerBoundB);
+    // Check if letter is lower and in between upper letters
+    bool isUpperBetweenLowerBounds = (letter + 32 >= lowerBoundA && letter + 32 <= lowerBoundB);
+    // Check if letter is upper and in between lower letters
+    bool isLowerBetweenUpperBounds = (letter - 32 >= upperBoundA && letter - 32 <= upperBoundB);
+
+    unionCheck = isUpperBetweenUpperBounds
+        || isLowerBetweenLowerBounds
+        || isLowerBetweenUpperBounds
+        || isUpperBetweenLowerBounds;
+
+    sectionCheck = isUpperBetweenUpperBounds
+        && isUpperBetweenLowerBounds
+        || isLowerBetweenUpperBounds
+        && isLowerBetweenLowerBounds;
+
+    differenceCheck = isUpperBetweenUpperBounds
+        && !isUpperBetweenLowerBounds
+        || isLowerBetweenUpperBounds
+        && !isLowerBetweenLowerBounds;
+
+    exclusiveCheck = unionCheck && !sectionCheck;
+
+    std::cout << unionCheck << ", "
+        << sectionCheck << ", "
+        << differenceCheck << ", "
+        << exclusiveCheck;
 }
