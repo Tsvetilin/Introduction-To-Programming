@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 int main()
 {
@@ -152,5 +153,21 @@ int main()
     
     // std::cout << n1 << " " << n2 << " " << n3;
 
-}
+    //8
 
+    // int radius, x , y;
+    // std::cout << "Introduce the radius of a circle and the coordinates of a point (x; y): ";
+    // std::cin >> radius >> x >> y;
+
+    // int distance = pow(x - 0, 2) + pow(y - 0, 2);
+
+    // if (distance < pow(radius, 2)) {
+    //     std::cout << "In the circle";
+    // } else if (distance > pow(radius, 2)) {
+    //     std::cout << "Out of the circle";
+    // } else {
+    //     std::cout << "On the circle";
+    // }
+    
+
+}
