@@ -1,84 +1,392 @@
-// Week2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <cmath>
+#include <limits>
 
 int main()
 {
-    //1
-    //int num = 0;
-    //std::cin >> num;
-    //if (num > 0) {
+    // 1
+    // int num = 0;
+    // std::cin >> num;
+    // if (num > 0) 
+    // {
     //    std::cout << "Positive";
-    //}
-    //else if (num < 0) {
+    // }
+    // else if (num < 0) 
+    // {
     //    std::cout << "Negative";
-    //}
-    //else {
+    // }
+    // else 
+    // {
     //    std::cout << "Zero";
-    //}
+    // }
 
-    //2
-    /*int num = 0;
-    std::cin >> num;
-    switch (num)
-    {
-    case 1: std::cout << "I"; break;
-    case 2: std::cout << "II"; break;
-    case 3: std::cout << "III"; break;
-    case 4: std::cout << "IV"; break;
-    case 5: std::cout << "V"; break;
-    case 6: std::cout << "VI"; break;
-    case 7: std::cout << "VII"; break;
-    case 8: std::cout << "VIII"; break;
-    case 9: std::cout << "IX"; break;
-    default: std::cout << "No data";
-    }*/
+    // std::cout << std::endl;
 
-    //3
-   /* int year = 0;
-    std::cin >> year;
-    if (year % 400 == 0) {
-        std::cout << "Leap year";
+    // 2
+    // int num = 0;
+    
+    // std::cin >> num;
+    
+    // switch (num)
+    // {
+    //     case 1: std::cout << "I"; 
+    //         break;
+    //     case 2: std::cout << "II"; 
+    //         break;
+    //     case 3: std::cout << "III"; 
+    //         break;
+    //     case 4: std::cout << "IV"; 
+    //         break;
+    //     case 5: std::cout << "V"; 
+    //         break;
+    //     case 6: std::cout << "VI"; 
+    //         break;
+    //     case 7: std::cout << "VII"; 
+    //         break;
+    //     case 8: std::cout << "VIII"; 
+    //         break;
+    //     case 9: std::cout << "IX"; 
+    //         break;
+    //     default: std::cout << "No data";
+    // }
+    
+    // std::cout << std::endl;
+    
+    // 3
+    // int year = 0;
+    
+    // std::cin >> year;
+    
+    // if (year % 400 == 0) {
+    //     std::cout << "Leap year";
+    // }
+    // else if (year % 100 == 0) {
+    //     std::cout << "Not a leap year";
+    // }
+    // else if (year % 4 == 0) {
+    //     std::cout << "Leap year";
+    // }
+    // else {
+    //     std::cout << "Not a leap year";
+    // }
 
-    }
-    else if (year % 100 != 0) {
-        std::cout << "Not a leap year";
-    }
-    else if (year % 4 == 0) {
-        std::cout << "Leap year";
-    }
-    else {
-        std::cout << "Not a leap year";
-    }*/
+    // std::cout << std::endl;
 
-    //4
- /*   int day = 0;
-    std::cin >> day;
-    switch (day)
-    {
-    case 1: std::cout << "Monday"; break;
-    case 2: std::cout << "Tuesday"; break;
-    case 3: std::cout << "Wednesday"; break;
-    case 4: std::cout << "Thursday"; break;
-    case 5: std::cout << "Friday"; break;
-    case 6: std::cout << "Saturday"; break;
-    case 7: std::cout << "Sunday"; break;
-    default: std::cout << "No data";
+    // 4
+    // int day = 0;
+    
+    // std::cin >> day;
+    
+    // switch (day)
+    // {
+    //     case 1: std::cout << "Monday"; break;
+    //     case 2: std::cout << "Tuesday"; break;
+    //     case 3: std::cout << "Wednesday"; break;
+    //     case 4: std::cout << "Thursday"; break;
+    //     case 5: std::cout << "Friday"; break;
+    //     case 6: std::cout << "Saturday"; break;
+    //     case 7: std::cout << "Sunday"; break;
+    //     default: std::cout << "No data";
+    // }
 
-    }*/
+    // std::cout << std::endl;
 
-    //5
-    /*int num1 = 0, num2 = 0;
-    std::cin >> num1 >> num2;
-    std::cout << (num1 > num2 ? num1 : num2);*/
+    // 5
+    // int num1 = 0, num2 = 0;
 
-    //6
-    /*char letter;
-    std::cin >> letter;
-    if (letter >= 65 && letter <= 97) {
-        std:: cout << 
-    }*/
+    // std::cin >> num1 >> num2;
+
+    // std::cout << (num1 > num2 ? num1 : num2) << std::endl;
+
+    // 6
+    // char letter;
+    
+    // std::cin >> letter;
+    
+    // if (letter >= 'a' && letter <= 'z') {
+    //     std::cout << (char)(letter - 32) << std::endl;
+
+    //     switch(letter)
+    //     {
+    //         case 'a':
+    //         case 'e':
+    //         case 'i':
+    //         case 'o':
+    //         case 'u':
+    //             std::cout << "Vowel";
+    //             break;
+    //         default:
+    //             std::cout << "Consonant";
+    //     } 
+    // } 
+    // else if (letter >= 'A' && letter <= 'Z')
+    // {
+    //     std::cout << (char)(letter + 32) << std::endl;
+
+    //     switch (letter)
+    //     {
+    //         case 'A':
+    //         case 'E':
+    //         case 'I':
+    //         case 'O':
+    //         case 'U':
+    //             std::cout << "Vowel";
+    //             break;
+    //         default:
+    //             std::cout << "Consonant";
+    //     }
+    // } 
+    // else 
+    // {
+    //     std::cout << "Invalid character";
+    // }
+
+    // std::cout << std::endl;
+
+    // 7
+    // int a = 0, b = 0, c = 0;
+
+    // std::cin >> a >> b >> c;
+
+    // if (a > c) {
+    //     a = a + c;
+    //     c = a - c;
+    //     a = a - c;
+    // }
+    // if (a > b) {
+    //     a = a + b;
+    //     b = a - b;
+    //     a = a - b;
+    // }
+    // if (b > c) {
+    //     b = b + c;
+    //     c = b - c;
+    //     b = b - c;
+    // }
+
+    // std::cout << a << " " << b << " " << c << std::endl;
+
+    // 8
+    // int r = 0, x = 0, y = 0;
+
+    // std::cin >> r >> x >> y;
+
+    // if (pow(x, 2) + pow(y, 2) < pow(r, 2))
+    // {
+    //     std::cout << "In the circle";
+    // }
+    // else if (pow(x, 2) + pow(y, 2) > pow(r, 2))
+    // {
+    //     std::cout << "Out of the circle";
+    // }
+    // else 
+    // {
+    //     std::cout << "On the circle";
+    // }
+
+    // std::cout << std::endl;
+
+    // 9
+    // double l = 0.0, r = 0.0, n = 0.0;
+    // double eps = 0.00000001;
+
+    // std::cin >> l >> r >> n;
+
+    // if (n - l > 0 && r - n > 0) 
+    // {
+    //     std::cout << "The number is within the given interval. The interval is open.\n";
+    // } 
+    // else if (abs(l - n) < eps || abs(r - n) < eps) 
+    // {
+    //     std::cout << "The number is within the given interval. The interval is closed.\n";
+    // } 
+    // else 
+    // {
+    //     std::cout << "The number is not in the interval.\n";
+    // }
+
+    // 10
+    // int num = 0;
+
+    // std::cout << "Enter a 4 digit number: ";
+    // std::cin >> num;
+
+    // if(num >= 1000 && num <= 9999)
+    // {
+    //     int digit1 = 0, digit2 = 0, digit3 = 0, digit4 = 0;
+        
+    //     digit1 = num / 1000;
+    //     digit4 = num % 10;
+    //     digit2 = num / 100 % 10;
+    //     digit3 = num / 10 % 10;
+        
+    //     int num1 = 0, num2 = 0;
+        
+    //     num1 = digit1 * 10 + digit4;
+    //     num2 = digit2 * 10 + digit3;
+        
+    //     if(num1 > num2)
+    //     {
+    //         std::cout << num1 << " > " << num2;
+    //     }
+    //     else if(num1 < num2)
+    //     {
+    //         std::cout << num1 << " < " << num2;
+    //     }
+    //     else
+    //     {
+    //         std::cout << num1 << " = " << num2;
+    //     }
+        
+    // }
+    // else
+    // {
+    //     std::cout << "Not a 4 digit number";
+    // }
+    
+    // std::cout << std::endl;
+    
+
+    // 11
+    //     int day = 0, month = 0, year = 0;
+    
+    // std::cin >> day >> month >> year;
+    
+    // bool isValidDate = false;
+    // bool isLeapYear = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    
+    // if(month == 2 && year >= 0)
+    // {
+    //     if(day > 0 && day <= 28)
+    //     {
+    //         std::cout << !isValidDate;
+    //     }
+    //     else if(day == 29)
+    //     {
+    //         std::cout << isLeapYear;
+    //     }
+    //     else
+    //     {
+    //         std::cout << isValidDate;
+    //     }
+    // }
+    
+    // else if(month == 4 || month == 6 || month == 9 || month == 11 && year >= 0)
+    // {
+    //      if(day > 0 && day <= 30)
+    //     {
+    //         std::cout << !isValidDate;
+    //     }
+    //     else
+    //     {
+    //         std::cout << isValidDate;
+    //     }
+    // }
+        
+    // else if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && year >= 0)
+    //     {
+    //         if(day > 0 && day <= 31)
+    //         {
+    //             std::cout << !isValidDate;
+    //         }
+    //         else
+    //         {
+    //             std::cout << isValidDate;
+    //         }
+    //     }
+    // else
+    // {
+    //     std::cout << isValidDate;
+    // }
+    
+    // std::cout << std::endl;
+    
+    // 12
+    //     int x1 = 0, y1 = 0, x2 = 0, y2 = 0, xIsIn = 0, yIsIn = 0;
+
+    // std::cin >> x1 >> y1 >> x2 >> y2 >> xIsIn >> yIsIn;
+
+    // bool isCoordinateIn = false;
+
+    // if(xIsIn >= x1 && xIsIn <= x2 && yIsIn >= y1 && yIsIn <= y2)
+    // {
+    //     std::cout << !isCoordinateIn;
+    // }
+    // else if(xIsIn <= x1 && xIsIn >= x2 && yIsIn <= y1 && yIsIn >= y2)
+    // {
+    //     std::cout << !isCoordinateIn;
+    // }
+    // else
+    // {
+    //     std::cout << isCoordinateIn;
+    // }
+
+    //std::cout << std::endl;
+
+    // 13
+    // int a = 0, b = 0, c = 0, roots = 0;
+
+    // std::cin >> a >> b >> c;
+
+    // if((pow(b, 2) - 4 * a * c) > 0)
+    // {
+    //     std::cout << roots + 2;
+    // }
+    // else if((pow(b, 2) - 4 * a * c) < 0)
+    // {
+    //     std::cout << roots;
+    // }
+    // else
+    // {
+    //     std::cout << roots + 1;
+    // }
+
+    // std::cout << std::endl;
+
+
+    // 14
+    //     char a, b, c, d, e;
+
+    // std::cin >> a >> b >> c >> d >> e;
+
+    // bool isTrue1 = 0, isTrue2 = 0, isTrue3 = 0, isTrue4 = 0;
+
+    // isTrue1 = (e >= a && e <= b || e >= c && e <= d) ? true : false;
+    // std::cout << isTrue1 << std::endl;
+
+    // if (e >= a && e <= b)
+    // {
+    //     int temp = e + 32;
+    //     isTrue2 = (temp >= c && temp <= d) ? true : false;
+    //     std::cout << isTrue2 << std::endl;
+    // }
+    // else if(e >= c && e <= d)
+    // {
+    //     int temp = e - 32;
+    //     isTrue2 = (temp >= a && temp <= b) ? true : false;
+    //     std::cout << isTrue2 << std::endl;
+    // }
+
+    // if (e >= a && e <= b)
+    // {
+    //     int temp = e + 32;
+    //     isTrue3 = (temp < c || temp > d) ? true : false;
+    //     std::cout << isTrue3 << std::endl;
+    // }
+    // else if (e < c || e > d)
+    // {
+    //     int temp = e - 32;
+    //     isTrue3 = (temp >= a && temp <= b) ? true : false;
+    //     std::cout << isTrue3 << std::endl;
+    // }
+
+    // if (isTrue1 == true && isTrue2 == false)
+    // {
+    //      isTrue4 = true;
+    //      std::cout << isTrue4 << std::endl;
+    // }
+
+    return 0;
 
 }
 
