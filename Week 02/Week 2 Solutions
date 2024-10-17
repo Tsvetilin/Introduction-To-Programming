@@ -345,46 +345,29 @@ int main()
 
 
     // 14
-    //     char a, b, c, d, e;
+    // char a_start, a_end, b_start, b_end, element;
+    // bool first = false;
+    // bool second = false;
+    // bool third = false;
+    // bool fourth = false;
 
-    // std::cin >> a >> b >> c >> d >> e;
+    // std::cin >> a_start >> a_end >> b_start >> b_end >> element;
 
-    // bool isTrue1 = 0, isTrue2 = 0, isTrue3 = 0, isTrue4 = 0;
-
-    // isTrue1 = (e >= a && e <= b || e >= c && e <= d) ? true : false;
-    // std::cout << isTrue1 << std::endl;
-
-    // if (e >= a && e <= b)
-    // {
-    //     int temp = e + 32;
-    //     isTrue2 = (temp >= c && temp <= d) ? true : false;
-    //     std::cout << isTrue2 << std::endl;
-    // }
-    // else if(e >= c && e <= d)
-    // {
-    //     int temp = e - 32;
-    //     isTrue2 = (temp >= a && temp <= b) ? true : false;
-    //     std::cout << isTrue2 << std::endl;
+    // if (a_end < a_start || b_end < b_start) {
+    //     std::cout << "Invalid input\n";
+    //     return 1;
     // }
 
-    // if (e >= a && e <= b)
-    // {
-    //     int temp = e + 32;
-    //     isTrue3 = (temp < c || temp > d) ? true : false;
-    //     std::cout << isTrue3 << std::endl;
-    // }
-    // else if (e < c || e > d)
-    // {
-    //     int temp = e - 32;
-    //     isTrue3 = (temp >= a && temp <= b) ? true : false;
-    //     std::cout << isTrue3 << std::endl;
-    // }
+    // char uppercase_element = (element >= 'a' && element <= 'z') ? (element - 32) : element;
+    // char lowercase_element = (element >= 'A' && element <= 'Z') ? (element + 32) : element;
 
-    // if (isTrue1 == true && isTrue2 == false)
-    // {
-    //      isTrue4 = true;
-    //      std::cout << isTrue4 << std::endl;
-    // }
+    // first = ((uppercase_element >= a_start && uppercase_element <= a_end) || (lowercase_element >= b_start && lowercase_element <= b_end));
+    // second = ((uppercase_element >= a_start && uppercase_element <= a_end) && (lowercase_element >= b_start && lowercase_element <= b_end));
+    // third = ((uppercase_element >= a_start && uppercase_element <= a_end) && !(lowercase_element >= b_start && lowercase_element <= b_end));
+    // fourth = third || (!second && first);
+
+    // std::cout << std::boolalpha;
+    // std::cout << first << ", " << second << ", " << third << ", " << fourth << std::endl;
 
     return 0;
 
