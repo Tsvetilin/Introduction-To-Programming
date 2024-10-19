@@ -845,12 +845,12 @@ int op5 = x>>2;// 0b1__
 
 ```cpp
 int a = 42;
-int b = a++; // b=43, a=43
-int c = ++a; // c=43, a=44
+int b = a++; // b=42, a=43
+int c = ++a; // c=44, a=44
 
-a++ += b // a=88
-a++ = 5; // a=5
-// ++a = 7; - WRONG
+++a += b // a=87
+++a = 5; // a=5
+// a++ = 7; - WRONG
 ```
 
 <slidebreak/>
