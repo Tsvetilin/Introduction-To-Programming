@@ -1,5 +1,5 @@
 //Task 1
-  int number;
+  	int number;
 	std::cout << "Enter a number: ";
 	std::cin >> number;
 	if (!std::cin) {
@@ -60,7 +60,7 @@
 	}
 
 //Task 3
-  int year;
+  	int year;
 	std::cout << "Enter a year: ";
 	std::cin >> year;
 	if (!std::cin) {
@@ -124,26 +124,26 @@
 	std::cout << "Enter a character: ";
 	std::cin >> ch;
 
-	if (ch >= 'a' && ch <= 'z') {
+	if (ch >= 'a' && ch <= 'z') 
 		std::cout << std::endl << ch << " is small letter and ";
-  else if(ch >= 'A' && ch <= 'Z')
-    std::cout << std::endl << ch << " is big letter and ";
-  else
-    return -1;
+	else if(ch >= 'A' && ch <= 'Z')
+    		std::cout << std::endl << ch << " is big letter and ";
+ 	else
+    		return -1;
 
-  bool isVowel = false;
-  switch(ch) {
-    case 'a':
-    case 'i':
-    case 'o':
-    case 'u':
-    case 'e': 
-    case 'A':
-    case 'I':
-    case 'O':
-    case 'U':
-    case 'E': std::cout << "vowel letter." << std::endl; break;
-    default: std::cout << "consonant letter." << std::endl;
+  	bool isVowel = false;
+  	switch(ch) {
+	    case 'a':
+	    case 'i':
+	    case 'o':
+	    case 'u':
+	    case 'e': 
+	    case 'A':
+	    case 'I':
+	    case 'O':
+	    case 'U':
+	    case 'E': std::cout << "vowel letter." << std::endl; break;
+	    default: std::cout << "consonant letter." << std::endl;
         
 	if (ch >= 'a' && ch <= 'z') {
 		std::cout << "Reversed lettter: " << (char)(ch - 'a' + 'A') << std::endl;
@@ -188,8 +188,8 @@
 		return -1;
 	}
 
-  int squaredLen = dx * dx + dy * dy;
-  int squaredRadius = r * r;
+  	int squaredLen = dx * dx + dy * dy;
+  	int squaredRadius = r * r;
 	if (squaredLen == squaredRadius) {
 		std::cout << "Point (" << dx << "," << dy << ") is on the circle." << std::endl;
 	}
@@ -204,16 +204,16 @@
 	const double EPSILON = 0.000001;
 	double lowerBound, upperBound, num;
 	std::cin >> lowerBound >> upperBound >> num;
-  if(lowerBound > upperBound) {
-    double temp = lowerBound;
-    lowerBound = upperBound;
-    upperBound = temp;
-  }
+	if(lowerBound > upperBound) {
+	    double temp = lowerBound;
+	    lowerBound = upperBound;
+	    upperBound = temp;
+	}
 	if (num > lowerBound && num < upperBound)
 	{
 		std::cout << "The number is within the given interval. The interval is open.";
 	}
-  else if (lowerBound - num < EPSILON || num - upperBound < EPSILON)
+ 	else if (lowerBound - num < EPSILON || num - upperBound < EPSILON)
 	{
 		std::cout << "The number is within the given interval. The interval is closed.";
 	}
@@ -264,7 +264,7 @@
 	std::cout << validDate;
 
 //Task 12
-  int x1, y1, x2, y2, x3, y3, minX, minY, maxX, maxY;
+  	int x1, y1, x2, y2, x3, y3, minX, minY, maxX, maxY;
 	std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 	// намираме минималните и максималните координати от двете дадени точки
 	if (x1 > x2)
