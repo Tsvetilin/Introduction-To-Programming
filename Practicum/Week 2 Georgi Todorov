@@ -1,0 +1,180 @@
+/* zad1
+	int a;
+	cin >> a;
+	if (a > 0)  cout << "Positive";
+	else if (a < 0) cout << "Negative";
+	else cout << "the number is zero ";
+	*/
+
+	/* zad 2
+
+	cout << "Enter a number from 0 to 9 ";
+	int a;
+	cin >> a;
+	switch (a)
+	{
+	case 0: cout << "0"; break;
+	case 1: cout << "I"; break;
+	case 2: cout << "II"; break;
+	case 3: cout << "III"; break;
+	case 4: cout << "IV"; break;
+	case 5: cout << "V"; break;
+	case 6: cout << "VI"; break;
+	case 7: cout << "VII"; break;
+	case 8: cout << "VIII"; break;
+	case 9: cout << "IX"; break;
+	default:cout << "Incorrect number"; break;
+
+	}
+	*/
+
+	/*
+	 zad 3
+	int year;
+	cin >> year;
+	if (year % 4 == 0 &&year%100!=0)
+	{
+
+		cout << "Leap year";
+
+	}
+	else if (year %400==0&&year%100==0)
+	{
+		cout << "Leap year";
+	}
+	else
+	{
+		cout << "Normal year";
+	}*/
+
+
+
+	/*
+	zad 4
+	cout << "Enter a number from 1 to 7 ";
+	int a;
+	cin >> a;
+	switch (a)
+	{
+	case 1: cout << "Monday"; break;
+	case 2: cout << "Tuesday"; break;
+	case 3: cout << "Wednesday"; break;
+	case 4: cout << "Thursday"; break;
+	case 5: cout << "Friday"; break;
+	case 6: cout << "Saturday"; break;
+	case 7: cout << "Sunday"; break;
+	default: cout << "Inccorect number "; break;
+	}*/
+
+
+	/*
+	zad 5
+	int a, b;
+	cin >> a;
+	cin >> b;
+
+	 int result= (a > b) ? a : b;
+	 cout << result;*/
+
+	/*
+		zad 6
+	char letter;
+	cin >> letter;
+	bool isVow = false;
+	switch (letter)
+	{
+		
+		
+	case'a': isVow = true , cout <<  "A \n"; break;
+	case'o':  isVow = true, cout << "O \n"; break;
+	case'i':  isVow = true, cout << "I \n"; break;
+	case'e':  isVow = true, cout << "E \n"; break;
+	case'u':  isVow = true, cout << "U \n"; break;
+	case'A':  isVow = true, cout << "a \n"; break;
+	case'O':   isVow = true, cout << "o \n"; break;
+	case'E':   isVow = true, cout << "e \n"; break;
+	case'I':   isVow = true, cout << "i \n"; break;
+	case'U':    isVow = true, cout << "u \n"; break;
+	default:   cout << "Not vowel";
+
+	}
+	if (isVow == true) cout << "Vowel";
+	*/
+
+
+
+
+/*  zad 7
+int a;
+int b;
+int c;
+int temp;
+cin >> a;
+cin >> b;
+cin >> c;
+if (a > b)
+{
+	temp = a;
+	a = b;
+	b = temp;
+}
+if (b>c)
+{
+	temp = b;
+	b = c;
+	c = temp;
+
+
+}
+if (a > b)
+{
+	temp = a;
+	a = b;
+	b = temp;
+}
+cout << a << b << c;
+*/
+
+
+/*  8 zad
+	int r;
+int xA;
+int yA;
+cin >> r;
+cin >> xA;
+cin >> yA;
+if ((xA * xA + yA * yA) < (r * r))
+{
+
+	cout << " A is in the circle";
+
+}
+else if ((xA * xA + yA * yA) > (r * r))
+{
+
+	cout << " A is out of the circle";
+
+}
+else cout << " A is on the circle ";
+*/
+
+
+/* zad 9
+double left_value;
+double right_value;
+double number;
+cin >> left_value;
+cin >> right_value;
+cin >> number;
+double epsilon = 0.00000001;
+
+if ((number - left_value) >= epsilon && (right_value - number) >= epsilon)
+{
+	cout << "The number is within the given interval. The interval is open." << endl;
+}
+else if ((number == left_value && (right_value - number) >= epsilon) || (number == right_value && (number - left_value) >= epsilon) || (number == left_value && number == right_value)) {
+	cout << "The number is within the given interval. The interval is closed" << endl;
+}
+else cout << "The number is outside the given interval." << endl;
+
+*/
