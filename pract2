@@ -1,0 +1,315 @@
+//zad1
+/*
+int num;
+std::cin >> num;
+if (num > 0)
+  std::cout << "positive";
+else if (num == 0)
+   std::cout << "0";
+else
+   std::cout << "negative";
+*/
+
+
+//zad2
+/*
+int num;
+std::cin >> num;
+switch (num)
+{
+case 1: std::cout << "I"; break;
+case 2: std::cout << "II"; break;
+case 3: std::cout << "III"; break;
+case 4: std::cout << "VI"; break;
+case 5: std::cout << "V"; break;
+case 6: std::cout << "VI"; break;
+case 7: std::cout << "VII"; break;
+case 8: std::cout << "VII"; break;
+case 9: std::cout << "IX"; break;
+default: std::cout << "error";
+}
+*/
+
+
+//zad3
+/*
+int year;
+std::cin >> year;
+if (year % 4 == 0 || year % 400 == 0)
+    std::cout << "Leap year";
+else if (year % 100 == 0)
+    std::cout << "Not a leap year";
+else
+    std::cout << "Not a leap year";
+*/
+
+
+//zad4
+/*
+int day;
+std::cin >> day;
+switch (day)
+{
+case 1: std::cout << "Monday"; break;
+case 2: std::cout << "Tuesday"; break;
+case 3: std::cout << "Wednesday"; break;
+case 4: std::cout << "Thursday"; break;
+case 5: std::cout << "Friday"; break;
+case 6: std::cout << "Saturday"; break;
+case 7: std::cout << "Sunday"; break;
+default: std::cout << "error";
+}
+*/
+
+
+//zad5
+/*
+int a, b;
+std::cin >> a;
+std::cin >> b;
+if (a > b)
+  std::cout << a;
+else
+  std::cout << b;
+*/
+
+
+//zad6
+/*
+char letter;
+std::cin >> letter;
+if (letter >= 'a' && letter <= 'z')
+{
+    if (letter == 'a' || letter == 'o' || letter == 'i' || letter == 'e' || letter == 'u')
+    {
+        std::cout << "Vowel";
+    }
+    else
+    {
+        std::cout << "Constant";
+    }
+}
+else if (letter >= 'A' && letter <= 'Z')
+{
+    if (letter == 'A' || letter == 'O' || letter == 'I' || letter == 'E' || letter == 'U')
+    {
+        std::cout << "Vowel";
+    }
+    else
+    {
+
+        std::cout << "Constant";
+    }
+}
+else
+    std::cout << "Invalid character";
+*/
+
+
+//zad7
+/*
+int a, b, c;
+std::cin >> a;
+std::cin >> b;
+std::cin >> c;
+int middle;
+int max1 = (a > b ? a : b);
+int max = (max1 > c ? max1 : c);
+if (max1 > c)
+    middle = c;
+else
+    middle = max1;
+int min1 = (a < b ? a : b);
+int min = (min1 < c ? min1 : c);
+std::cout << max;
+std::cout << middle;
+std::cout << min;
+*/
+
+
+//zad8 
+/*
+int dx, dy;
+std::cout << "Enter the coordinates of your point:";
+std::cin >> dx >> dy;
+int r;
+std::cout << "Enter the radius of the circle: ";
+std::cin >> r;
+if (r <= 0)
+{
+    std::cout << "Invalid input!" << std::endl;
+    return -1;
+}
+int sLength = dx * dx + dy * dy;
+int sRadius = r * r;
+if (sLength == sRadius) 
+{
+    std::cout << "Point (" << dx << "," << dy << ") is on the circle." << std::endl;
+}
+else if (sLength < sRadius) 
+{
+    std::cout << "Point (" << dx << "," << dy << ") is inside the circle." << std::endl;
+}
+else 
+{
+    std::cout << "Point (" << dx << "," << dy << ") is outside the circle." << std::endl;
+}
+*/
+
+
+
+//zad9
+/*
+double a, b, c;
+std::cin >> a;
+std::cin >> b;
+std::cin >> c;
+if (a < c < b)
+    std::cout << "The number is within the given interval.The interval is open.";
+else if (a == c || b == c)
+    std::cout << "The number is within the given interval.The interval is closed.";
+else
+    std::cout << "The number is not within the given interval.";
+*/
+
+
+
+//zad10
+/*
+int n;
+std::cin >> n;
+int lastNum = n % 10;
+int thirdNum = lastNum % 10;
+int secondNum = thirdNum % 10;
+int firstNum = secondNum % 10;
+int newNum1 = firstNum * 10 + lastNum;
+int newNum2 = secondNum * 10 + thirdNum;
+if (newNum1 < newNum2)
+{
+    std::cout << newNum1; "<";  newNum2;
+}
+else if (newNum1 > newNum2)
+{
+
+std::cout << newNum1; ">";  newNum2;
+}
+else 
+    std::cout << newNum1; "=";  newNum2;
+*/
+
+
+//zad11
+/*
+int day, month, year;
+std::cin >> day;
+std::cin >> month;
+std::cin >> year;
+int validDate = year >= 0;
+switch (month)
+{
+case 1:
+case 3:
+case 5:
+case 7:
+case 8:
+case 10:
+case 12:
+    validDate = validDate && day >= 1 && day <= 31;
+    break;
+case 2:
+    validDate = validDate && day >= 1 && (day <= 28);
+    break;
+case 4:
+case 6:
+case 9:
+case 11:
+    validDate = validDate && day >= 1 && day <= 30;
+    break;
+default: validDate = false;
+*/
+
+
+//zad12
+/*
+int x1, y1, x2, y2;
+std::cin >> x1, y1, x2, y2;
+int x3, y3;
+std::cin >> x3, y3;
+int maxX, minX, maxY, minY;
+if (x1 > x2)
+{
+    maxX = x1;
+    minX = x2;
+}
+else
+{
+    maxX = x2;
+    minX = x1;
+}
+if (y1 > y2)
+{
+    maxY = y1;
+    minY = y2;
+}
+else
+{
+    maxY = y2;
+    minY = y1;
+}
+bool onLowerOrUpperLine = (y3 == minY || y3 == maxY) && (x3 >= minX && x3 <= maxX);
+bool onLeftOrRightLine = (x3 == minX || x3 == maxX) && (y3 >= minY && y3 <= maxY);
+
+if (x3 > minX && x3 < maxX && y3 > minY && y3 < maxY)
+{
+    std::cout << "In the rectangle";
+}
+else if (onLowerOrUpperLine || onLeftOrRightLine)
+{
+    std::cout << "On the rectangle";
+}
+else
+{
+    std::cout << "Outside the rectangle";
+}
+*/
+
+
+//zad13
+/*
+double a, b, c;
+std::cout << "You have ax^2 + bx + c = 0." << std::endl;
+std::cout << "Enter: a, b and c: ";
+std::cin >> a >> b >> c;
+if (a == 0) 
+{
+    if (b != 0) 
+    {
+        std::cout << "The equation " << b << "x + " << c << " = 0 has 1 root." << std::endl;
+    }
+    else if (c == 0) 
+    {
+        std::cout << "The equation has infinitely many solutions." << std::endl;
+    }
+    else 
+    {
+        std::cout << "The equation has no solution." << std::endl;
+    }
+}
+double d = b * b - 4 * a * c;
+if (d > 0) 
+{
+    std::cout << "The equation has two real roots." << std::endl;
+}
+else if (d == 0) 
+{
+    std::cout << "The equation has one real root." << std::endl;
+}
+else 
+{
+    std::cout << "The equation has zero real roots." << std::endl;
+}
+*/
+
+
+
+//zad14
