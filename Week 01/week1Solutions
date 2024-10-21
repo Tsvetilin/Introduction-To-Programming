@@ -1,0 +1,116 @@
+// Week1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include<cmath>
+#include <cctype> 
+
+int main()
+{
+	////////////////////////////////////////////////zad1
+	//int a;
+	//std::cin >> a;
+	//if (a%2==0) {
+	//	std::cout << "1";
+ //  }
+	//else {
+	//	std::cout << "0";
+	//}
+	////////////////////////////////////////////////zad2
+	//int a;
+	//std::cin >> a;
+	//std::cout << a / 10;
+	////////////////////////////////////////////////zad3
+	//int a;
+	//std::cin >> a;
+	//std::cout << a % 10;
+	////////////////////////////////////////////////zad4
+	//int num, mirroredNum = 0;
+	//std::cin >> num;
+	//while (num > 0) {
+	//	mirroredNum = mirroredNum * 10 + num % 10;
+	//}
+	//num = num / 10;
+	//
+	//std::cout << mirroredNum % 7;
+	////////////////////////////////////////////////zad5
+	//char symbol;
+	//std::cin >> symbol;
+	//std::cout << (symbol>97 && symbol<123 && 
+	//	symbol != 'o' && symbol != 'e' 
+	//	&& symbol != 'i' && symbol != 'u');
+	////////////////////////////////////////////////zad6
+	//int number1,number2;
+	//std::cin >> number1>>number2;
+	//if (number1 > number2) {
+	//	std::cout << number1;
+	//}
+	//else if (number1==number2) {
+	//	std::cout << "=";
+	//}
+	//else {
+	//	std::cout << number2;
+	//}
+	////////////////////////////////////////////////zad7
+	//int a=5,b=6,temp;
+	//temp = a;
+	//a = b;
+	//b = temp;
+        
+	////////////////////////////////////////////////zad8
+	// 0.1 + 0.2; 
+	// 0.3;
+	//double a,b;
+	//std::cin >> a>>b;
+	//std::cout << (std::abs(a-b)==0);
+	////////////////////////////////////////////////zad9
+ //   char symbol;
+	//std::cin >> symbol;
+	//int number = (int)symbol;
+	//std::cout << number;
+	//if (number<=48 || number>=57){
+	//	std::cout << ("*");
+	//}
+	////////////////////////////////////////////////zad10
+	//char symbol;
+	//std::cin >> symbol;
+	//if (symbol >=65 && symbol <=90){
+	//	char newSymbol = std::tolower(symbol);//ili +32 
+	//	std::cout <<newSymbol;
+	//}
+	////////////////////////////////////////////////zad11
+	//char symbol;
+	//std::cout << "Enter latin letter: ";
+	//std::cin >> symbol;  
+	//if (symbol >= 'a' && symbol <= 'z') {
+	//	symbol = symbol - 32; 
+	//}
+	//else if (symbol >= 'A' && symbol <= 'Z') {
+	//	symbol = symbol + 32;  
+	//}
+	//else {
+	//	std::cout << "Invalid input" << std::endl;
+	//	return 1;  
+	//}
+	////////////////////////////////////////////////zad12
+	//double a,b;
+	//std::cin >> a>>b;
+	//std::cout << std::pow(a + b - 1, 3) - std::pow(b - a + 1, 2);
+
+	////////////////////////////////////////////////zad13
+	//int levs;
+	//std::cin >> levs;
+
+	//int currency[] = { 100, 50, 20, 10, 5, 2, 1 };  
+	//int count = 0;  
+
+	//for (int i = 0; i < 7; ++i) {
+	//	count += levs / currency[i];
+	//	levs %= currency[i];
+	//}
+
+	//std::cout << count << std::endl;  
+	
+	return 0;
+}
+

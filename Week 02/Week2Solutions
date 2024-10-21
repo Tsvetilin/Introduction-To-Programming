@@ -1,0 +1,96 @@
+#include <iostream>
+int main()
+{
+    ////////////////////////////////////////////////zad1
+    //int number;
+    //std::cin >> number;
+    //if (number >0 && number <=50)
+    //    std::cout << "In A";
+    //else if (number > 50 && number < 100)
+    //    std::cout << "In B";
+    //else if (number >= 100 && number <= 200)
+    //    std::cout << "In C";
+    //else
+    //    std::cout << "Not in the ranges";
+    ////////////////////////////////////////////////zad2
+    //int day;
+    //std::cout << "Enter number between 1 - 7:\n";
+    //std::cin >> day;
+    //switch (day) {
+    //case 1:
+    //    std::cout << "it's Monday!!!";
+    //    break;
+    //case 2:
+    //    std::cout << "it's Tuesday!!!";
+    //    break;
+    //case 3:
+    //    std::cout << "it's Wednesday!!!";
+    //    break;
+    //case 4:
+    //    std::cout << "it's Thursday!!!";
+    //    break;
+    //case 5:
+    //    std::cout << "it's Friday!!!";
+    //    break;
+    //case 6:
+    //    std::cout << "it's Saturday!!!";
+    //    break;
+    //case 7:
+    //    std::cout << "it's Sunday!!!";
+    //    break;
+    //default:
+    //    std::cout << "wrong number";
+    /////////////////////////////////////////// zad3
+    //std::string input;
+    //std::cout << "Enter (square, rectangle, circle or triangle):\n";
+    //std::cin >> input;
+
+
+    //if (input == "square") {
+    //    std::cout << "Enter side of the square: \n";
+    //    double a;
+    //    std::cin >> a;
+    //    std::cout << a*a;
+    //}
+    //else if (input == "rectangle") {
+    //    std::cout << "Enter sides of the rectangle: \n";
+    //    double a,b;
+    //    std::cin >> a>>b;
+    //    std::cout << a * a;
+    //}
+    //else if (input == "circle") {
+    //    const int PI = 3.14;
+    //    std::cout << "Enter radius of circle: \n";
+    //    double radius;
+    //    std::cin >> radius;
+    //    std::cout << PI * radius;
+    //}
+    //else if (input == "triangle") {
+    //    std::cout << "Enter side of the triangle and hight: \n";
+    //    double a,h;
+    //    std::cin >> a>>h;
+    //    std::cout << (a * h)/2;
+    //}
+    //else {
+    //    std::cout <<"invalid input!";
+    //}
+    /////////////////////////////////////////// zad4
+    double radius,pointX,pointY;
+    std::cout << "Enter radius of a circle and a point  A(x,y): \n";
+    std::cin >> radius>>pointX>>pointY;
+    
+    double distance = sqrt(std::pow(pointX-0,2)+ std::pow(pointY-0,2));
+
+    if (distance>radius) {
+        std::cout << "the point A is in the circle with radius: " << radius;
+    }
+    else {
+        std::cout << "the point A is not in the circle with radius: "<<radius;
+    }
+
+
+
+
+}
+
+

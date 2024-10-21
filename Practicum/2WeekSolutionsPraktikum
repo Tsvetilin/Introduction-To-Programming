@@ -1,0 +1,360 @@
+// Week2Practikum.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <cmath> 
+#include <set>
+#include <cctype>
+int main()
+{
+    ///////////////////////////////////////////////////////////////zad1
+	//int number;
+	//std::cin >> number;
+	//if (number > 0) {
+	//	std::cout << "positive";
+	//}
+	//else if(number<0) {
+	//	std::cout << "negative";
+	//}
+	//else if(number==0) {
+	//	std::cout << "zero";
+	//}
+    ///////////////////////////////////////////////////////////////zad2
+
+   /* int num;
+    std::cout << "Въведете число между 0 и 9: ";
+    std::cin >> num;
+    if (num < 0 || num > 9) {
+        std::cout << "Моля, въведете число между 0 и 9." << std::endl;
+    }
+    else {
+        switch (num) {
+        case 0:
+            std::cout << "Нула" << std::endl;
+            break;
+        case 1:
+            std::cout << "I" << std::endl;
+            break;
+        case 2:
+            std::cout << "II" << std::endl;
+            break;
+        case 3:
+            std::cout << "III" << std::endl;
+            break;
+        case 4:
+            std::cout << "IV" << std::endl;
+            break;
+        case 5:
+            std::cout << "V" << std::endl;
+            break;
+        case 6:
+            std::cout << "VI" << std::endl;
+            break;
+        case 7:
+            std::cout << "VII" << std::endl;
+            break;
+        case 8:
+            std::cout << "VIII" << std::endl;
+            break;
+        case 9:
+            std::cout << "IX" << std::endl;
+            break;
+        }
+    }*/
+    ///////////////////////////////////////////////////////////////zad3
+    //int year;
+    //std::cin >> year;
+    //if (year % 4 == 0) {
+    //    if (year%100==0) {
+    //        if (year % 400 == 0) {
+    //            std::cout << "\nLeap year";
+    //            return 0;
+    //        }
+    //        std::cout << "\nnot Leap year";
+    //        return 0;
+    //    }
+    //    std::cout << "\nLeap year";
+    //    return 0;
+    //}
+     ///////////////////////////////////////////////////////////////zad4
+    // int num;
+    //std::cout << "Въведете число между 0 и 7: ";
+    //std::cin >> num;
+    //if (num <1 || num >7) {
+    //    std::cout << "Моля, въведете число между 0 и 7." << std::endl;
+    //}
+    //else {
+    //    switch (num) {
+    //    case 1:
+    //        std::cout << "Monday" << std::endl;
+    //        break;
+    //    case 2:
+    //        std::cout << "Tuesday" << std::endl;
+    //        break;
+    //    case 3:
+    //        std::cout << "Wednesday" << std::endl;
+    //        break;
+    //    case 4:
+    //        std::cout << "Thursday" << std::endl;
+    //        break;
+    //    case 5:
+    //        std::cout << "Friday" << std::endl;
+    //        break;
+    //    case 6:
+    //        std::cout << "Saturday" << std::endl;
+    //        break;
+    //    case 7:
+    //        std::cout << "Sunday" << std::endl;
+    //        break;
+ 
+    //}
+     ///////////////////////////////////////////////////////////////zad5
+//int num1,num2;
+//std::cin >> num1>> num2;
+//std::cout << ((num1 > num2) ? num1 : num2);
+
+///////////////////////////////////////////////////////////////zad6
+//char letter;
+//std::cout << "Въведете един символ: ";
+//std::cin >> letter;
+//
+//
+//if (!isalpha(letter)) {
+//    std::cout << "Грешка: Въведеният символ не е буква." << std::endl;
+//    return 1;
+//}
+//
+//
+//if (isupper(letter)) {
+//    std::cout << "Символът е главна буква." << std::endl;
+//}
+//else if (islower(letter)) {
+//    std::cout << "Символът е малка буква." << std::endl;
+//}
+//
+//char lowerCh = tolower(letter);
+//if (lowerCh == 'a' || lowerCh == 'e' || lowerCh == 'i' || lowerCh == 'o' || lowerCh == 'u' || lowerCh == 'y') {
+//    std::cout << "Буквата е гласна." << std::endl;
+//}
+//else {
+//    std::cout << "Буквата е съгласна." << std::endl;
+//}
+//
+//if (isupper(letter)) {
+//    std::cout << "Обърната буква: " << char(tolower(letter)) << std::endl;
+//}
+//else if (islower(letter)) {
+//    std::cout << "Обърната буква: " << char(toupper(letter)) << std::endl;
+//}
+/////////////////////////////////////////////////////////////////zad7
+//int a, b, c;
+// std::cin>>a>>b>>c;
+// std::cout<<"\n";
+//if (a>b>c) {
+//    std::cout << a<<" "<< b<<" "<< c;
+//}
+//if (a > c > b) {
+//    std::cout << a << " " << c << " " << b;
+//}
+//
+//if (b > c > a) {
+//    std::cout << a << " " << c << " " << a;
+//}
+//if (b > a > c) {
+//    std::cout << a << " " << a << " " << c;
+//}
+//
+//if (c > a > b) {
+//    std::cout << a << " " << a<< " " << b;
+//}
+//if (c > b > a) {
+//    std::cout << a << " " << b << " " << a;
+//}
+/////////////////////////////////////////////////////////////zad8
+    //double r, x, y;
+
+    //// Въвеждане на радиус
+    //std::cout << "Въведете радиус (r): ";
+    //std::cin >> r;
+
+    //// Въвеждане на координатите на точката
+    //std::cout << "Въведете координатите на точката (x, y): ";
+    //std::cin >> x >> y;
+
+    //// Изчисляваме квадрата на разстоянието от точката до центъра
+    //double distanceSquared = pow(x, 2) + pow(y, 2);
+    //double radiusSquared = pow(r, 2);
+
+    //// Проверка на положението на точката
+    //if (distanceSquared < radiusSquared) {
+    //    std::cout << "Точката се намира вътре в окръжността." << std::endl;
+    //} else if (distanceSquared == radiusSquared) {
+    //    std::cout << "Точката е на контура на окръжността." << std::endl;
+    //} else {
+    //    std::cout << "Точката се намира извън окръжността." << std::endl;
+    //}
+///////////////////////////////////////////////////////////////////zad9
+//double left, right, number;
+//
+//std::cout << "Въведете левия край на интервала: ";
+//std::cin >> left;
+//std::cout << "Въведете десния край на интервала: ";
+//std::cin >> right;
+//std::cout << "Въведете число за проверка: ";
+//std::cin >> number;
+//
+//if (left > right) {
+//    std::swap(left, right);
+//}
+//
+//if (fabs(number - left) < 1e-9 || fabs(number - right) < 1e-9) {
+//    std::cout << "Числото е на края на интервала. Интервалът е затворен." << std::endl;
+//}
+//else if (number > left && number < right) {
+//    std::cout << "Числото е в интервала. Интервалът е отворен." << std::endl;
+//}
+//else {
+//    std::cout << "Числото не се намира в интервала." << std::endl;
+//}
+///////////////////////////////////////////////////////////////////zad10
+//int fourDigitNum,firstNum,secondNum;
+//std::cin >> fourDigitNum;
+//
+//firstNum = (fourDigitNum / 1000) * 10 + fourDigitNum % 10;
+//fourDigitNum = fourDigitNum / 10;
+//secondNum = (fourDigitNum % 100);
+//if (firstNum > secondNum) {
+//    std::cout << firstNum << " > " << secondNum;
+//    
+//}
+//else {
+//    std::cout << secondNum << " > " << firstNum;
+//}
+///////////////////////////////////////////////////////////////////zad11
+//int day, month, year;
+//std::cout << "Въведете ден: ";
+//std::cin >> day;
+//std::cout << "Въведете месец: ";
+//std::cin >> month;
+//std::cout << "Въведете година: ";
+//std::cin >> year;
+//
+//if (year < 1 || month < 1 || month > 12 || day < 1) {
+//    std::cout << "0" << std::endl; 
+//}
+//else {
+//    int daysInMonth;
+//    switch (month) {
+//    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+//        daysInMonth = 31;
+//        break;
+//    case 4: case 6: case 9: case 11:
+//        daysInMonth = 30;
+//        break;
+//    case 2:
+//        daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+//        break;
+//    default:
+//        daysInMonth = 0; 
+//        break;
+//    }
+//
+//    if (day <= daysInMonth) {
+//        std::cout << "1" << std::endl; 
+//    }
+//    else {
+//        std::cout << "0" << std::endl; 
+//    }
+//}
+///////////////////////////////////////////////////////////////////zad12
+//double x1, y1, x2, y2;
+//double x, y;
+//
+//std::cout << "Въведете координатите на първата точка (x1, y1): ";
+//std::cin >> x1 >> y1;
+//std::cout << "Въведете координатите на втората точка (x2, y2): ";
+//std::cin >> x2 >> y2;
+//std::cout << "Въведете координатите на третата точка (x, y): ";
+//std::cin >> x >> y;
+//
+//double left = std::min(x1, x2);
+//double right = std::max(x1, x2);
+//
+//double down = std::min(y1, y2);
+//double up = std::max(y1, y2);
+//
+//if (x > left && x < right && y > down && y < up) {
+//    std::cout << "Точката се намира вътре в правоъгълника." << std::endl;
+//}
+//else if ((x == left || x == right) && (y >= down && y <= up) ||
+//    (y == down || y == up) && (x >= left && x <= right)) {
+//    std::cout << "Точката е на контура на правоъгълника." << std::endl;
+//}
+//else {
+//    std::cout << "Точката се намира извън правоъгълника." << std::endl;
+//}
+
+///////////////////////////////////////////////////////////////////zad13
+//int a, b, c ,D;
+//std::cin >> a >> b >> c;
+////ax^2 + bx + c =0
+//D = pow(b,2)  - 4 * a * c;
+//if (D > 0) {
+//    std::cout << "x1 = " << (-b + sqrt(D))/2*a;
+//    std::cout << "x2 = " << (-b - sqrt(D))/2*a;
+//    std::cout << "2 solutions";
+//}
+//else if (D<0) {
+//    std::cout << "no solutions";
+//}
+//else if (D==0) {
+//    std::cout << "x1 = " - b / 2 * a;
+//    std::cout << "1 solutions";
+//}
+///////////////////////////////////////////////////////////////////zad14
+char firstUpper, secondUpper, firstLower, secondLower, fifthChar;
+std::set<char> setA, setB;
+
+std::cout << "Въведете две главни букви за множество A: ";
+std::cin >> firstUpper >> secondUpper;
+std::cout << "Въведете две малки букви за множество B: ";
+std::cin >> firstLower >> secondLower;
+std::cout << "Въведете петата буква (case insensitive): ";
+std::cin >> fifthChar;
+
+
+if (firstUpper > secondUpper) std::swap(firstUpper, secondUpper);
+for (char ch = firstUpper; ch <= secondUpper; ++ch) {
+    setA.insert(ch);
+}
+
+if (firstLower > secondLower) std::swap(firstLower, secondLower);
+for (char ch = firstLower; ch <= secondLower; ++ch) {
+    setB.insert(ch);
+}
+
+char lowerFifth = std::tolower(fifthChar);
+char upperFifth = std::toupper(fifthChar);
+
+
+bool inUnion = setA.count(upperFifth) || setB.count(lowerFifth);
+bool inIntersection = setA.count(upperFifth) && setB.count(lowerFifth);
+bool inDifference = setA.count(upperFifth) && !setB.count(lowerFifth);
+
+
+std::cout << "Петата буква принадлежи на обединението на A и B: "
+<< (inUnion ? "Да" : "Не") << std::endl;
+
+std::cout << "Петата буква принадлежи на сечението на A и B: "
+<< (inIntersection ? "Да" : "Не") << std::endl;
+
+std::cout << "Петата буква принадлежи на разликата на A с B: "
+<< (inDifference ? "Да" : "Не") << std::endl;
+
+std::cout << "Петата буква принадлежи само и единствено в едно от множествата: "
+<< (inUnion && !inIntersection ? "Да" : "Не") << std::endl;
+
+return 0;
+
+}
+
