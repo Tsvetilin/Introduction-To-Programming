@@ -108,3 +108,102 @@
     std::cout << (first > second ? first : second);*/
    
     //zad6
+
+    //zad 7
+/*int a = 0, b = 0, c = 0;
+std::cin >> a >> b >> c;
+if (a >= b && a >= c) {
+    if (b >= c) {
+        std::cout << a << " " << b << " " << c;
+    }
+    else {
+        std::cout << a << " " << c << " " << b;
+    }
+}
+else if (b >= a && b >= c) {
+    if (a >= c) {
+        std::cout << b << " " << a << " " << c;
+    }
+    else {
+        std::cout << b << " " << c << " " << a;
+    }
+}
+else {
+    if (a >= b) {
+        std::cout << c << " " << a << " " << b;
+    }
+    else {
+        std::cout << c << " " << b << " " << a;
+    }
+}
+
+//zad 8
+/* double r, x, y;
+ std::cin >> r >> x >> y;
+
+ double distance = sqrt(x * x + y * y);
+
+ if (distance>r) {
+     std::cout << "Out of the circle" << std::endl;
+ }
+ else if (distance < r) {
+     std::cout << "Inside the circle" << std::endl;
+ }
+ else {
+     std::cout << "On the circle" << std::endl;
+ }
+
+ return 0;*/
+
+// zad 9
+/*double left, right, number;
+
+  
+std::cin >> left >> right >> number;
+
+
+if (fabs(number - left) < 1e-9 || fabs(number - right) < 1e-9) {
+    std::cout << "The number is on the boundary. The interval is closed." << std::endl;
+}
+
+else if (number > left && number < right) {
+    std::cout << "The number is within the given interval. The interval is open." << std::endl;
+}
+   
+else {
+    std::cout << "The number is outside the interval." << std::endl;
+}
+
+return 0;*/
+
+// zad 10
+/*#include <iostream>
+
+int main() {
+    int n;
+
+    std::cin >> n;
+
+    
+    int digit1 = (n / 1000) % 10;  
+    int digit2 = (n / 100) % 10;   
+    int digit3 = (n / 10) % 10;    
+    int digit4 = n % 10;           
+
+    
+    int num1 = digit1 * 10 + digit4;  
+    int num2 = digit2 * 10 + digit3;  
+
+    
+    if (num1 < num2) {
+        std::cout << num1 << " < " << num2 << std::endl;
+    }
+    else if (num1 > num2) {
+        std::cout << num1 << " > " << num2 << std::endl;
+    }
+    else {
+        std::cout << num1 << " = " << num2 << std::endl;
+    }
+    return 0;
+}*/
+
