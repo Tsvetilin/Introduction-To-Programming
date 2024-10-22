@@ -135,32 +135,35 @@ for (int i = 1; i <= n; i++) {
 
 //WEEK 4 - ZADACHI
 
-
 /* zadacha 1
-int n;
-int raz;
-std::cin >> n;
-bool is_prime_1 = true, is_prime_2 = true;
-for (int i = 2; i < n/2; i++) {
-    for (int j = 2; j <= sqrt(i); j++) {
-        if (i % j == 0) {
+    int n;
+    int raz;
+    std::cin >> n;
+    bool is_prime_1 = true, is_prime_2 = true;
+    for (int i = 2; i < n - 1; i++) {
+        for (int j = 2; j <= i / 2; j++) {
+            
+            if (i % j == 0 && j > 2) {
             is_prime_1 = false;
-        }
+            
+            }
     }
-    raz = n - i;
-    for (int j = 2; j <= sqrt(raz); j++) {
-        if (raz % j == 0) {
+        raz = n - i;
+        for (int j = 2; j <= raz / 2; j++) {
+            if (raz % j == 0 && raz > 2) {
             is_prime_2 = false;
         }
     }
+    
     if (is_prime_1 && is_prime_2) {
         std::cout << n << " = " << i << " + " << n - i<< '\n';
     }
     is_prime_1 = true;
     is_prime_2 = true;
-}
-*/
-
+    
+    
+    }
+    */
 
 /* zadacha 2
 double null_a = 0.5;
@@ -173,7 +176,6 @@ for (int i = 1; i <= n; i++) {
     null_a = next_a;
 }
 std::cout << next_a;
-
 */
 
 
@@ -195,41 +197,207 @@ std::cin >> n;
 for (int i = 1; i <= n; i++) {
     if (i == 1 || i == n) {
         std::cout << "+ ";
-
         for (int j = 2; j <= n - 1; j++) {
             std::cout << "- ";
-
         }
         std::cout << "+ " << '\n';
     }
     else {
         std::cout << "| ";
-
         for (int j = 2; j <= n - 1; j++) {
             std::cout << "- ";
-
         }
         std::cout << "| " << '\n';
     }
 }
 */
 
+
+
+    /* zadacha 5
+    
+    int n;
+    int whitespace = 0;
+    std::cin>>n;
+    
+    whitespace = 7 +  5 * (n-2);
+    
+    int w = whitespace;
+    int l = whitespace;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            std::cout<<j<<" ";
+        }
+        for(int k = 0; k < w; k++){
+            if(i == n && (k >= 0 && k < w - 1)){
+                std::cout<<"-";
+            }
+            else{
+            std::cout<<" ";}
+        }
+        w -= 4;
+        for(int j = i; j >= 1; j--){
+            std::cout<<j<<" ";
+        }
+        
+        std::cout<<'\n';
+        
+    }
+    
+    l = w + 8;
+    for(int i = n-1; i >= 1; i--){
+        for(int j = 1; j <= i; j++){
+            std::cout<<j<<" ";
+        }
+        for(int k = 0; k < l; k++){
+            std::cout<<" ";
+        }
+        
+        l += 4;
+        for(int j = i; j >= 1; j--){
+            std::cout<<j<<" ";
+        }
+        std::cout<<'\n';
+        
+    }
+    */
+ /* zadacha 6
+    int n;
+    int c;
+    std::cin>>n;
+    for(int i = 1;i<=n + 2;i++){
+        std::cout<<"#";
+    }
+    std::cout<<'\n';
+    
+    for(int j = 1; j <= n;j++){
+        std::cout<<"#";
+        c = j;
+        for(int g = 1;g <= n;g++){
+            if(c == n+1){
+                c = 1;
+            }
+            std::cout<<c;
+            c++;
+        }
+        std::cout<<"#"<<'\n';
+    }
+    
+    std::cout<<"#";
+    if(n % 2 == 1){
+        for(int i = 1;i <= n / 2;i++){
+            std::cout<<" ";
+        }
+        std::cout<<"X";
+        
+        for(int i = 1;i <= n / 2;i++){
+            std::cout<<" ";
+        }
+    
+    }
+    if(n % 2 == 0){
+        for(int i = 1;i <= n / 2 - 1;i++){
+            std::cout<<" ";
+        }
+        std::cout<<"XX";
+        
+        for(int i = 1;i <= n / 2 - 1;i++){
+            std::cout<<" ";
+        }
+    
+    }
+    std::cout<<"#"<<'\n';
+    
+    for(int j = n; j>=1;j--){
+        std::cout<<"#";
+        c = j;
+        for(int g = 1;g <= n;g++){
+            if(c == n+1){
+                c = 1;
+            }
+            std::cout<<c;
+            c++;
+        }
+        std::cout<<"#"<<'\n';
+    }
+    
+    
+    
+    for(int i = 1;i<=n + 2;i++){
+        std::cout<<"#";
+    }
+    */
+
+ /* zadacha 7
+    int n;
+    std::cin>>n;
+    int a = 0;
+    int d1 = 1;
+    int d2 = 2*n - 1;
+    
+    for(int i = 1; i <= n; i++){
+        
+            for(int j = 1;j<=n;j++){
+                if(j%2==1){
+                    if(j != 1){
+                    a = a + d1;
+                }
+                    else{
+                        a = i;
+                    }
+                }
+                else{
+                    a = a + d2;
+                }
+                std::cout<<a<<" ";
+            }
+            
+            d1 += 2;
+            d2 -= 2;
+            
+         
+        std::cout<<'\n';
+    }
+    */
+
+
+/* zadacha 8
 int n;
-std::cin >> n;
-for (int i = 1; i <= n; i++) {
-    for (int j = 1; j <= i; j++) {
-        std::cout << j<<" ";
-
+    std::cin>>n;
+    int increm = 1;
+    int increm_base;
+    for(int i = 1; i <= n; i++)
+    {
+        
+        if(i % 2 == 1)
+        {
+            increm_base = increm;
+            for(int j = increm_base; j <= n * i; j++)
+            {
+                std::cout<<j<<" ";
+                increm += 1;}
+            
+                increm_base = increm;
+                
+        }
+        
+        else
+        {
+            //int increm_base = increm;
+            for(int j = increm_base + n - 1; j >= increm_base; j--)
+            {
+                std::cout<<j<<" ";
+                increm += 1;}
+            
+                increm_base = increm;
+        }
+        std::cout<<'\n';
     }
-    std::cout << '\n';
+    
+     
+*/
 
-}
-for (int i = n-1; i >= 1; i--) {
-    for (int j = 1; j <= i; j++) {
-        std::cout << j << " ";
-    }
-    std::cout << '\n';
-
-}
+    return 0;
 }
 
