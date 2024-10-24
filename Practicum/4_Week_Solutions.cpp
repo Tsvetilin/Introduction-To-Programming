@@ -155,7 +155,7 @@ int main()
 	}*/
 
 	//6
-	int n, count = 1;
+	/*int n, count = 1;
 	std::cin >> n;
 	for (int i = 1; i <= n + 2; i++)
 	{
@@ -217,8 +217,8 @@ int main()
 			}
 		}
 		std::cout << " ";
-		
-		
+
+
 	}
 	std::cout << std::endl;
 	for (int i = n; i >0; i--)
@@ -254,9 +254,86 @@ int main()
 	for (int i = 1; i <= n + 2; i++)
 	{
 		std::cout << "#";
+	}*/
+
+	//7
+	/*int n,currentCount;
+	std::cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		currentCount = i+1;
+		std::cout << i + 1<<" ";
+		for (int j= 1;  j < n;  j++)
+		{
+			if (i == 0)
+			{
+				if (j % 2 == 0)
+				{
+					currentCount += 1;
+					std::cout << currentCount << " ";
+				}
+				else
+				{
+					currentCount += 2 * (n - i) - 1;
+					std::cout << currentCount << " ";
+				}
+			}
+			else if (i == n - 1)
+			{
+				if (j % 2 == 1)
+				{
+					currentCount += 1;
+					std::cout << currentCount << " ";
+				}
+				else
+				{
+					currentCount += 2 * (n) - 1;
+					std::cout << currentCount << " ";
+				}
+			}
+			else
+			{
+				if (j % 2 == 0)
+				{
+					currentCount += 2*(i)+1;
+					std::cout << currentCount << " ";
+				}
+				else
+				{
+					currentCount += 2 * (n - i) - 1;
+					std::cout << currentCount << " ";
+				}
+			}
+		}
+		std::cout << std::endl;
+	}*/
+
+	//8
+	int n;
+	std::cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		if (i % 2 == 1)
+		{
+			int startPoint = (i - 1) * n;
+			for (int j = startPoint; j < startPoint+n; j++)
+			{
+				std::cout << j + 1 << " ";
+			}
+			std::cout << std::endl;
+		}
+		else
+		{
+			int startPoint = (i) * n;
+			for (int k = startPoint; k > startPoint-n; k--)
+			{
+				std::cout << k << " ";
+			}
+			std::cout << std::endl;
+		}
+
 	}
 
-	//
 
 
 }
