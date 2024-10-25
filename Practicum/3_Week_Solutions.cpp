@@ -112,20 +112,21 @@ int main()
 
     //Zadacha 8
 	/*
-	 int n = 0;
-	 int m = 0;
-	 std::cin >> n;
-	 std::cin >> m;
-	 for (int i=1;i<=n;i++)
-	 {
-		 for (int j=1;j<=m;j++)
-		 {
-			 std::cout << ("(");
-			 std::cout << (i);
-			 std::cout << (",");
-			 std::cout << (j);
-			 std::cout << (")") << std::endl;
-		 }
-	 }
+	int n = 0;
+int m = 0;
+std::cin >> n;
+std::cin >> m;
+for (int i = 1; i <= n; i++)
+{
+	for (int j = 1; j <= m; j++)
+	{
+		std::cout << ("(");
+		std::cout << (i);
+		std::cout << (",");
+		std::cout << (j);
+		std::cout << (") ");
+	}
+	std::cout << (" ") << std::endl;
+}
 	 */
 }
