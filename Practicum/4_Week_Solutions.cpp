@@ -127,4 +127,74 @@ int main()
 		std::cout << "" << std::endl;
 	}
 	*/
+	//6 zadacha
+	/*
+	 int n=0;
+      std::cin >> n;
+      for (int i=0;i<n+2;i++)
+      {
+        std::cout << "#";
+      }
+      std::cout << std::endl;
+      for(int i=1;i<=n;i++)
+      {
+        std::cout<< "#";
+        for(int j=i;j<=n;j++)
+        {
+          std::cout << j;
+        }
+        for(int j=1;j<n-(n-i);j++)
+        {
+          std::cout << j;
+        }
+        std::cout << "#" << std::endl;
+      }
+      std::cout << "#";
+      
+      
+      if (n%2==0) 
+      {
+          for (int i=0;i<n/2-1;i++)
+          {
+              std::cout << " ";
+          }
+          std::cout << "XX";
+          for (int i=0;i<n/2-1;i++)
+          {
+              std::cout << " ";
+          }
+      }
+      else
+      {
+            for (int i=0;i<(n-1)/2;i++)
+            {
+                std::cout << " ";
+            }    
+            std::cout << "X";
+            for (int i=0;i<(n-1)/2;i++)
+            {
+                std::cout << " ";
+            }    
+      } 
+      std::cout << "#" << std::endl;
+      
+      for (int i=n;i>0;i--)
+      {
+          std::cout << "#";
+          for (int j=i;j<=n;j++)
+          {
+              std::cout << j;
+          }
+          for (int j=1;j<n-(n-i);j++)
+          {
+              std::cout << j;
+          }
+          std::cout << "#" << std::endl;
+      }
+      for (int i=0;i<n+2;i++)
+      {
+        std::cout << "#";
+      }
+      std::cout << std::endl;
+	*/
 }
