@@ -131,5 +131,5 @@ void task8()
 
 int main()
 {
-
+	task5();
 }
