@@ -333,6 +333,138 @@ int main()
 
 	}
 
+	// practicum5.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+
+int main()
+{
+	//1
+	/*int n;
+	bool isPrime = true;
+	std::cin >> n;
+	for (int i = 2; i <n; i++)
+	{
+		if (n % i == 0)
+		{
+			isPrime = false;
+			break;
+		}
+	}
+	if ((isPrime || n == 2)&&n!=1)
+	{
+		std::cout << "Prime Number";
+	}
+	else
+	{
+		std::cout << "Not Prime Number";
+	}*/
+
+	//2
+	/*long n,digit,number,count=0;
+	std::cin >> n;
+	std::cin >> number;
+	while (n != 0)
+	{
+		digit = n % 10;
+		if (digit == number)
+		{
+			count++;
+		}
+		n /= 10;
+	}
+	std::cout << count;*/
+
+	//4
+	/*int n,newNum=0,curDigit;
+	std::cin >> n;
+	while (n != 0)
+	{
+		curDigit = n % 10;
+		if (curDigit == 0 && newNum == 0)
+		{
+			n /= 10;
+			continue;
+		}
+		newNum = newNum * 10 + curDigit;
+		n /= 10;
+	}
+	std::cout << newNum;*/
+
+	//5
+	/*int k, m, n,curentNum;
+	bool notValidNum;
+	std::cin >> k >> m >> n;
+	for (int i = m; i <= n; i++)
+	{
+		curentNum = i;
+		notValidNum = false;
+		while (curentNum != 0)
+		{
+			int curDigit= curentNum % 10;
+			if (curDigit != 0)
+			{
+				if (k % curDigit != 0)
+				{
+					notValidNum = true;
+					break;
+				}
+			}
+			else
+			{
+				notValidNum = true;
+				break;
+			}
+			curentNum /= 10;
+		}
+		if (!notValidNum)
+		{
+			std::cout << i << " ";
+		}
+
+	}*/
+
+	//6
+	int num,numDublicate, numLen = 0, newNum = 0,reversedNewNum=0;
+	std::cin >> num;
+	numDublicate = num;
+	while (numDublicate != 0)
+	{
+		numLen++;
+		numDublicate /= 10;
+	}
+	bool numLenIsEven = false;
+	if (numLen % 2 == 0)
+	{
+		numLenIsEven = true;
+	}
+
+	for (int i = 1; i <= numLen; i++)
+	{
+		int curDigit = num % 10;
+
+		if ((!numLenIsEven && i == numLen / 2+1) || (numLenIsEven && i == numLen / 2) || (numLenIsEven && i == numLen / 2 + 1))
+		{
+			num /= 10;
+		}
+		else 
+		{
+			newNum = newNum * 10 + curDigit;
+			num /= 10;
+		}
+
+	}
+	while (newNum != 0)
+	{
+		int d = newNum % 10;
+		reversedNewNum = reversedNewNum * 10 + d;
+		newNum /= 10;
+	}
+	std::cout << reversedNewNum << " " << reversedNewNum + 1;
+
+}
+
 
 
 }
