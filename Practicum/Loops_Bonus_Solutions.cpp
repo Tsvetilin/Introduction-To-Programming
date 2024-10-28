@@ -1,275 +1,230 @@
-
 #include <iostream>
 
 int main()
 {
-    //Exercise 1
+	// zad 1
+	/*int n;
+	std::cin >> n;
 
-    int number;
-    std::cout << "Enter a positive number: ";
-    std::cin >> number;
-    if (!std::cin || number < 0) {
-        std::cout << "You should enter a positive number!" << std::endl;
-        return 1;
-    }
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    for (int i = 2; i < number; ++i) {
-        bool isPrimeI = true;
-        for (int k = 2; k <= std::sqrt(i); ++k) {
-            if (i % k == 0) {
-                isPrimeI = false;
-                break;
-            }
-        }
+	for (int firstNum = 2; firstNum < n; firstNum++)
+	{
+		bool isPrimeFirst = true;
+		if (firstNum < 2) isPrimeFirst = false;
+		for (int i = 2; i <= sqrt(firstNum); i++)
+		{
+			if (firstNum % i == 0)
+			{
+				isPrimeFirst = false;
+				break;
+			}
+		}
 
-        if (!isPrimeI) continue;
+		if (!isPrimeFirst) continue;
 
-        for (int j = 2; j < number; ++j) {
-            bool isPrimeJ = true;
-            int check = j / 2;
-            for (int k = 2; k <= check; ++k) {
-                if (j % k == 0) {
-                    isPrimeJ = false;
-                    break;
-                }
-            }
+		int secondNum = n - firstNum;
+		bool isPrimeSecond = true;
+		if (secondNum < 2) isPrimeSecond = false;
+		for (int i = 2; i <= sqrt(secondNum); i++)
+		{
+			if (secondNum % i == 0)
+			{
+				isPrimeSecond = false;
+				break;
+			}
+		}
 
-            if (isPrimeJ && i + j == number) {
-                std::cout << i << " + " << j << " = " << number << std::endl;
-            }
-        }
-    }
+		if (isPrimeSecond)
+		{
+			std::cout << n << " = " << firstNum << " + " << secondNum << std::endl;
+		}
+	}*/
 
-    //Exercise 2
+	// zad 2
+	/*int n;
+	double a = 0.5;
+	std::cin >> n;
 
-    int number;
-    std::cout << "Enter a number bigger than 0: ";
-    std::cin >> number;
-    if (!std::cout || number < 1) {
-        std::cerr << "You should enter a number bigger than!" << std::endl;
-        return 1;
-    }
-    double currentNumber = 0, previousNumber = (double)(1 / 2);
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    for (size_t i = 0; i <= number; ++i) {
-        currentNumber = (previousNumber * previousNumber + 1) / 2;
-        previousNumber = currentNumber;
-    }
+	for (int i = 0; i < n; i++)
+	{
+		a = (a * a + 1) / 2;
+	}
+	std::cout << "a_n = " << a;*/
 
-    std::cout << "a_n = " << (double)previousNumber << std::endl;
+	// zad 3
+	/*int n;
+	std::cin >> n;
 
-    //Exercise 3
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    int number;
-    std::cout << "Enter a number bigger than 0: ";
-    std::cin >> number;
-    if (!std::cin || number < 0) {
-        std::cerr << "You should enter a positive number bigger than 0!" << std::endl;
-        return 1;
-    }
+	for (int row = 1; row <= n; row++)
+	{
+		for (int col = 1; col <= row; col++)
+		{
+			std::cout << "$ ";
+		}
+		std::cout << std::endl;
+	}*/
 
-    const char ch = '$';
+	// zad 4
+	/*int n;
+	std::cin >> n;
 
-    for (size_t i = 1; i <= number; ++i) {
-        for (size_t j = 1; j <= i; ++j) {
-            std::cout << ch;
-        }
-        std::cout << std::endl;
-    }
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    //Exercise 4
+	for (int i = 1; i <= n; i++)
+	{
+		char borderSymbol = (i == 1 || i == n) ? '+' : '|';
 
-    int number;
-    std::cout << "Enter the dimentions of the frame: ";
-    std::cin >> number;
-    if (!std::cin || number < 1) {
-        std::cerr << "You should enter a positive number bigger than 0!" << std::endl;
-        return 1;
-    }
+		std::cout << borderSymbol << " ";
+		for (int hyphen = 0; hyphen < n - 2; hyphen++)
+			std::cout << "- ";
+		std::cout << borderSymbol << std::endl;
+	}*/
 
-    if (number == 1) {
-        std::cout << "+" << std::endl;
-        return 0;
-    }
+	// zad 5
+	/*int n;
+	std::cin >> n;
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
+	const int ROWS = 2 * n - 1;
 
-    std::cout << "+";
-    for (size_t i = 1; i < number - 1; ++i) {
-        std::cout << "-";
-    }
-    std::cout << "+" << std::endl;
+	for (int row = 1; row <= ROWS; row++)
+	{
+		int numbersOnSide = (row > n) ? ROWS + 1 - row : row;
+		int symbolCount = 3 * n - 2 * numbersOnSide;
+		char symbol = (row == n) ? '-' : ' ';
 
-    for (size_t k = 1; k < number - 1; ++k) {
-        std::cout << '|';
-        for (size_t f = 1; f < number - 1; ++f) {
-            std::cout << '-';
-        }
-        std::cout << '|' << std::endl;
-    }
+		for (int i = 1; i <= numbersOnSide; i++)
+			std::cout << i << " ";
 
-    std::cout << "+";
-    for (size_t i = 1; i < number - 1; ++i) {
-        std::cout << "-";
-    }
-    std::cout << "+" << std::endl;
+		for (int i = 0; i < symbolCount; i++)
+			std::cout << symbol << " ";
 
-    //Exercise 5
+		for (int i = numbersOnSide; i >= 1; i--)
+			std::cout << i << " ";
 
-    int number;
-    std::cout << "Enter the length of your bow tie: ";
-    std::cin >> number;
-    if (!std::cin || number < 1) {
-        std::cerr << "You should enter a positive number bigger than 0!" << std::endl;
-        return 1;
-    }
+		std::cout << std::endl;
+	}*/
 
-    if (number == 1) {
-        std::cout << "1 - 1" << std::endl;
-        return 0;
-    }
+	// zad 6
+	//int n;
+	//std::cin >> n;
+	//if (!std::cin || n < 0)
+	//{
+	//	std::cerr << "Invalid number";
+	//	return 1;
+	//}
 
-    std::cout << "1";
-    for (size_t i = 1; i < number * 3 - 1; ++i) {
-        std::cout << " ";
-    }
-    std::cout << "1" << std::endl;
+	//const int ROWS = n * 2 + 3;
+	//const int ROW_LENGTH = n + 2;
+	//const int MIDDLE_ROW = n + 2; // same as ROW_LENGTH but separate for readability
+	//const int X_COUNT = (n % 2 == 0) ? 2 : 1;
+	//const int WHITESPACE_COUNT = ROW_LENGTH - X_COUNT - 2;
 
-    for (size_t j = 1; j < number; ++j) {
-        // Left side (1 to j)
-        for (size_t k = 1; k <= j; ++k) {
-            std::cout << k;
-        }
+	//for (int row = 1; row <= ROWS; row++)
+	//{
+	//	// top and bottom row
+	//	if (row == 1 || row == ROWS)
+	//	{
+	//		for (int i = 0; i < ROW_LENGTH; i++)
+	//			std::cout << "#";
+	//		std::cout << std::endl;
+	//		continue;
+	//	}
 
-        for (size_t f = 1; f <= (number * 3 - 2 - j * 2); ++f) {
-            std::cout << " ";
-        }
+	//	std::cout << "#";
 
-        for (size_t l = j; l >= 1; --l) {
-            std::cout << l;
-        }
+	//	if (row == MIDDLE_ROW)
+	//	{
+	//		for (int i = 0; i < WHITESPACE_COUNT / 2; i++)
+	//			std::cout << " ";
+	//		for (int i = 0; i < X_COUNT; i++)
+	//			std::cout << "X";
+	//		for (int i = 0; i < WHITESPACE_COUNT / 2; i++)
+	//			std::cout << " ";
+	//	}
+	//	else
+	//	{
+	//		int startingNum = (row <= MIDDLE_ROW) ? row - 1 : ROWS - row;
+	//		for (int col = 1; col <= n; col++)
+	//		{
+	//			std::cout << startingNum;
+	//			// resetva se kum 1 ako nadvishi n
+	//			startingNum = (startingNum % n) + 1; 
+	//		}
+	//	}
 
-        std::cout << std::endl;
-    }
+	//	std::cout << "#" << std::endl;
+	//}
 
-    for (size_t k = 1; k <= number; ++k) {
-        std::cout << k;
-    }
-    for (size_t f = 0; f < number; ++f) {
-        std::cout << "-";
-    }
-    for (size_t l = number; l >= 1; --l) {
-        std::cout << l;
-    }
-    std::cout << std::endl;
+	// zad 7
+	/*int n, currNum;
+	std::cin >> n;
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    for (size_t j = number - 1; j >= 1; --j) {
-        for (size_t k = 1; k <= j; ++k) {
-            std::cout << k;
-        }
+	for (int row = 1; row <= n; row++)
+	{
+		for (int col = 1; col <= n; col++)
+		{
+			if (col % 2 != 0)
+				currNum = (col - 1) * n + row;
+			else
+				currNum = col * n - row + 1;
 
-        for (size_t f = 1; f <= (number * 3 - 2 - j * 2); ++f) {
-            std::cout << " ";
-        }
+			std::cout << currNum << " ";
+		}
 
-        for (size_t l = j; l >= 1; --l) {
-            std::cout << l;
-        }
+		std::cout << std::endl;
+	}*/
 
-        std::cout << std::endl;
-    }
+	// zad 8
+	/*int n, currNum;
+	std::cin >> n;
+	if (!std::cin || n < 0)
+	{
+		std::cerr << "Invalid number";
+		return 1;
+	}
 
-    //Exercise 6
+	for (int row = 1; row <= n; row++)
+	{
+		for (int col = 1; col <= n; col++)
+		{
+			if (row % 2 != 0)
+				currNum = (row - 1) * n + col;
+			else
+				currNum = row * n - col + 1;
 
-    int n;
-    std::cout << "Enter a positive number: ";
-    std::cin >> n;
+			std::cout << currNum << " ";
+		}
 
-    if (!std::cin || n < 1) {
-        std::cerr << "You should enter a positive number bigger than 0!" << std::endl;
-        return 1;
-    }
-
-    for (int i = 0; i < n + 2; ++i) {
-        std::cout << "#";
-    }
-    std::cout << std::endl;
-
-    for (int i = 0; i < n; ++i) {
-        std::cout << "#";
-
-        for (int j = 0; j < n; ++j) {
-            std::cout << (i + j) % n + 1;
-        }
-
-        std::cout << "#";
-        std::cout << std::endl;
-    }
-
-    std::cout << "#";
-    if (n % 2 == 0) {
-        for (int i = 0; i < n / 2 - 1; ++i) {
-            std::cout << " ";
-        }
-        std::cout << "xx";
-        for (size_t i = n / 2; i < n - 1; ++i) {
-            std::cout << " ";
-        }
-    }
-    else {
-        for (int i = 0; i < n / 2 - 1; ++i) {
-            std::cout << " ";
-        }
-        std::cout << " x ";
-        for (size_t i = n / 2; i < n - 2; ++i) {
-            std::cout << " ";
-        }
-    }
-    std::cout << "#" << std::endl;
-
-    for (int i = n - 1; i >= 0; --i) {
-        std::cout << "#";
-
-        for (int j = 0; j < n; ++j) {
-            std::cout << (i + j) % n + 1;
-        }
-
-        std::cout << "#";
-        std::cout << std::endl;
-    }
-
-    for (int i = 0; i < n + 2; ++i) {
-        std::cout << "#";
-    }
-    std::cout << std::endl;
-
-    //Exercise 8
-
-    int size;
-    std::cout << "Enter the size of the matrix: ";
-    std::cin >> size;
-
-    if (size < 1) {
-        std::cerr << "You should enter a positive number bigger than 0!" << std::endl;
-        return 1;
-    }
-
-    int currentNumber = 1;
-
-    for (int i = 1; i <= size; ++i) {
-        if (i % 2 != 0) {
-            for (int j = 1; j <= size; ++j) {
-                std::cout << currentNumber << " ";
-                ++currentNumber;
-            }
-        }
-        else {
-            int end = currentNumber + size - 1;
-            for (int j = end; j >= currentNumber; --j) {
-                std::cout << j << " ";
-            }
-            currentNumber += size;
-        }
-        std::cout << std::endl;
-    }
-
-    return 0;
+		std::cout << std::endl;
+	}*/
 }
