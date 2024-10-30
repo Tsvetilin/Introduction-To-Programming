@@ -36,6 +36,7 @@ char toCharacter(int num)
 int power(int base, unsigned int a)
 {
 	int f = base;
+	if (a==0) return 1;
 	for (int i=1;i<a;i++)
 	{
 		f = f * base;
@@ -111,6 +112,30 @@ bool isPermutation(int num,int secondNum)    // тука сигурно има �
 	}
 	if (sortedNum == sortedNum2) return true;
 	return false;
+}
+bool isPalindrome(int num)
+{
+	int numClone = num;
+	int digitCount = 0;
+	int halfCount = 0;
+	int firstDigit = 0;
+	int lastDigit = 0;
+	bool isPalindrome = true;
+	while (numClone >= 1)
+	{
+		digitCount++;
+		numClone = numClone / 10;
+	}
+	halfCount = digitCount / 2;
+	digitCount = digitCount - 1;
+	for(int i=0;i<halfCount;i++)
+	{
+		firstDigit = (num / power(10, (digitCount-i*2))%10);
+		lastDigit = num % 10;
+		num = num / 10;
+		if (firstDigit != lastDigit) isPalindrome = false;
+	}
+	return isPalindrome;
 }
 int main()
 {
@@ -188,7 +213,4 @@ int main()
 	}
 	std::cout << newNum;
 	*/
-	char n = 0;
-	std::cin >> n;
-	std::cout <<  isDigit(n);
 }
