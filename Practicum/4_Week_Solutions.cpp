@@ -90,7 +90,6 @@ short getLength(int number)
 bool isPermutation(int number1, int number2)
 {
     int temp = number1;
-    bool isPermutation = false;
     int permutation1 = 1;
     int permutation2 = 1;
     
@@ -110,24 +109,23 @@ bool isPermutation(int number1, int number2)
         temp /= 10;
     }
 
-    return (permutation1 == permutation2) ? !isPermutation : isPermutation;
+    return permutation1 == permutation2;
 
 }
 
 // 2
 bool isPalindrome(int number)
 {
-    int num = 0;
-    int temp = num;
+    int newNumber = 0;
+    int temp = number;
 
     while (temp != 0)
     {
-         int digit = temp % 10;
+        newNumber = (newNumber * 10) + (temp % 10);
+		temp /= 10;
+	}
 
-         return digit;
-
-         temp /= 10;
-    }
+	return newNumber == number;
 }
 
 
