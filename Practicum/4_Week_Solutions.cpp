@@ -1,16 +1,23 @@
 #include <iostream>
 
-// Дефинициите на функциите е в края на файла
+// Дефинициите на функциите са в края на файла
 int absoluteValue(int number); //връща | number |
 bool isDigit(char symbol); //връща дали символът е цифра
-char toUpper(char symbol); // ако буквата е малка връща съответната и главна
-char toLower(char symbol);  //ако буквата е главна връща съответната и малка
+char toUpper(char symbol); // ако буквата е малка връща съответната ѝ главна
+char toLower(char symbol);  //ако буквата е главна връща съответната ѝ малка
 int toNumber(char symbol); //конвертира от символ в цифра
 char toCharacter(int number); //конвертира от цифра в символ
 int power(int base, unsigned int exponent); // връща base^exponent
 bool isPrime(unsigned int number); //проверява дали дадено число е просто
 short getLength(int number); //връща колко цифри има даденото число
 // да се напишат функции с подходящи сигнатури за задачи 2., 3. и 4.
+
+// Ex. 1
+int sortNumber(int number);
+bool isPermutation(int num1, int num2);
+
+// Ex. 2
+bool isPalindrome(int number);
 
 int main()
 {
@@ -96,7 +103,7 @@ int main()
 			if (!digit)
 			{
 				isSpecial = false;
-				break;	
+				break;
 			}
 
 			if (num % digit != 0)
@@ -161,44 +168,114 @@ int main()
 
 int absoluteValue(int number)
 {
-	return number > 0 ? number : -number;
+	return number >= 0 ? number : -number;
 }
 
 bool isDigit(char symbol)
 {
-	return (symbol >= 48 && symbol <= 57) ? true : false;
+	return (symbol >= '0' && symbol <= '9');
 }
 
 char toUpper(char symbol)
 {
-	return (symbol >= 'a' && symbol <= 'z') 
-		? symbol + 'A' - 'a' : symbol;
+	return (symbol >= 'a' && symbol <= 'z')
+		? symbol + ('a' - 'A') : symbol;
 }
 
 char toLower(char symbol)
 {
-	return (symbol >= 'A' && symbol <= 'Z') 
-		? symbol - 'A' + 'a' : symbol;
+	return (symbol >= 'A' && symbol <= 'Z')
+		? symbol - ('a' - 'A') : symbol;
 }
 
 int toNumber(char symbol)
 {
-	return (symbol >= '0' && symbol <= '9') 
-		? symbol - '0' : symbol;
+	return (symbol >= '0' && symbol <= '9')
+		? symbol - '0' : -1;
 }
 
 char toCharacter(int number)
 {
 	return (number >= 0 && number <= 9)
-		? number + '0' : number;
+		? number + '0' : '\0';
 }
 
 int power(int base, unsigned int exponent)
 {
+	if (exponent == 0)
+		return 1;
+
+	if (base == 0)
+		return 0;
+
 	int power = 1;
 	for (int i = 0; i < exponent; i++)
-	{
 		power *= base;
+
+	return exponent > 0 ? power : 1 / power;
+}
+
+bool isPrime(unsigned int number)
+{
+	int end = number / 2 + 1;
+	for (int i = 2; i < end; i++)
+		if (!(number % i))
+			return false;
+	return true;
+}
+
+short getLength(int number)
+{
+	int length = 0;
+	while (number)
+	{
+		length++;
+		number /= 10;
 	}
-	return power;
+	return length;
+}
+
+
+// Ex. 1
+int sortNumber(int number)
+{
+	int sorted = 0, index = getLength(number) - 1;
+	for (int i = 1; i < 10; i++)
+	{
+		int tempNum = number;
+		for (int j = getLength(tempNum) - 1; j >= 0; j--)
+		{
+			if (tempNum % 10 == i)
+			{
+				sorted += i * power(10, index);
+				index--;
+			}
+			tempNum /= 10;
+		}
+	}
+	return sorted;
+}
+
+bool isPermutation(int num1, int num2)
+{
+	return sortNumber(num1) == sortNumber(num2);
+}
+
+
+// Ex. 2
+bool isPalindrome(int number)
+{
+	int reversed = 0, tempNum = number;
+	for (int i = getLength(tempNum) - 1; i >= 0; i--)
+	{
+		if ((tempNum % 10) == 0)
+		{
+			reversed *= 10;
+			continue;
+		}
+		reversed += (tempNum % 10) * power(10, i);
+		tempNum /= 10;
+	}
+
+	return reversed == number;
 }
