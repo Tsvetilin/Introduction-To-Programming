@@ -61,6 +61,57 @@ short getLength(int num)
 	}
 	return length;
 }
+bool isPermutation(int num,int secondNum)    // тука сигурно има много по-добър начин
+{
+	int numClone = 0;
+	int digitCount = 0;
+	int sortedNum = 0;
+	int sortedDigitNum = 0;
+	int sortedNum2 = 0;
+	numClone = num;
+	while (numClone >= 1)
+	{
+		digitCount++;
+		numClone = numClone / 10;
+	}
+	sortedDigitNum = digitCount - 1;
+	for (int i = 1; i <= 9; i++)
+	{
+		numClone = num;
+		for (int j = 0; j < digitCount; j++)
+		{
+			if (numClone % 10 == i)
+			{
+				sortedNum = sortedNum + power(10, sortedDigitNum) * i;
+				sortedDigitNum--;
+			}
+			numClone = numClone / 10;
+		}
+	}
+	digitCount = 0;
+	numClone = secondNum;
+	while (numClone >= 1)
+	{
+		digitCount++;
+		numClone = numClone / 10;
+	}
+	sortedDigitNum = digitCount - 1;
+	for (int i = 1; i <= 9; i++)
+	{
+		numClone = secondNum;
+		for (int j = 0; j < digitCount; j++)
+		{
+			if (numClone % 10 == i)
+			{
+				sortedNum2 = sortedNum2 + power(10, sortedDigitNum) * i;
+				sortedDigitNum--;
+			}
+			numClone = numClone / 10;
+		}
+	}
+	if (sortedNum == sortedNum2) return true;
+	return false;
+}
 int main()
 {
 	// 1 zad
