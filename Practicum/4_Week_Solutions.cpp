@@ -26,6 +26,41 @@ int toNumber(char num)
 		return (num - '0');
 	}
 }
+
+char toCharacter(int num)
+{
+	char a;
+	a = num + '0';
+	return a;
+}
+int power(int base, unsigned int a)
+{
+	int f = base;
+	for (int i=1;i<a;i++)
+	{
+		f = f * base;
+	}
+	return f;
+}
+bool isPrime(unsigned int num)
+{
+	for(int i = 2; i*i<=num; i++)
+	{
+		if (num % i == 0) return false;
+	}
+	return true;
+}
+short getLength(int num)
+{
+	short length = 0;
+	while(num>0)
+	{
+
+		num = num / 10;
+		length = length + 1;
+	}
+	return length;
+}
 int main()
 {
 	// 1 zad
