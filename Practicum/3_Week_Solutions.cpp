@@ -98,4 +98,37 @@ if (n > 0) {
 else {
     std::cout << "Invalid data";
 }*/
-//change
+//zad7
+/*int n = 0, m = 0;
+
+cin >> n >> m;
+int sum = 0;
+
+if (n >= 0 && m >= 0 && m>n) {
+	for (int i = n; i <= m; i++)
+	{
+		for (int j = 1; j<i; j++)
+		{
+			if (i % j == 0)
+			{
+				sum += j;	
+			}
+			
+		}
+
+		if (i == sum)
+		{
+			cout << sum <<endl;
+		}
+		sum = 0;
+
+	}
+
+}
+else {
+	cout << "Invalid input";
+	
+}
+return 0;*/
+
+//zad8
