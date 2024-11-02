@@ -1,0 +1,229 @@
+#include <iostream>
+
+int absoluteValue(int number);
+
+bool isDigit(char symbol);
+
+char toUpper(char symbol);
+
+char toLower(char symbol);
+
+int toNumber(char symbol);
+
+char toCharacter(int number);
+
+int power(int base, unsigned int exponent);
+
+bool isPrime(unsigned int number);
+
+short getLength(int number);
+
+short digitOcurrencesCount(unsigned int number, short digit);
+
+long flipNumber(long number);
+
+long numberWithDigitsSorted(long number);
+
+bool isSpecial(int special, int numToCheck);
+
+int removeMiddleDigit(int number);
+
+bool isMiddle(short lenght, short position);
+
+int main() {
+	//ex1
+	//int a;
+	//std::cin >> a;
+	//std::cout << isPrime(a);
+	
+	//ex2
+	//unsigned int number, digit;
+	//std::cin >> number >> digit;
+	//std::cout << digitOcurrencesCount(number, digit);
+
+	//ex3
+	//int number;
+	//std::cin >> number;
+	//std::cout << numberWithDigitsSorted(number);
+		
+	//ex4
+	//int number;
+	//std::cin >> number;
+	//std::cout << flipNumber(number);
+
+	//ex5
+	//int k, m, n;
+	//std::cin >> k >> m >> n;
+	//for (int i = m; i <= n; i++) {
+	//	if (isSpecial(k, i)) {
+	//		std::cout << i << " ";
+	//	}
+	//}
+
+	//ex6
+	//int number;
+	//std::cin >> number;
+	//int newNumber = removeMiddleDigit(number);
+	//std::cout << newNumber << " " << newNumber + 1;
+}
+
+//връща абсолютната стойност на число
+int absoluteValue(int number) {
+	return (number < 0) ? -number : number;
+} 
+
+//връща дали символът е цифра
+bool isDigit(char symbol) {
+	return symbol >= '0' && symbol <= '9';
+}
+
+//ако буквата е малка, връща съответната и́ главна
+char toUpper(char symbol) {
+	return (symbol >= 'a' && symbol <= 'z') ? symbol + 'A' - 'a' : symbol;
+}
+
+//ако буквата е главна, връща съответната и́ малка
+char toLower(char symbol) {
+	return (symbol >= 'A' && symbol <= 'Z') ? symbol + 'a' - 'A' : symbol;
+}
+
+//конвертира от символ в цифра
+int toNumber(char symbol) {
+	return (symbol >= '0' && symbol <= '9') ? symbol - '0' : -1;
+}
+
+//конвертира от цифра в символ
+char toCharacter(int number) {
+	if (number > 9 || number < 0) {
+		return '\0';
+	}
+	return '0' + number;
+}
+
+// връща base^exponent
+int power(int base, unsigned int exponent) {
+	int result = 1;
+	for (int i = 1; i <= exponent; i++) {
+		result *= base;
+	}
+	return result;
+}
+//проверява дали дадено число е просто
+bool isPrime(unsigned int number) {
+	if (number <= 1) {
+		return false;
+	}
+	if (number == 2) {
+		return true;
+	}
+	bool isPrime = true;
+	for (int i = 3; i * i < number; i += 2) {
+		if (number % i == 0) {
+		isPrime = false;
+		}
+	}
+	return isPrime;
+}
+
+//връща колко цифри има дадено число
+short getLength(int number) {
+	int counter = 0 + number == 0;
+	while (number) {
+		number /= 10;
+		counter++;
+	}
+	return counter;
+} 
+
+short digitOcurrencesCount(unsigned int number, short digit) {
+	short counter = 0;
+	while (number) {
+		if (number % 10 == digit) {
+			counter++;
+		}
+		number /= 10;
+	}
+	return counter;
+}
+
+long flipNumber(long number) {
+	int result = 0;
+	int p = getLength(number);
+	if (number == 0) {
+		return 0;
+	}
+	while (number % 10 == 0) {
+		number /= 10;
+		p--;
+	}
+	while (p--) {
+		int digit = number % 10;
+		number /= 10;
+		result += digit * power(10, p);
+	}
+	return result;
+}
+
+long numberWithDigitsSorted(long number) {
+	int result = 0;
+	int p = 0;
+	for (int i = 1; i <= 9; i++) {
+		long current = number;
+		while (current) {
+			if (i == current % 10) {
+				result += i * power(10, p++);
+			}
+			current /= 10;
+		}
+	}
+	result = flipNumber(result);
+	return result;
+}
+
+//проверява дали число е специално спрямо друго (дали всичките му цифри са делители на другото)
+bool isSpecial(int special, int numToCheck) {
+	bool isSpecial = true;
+	while (numToCheck) {
+		int digit = numToCheck % 10;
+		numToCheck /= 10;
+		if (digit == 0) {
+			isSpecial = false;
+			break;
+		}
+		if (special % digit != 0) {
+			isSpecial = false;
+			break;
+		}
+	}
+	return isSpecial;
+}
+
+int removeMiddleDigit(int number) {
+	int result = 0, digitsCount = getLength(number), p = 0;
+
+	for (int i = 1; i <= digitsCount; i++) {
+		if (isMiddle(digitsCount, i)) {
+			number /= 10;
+			continue;
+		}
+		short digit = number % 10;
+		number /= 10;
+		result += digit * power(10, p++);
+	}	
+	return result;
+}
+
+bool isMiddle(short lenght, short position) {
+	if (lenght % 2 == 0) {
+		return position == lenght / 2 || position == lenght / 2 + 1;
+	}
+	return position == lenght / 2 + 1;
+}
+
+bool isPermutarion(long num1, long num2) {
+	return numberWithDigitsSorted(num1) == numberWithDigitsSorted(num2);
+}
+
+bool isPalindrome(long number) {
+	return number == flipNumber(number);
+}
