@@ -14,19 +14,85 @@ bool isDigit(char symbol)
 	return false;
 }
 
-char toUpper(char symbol) {
-	return symbol >= 'a' && symbol <= 'z' ? symbol - 'A';
+char toUpper(char symbol)
+{
+	return symbol >= 'a' && symbol <= 'z' ? symbol + ('A' - 'a') : symbol;
+}
+
+char toLower(char symbol)
+{
+    return symbol >= 'A' && symbol <= 'Z' ? symbol - ('A' - 'a') : symbol;
+}
+
+int toNumber(char symbol)
+{
+    return symbol - '0';
+}
+
+char toCharacter(int number)
+{
+    return number + '0';
+}
+
+int power(int base, unsigned int exponent)
+{
+    int result = base;
+    
+    if (exponent == 0)
+    {
+        return 1;
+    }
+    
+    for (int i = 1; i < exponent; i++)
+    {
+        result *= base;
+    }
+
+    return result;
+}
+
+bool isPrime(unsigned int number)
+{
+    for (int i = 2; i < number; i++)
+    {
+        if (number % i == 0)
+        {
+            return false;
+        }
+         
+    }
+    
+    return true;
+}
+
+short getLength(int number)
+{
+    short counter = 0;
+
+    while (number != 0)
+    {
+        number /= 10;
+        counter ++;
+    }
+    
+    return counter;
 }
 
 
 int main()
 {
-	std::cout << absoluteValue(-45) << '\n';
-	std::cout << isDigit('#');
+	// std::cout << "Absolute value: " << absoluteValue(-45) << '\n';
+	// std::cout << "Is digit: " << isDigit('#') << '\n';
+    // std::cout << "To upper: " << toUpper('f') << '\n';
+    // std::cout << "To lower: " << toLower('X') << '\n';
+    // std::cout << "To number: " << toNumber('3') << '\n';
+    // std::cout << "To character: " << toCharacter(3) << '\n';
+    // std::cout << "Power: " << power(2, 6) << '\n';
+    // std::cout << "Is prime: " << isPrime(1) << '\n';
+    // std::cout << "Get length: " <<getLength(343553) << '\n';
 
 
-
-
+	//----------------------------------------------------------------------
 	// Loops
 
 	// 1
@@ -72,38 +138,144 @@ int main()
 	//---------------------------------------------------
 	// 3
 
-	/*unsigned long originalNum;
-	std::cin >> originalNum;
+	// unsigned long originalNum;
+	// std::cin >> originalNum;
 
-	unsigned long sortedNumber = 0;
-	int digitNumber = 0;
-	int counter = 0;
-	int d = 0;
-	unsigned long aux = originalNum;
+	// unsigned long sortedNumber = 0;
+	// int digitCount = getLength(originalNum);
+	// int d = 0;
+	// unsigned long aux = originalNum;
 
-	while (aux != 0)
+	// for (int i = 1; i <= 9; i++, aux = originalNum)
+	// {
+	// 	for (int j = 1; j <= digitCount ; j++)
+	// 	{
+	// 		d = aux % 10;
+	// 		aux /= 10;
+
+	// 		if (d == i)
+	// 		{
+	// 			std::cout << d;
+	// 		}
+	// 	}
+	// }
+
+	// std::cout << '\n';
+
+	//---------------------------------------------------------
+	// 4
+
+	// uint n;
+	// std::cin >> n;
+
+	// uint digit = 0;
+
+	// while (n != 0)
+	// {
+	// 	digit = n % 10;
+	// 	n /= 10;
+
+	// 	if (digit != 0)
+	// 	{
+	// 		std::cout << digit;
+	// 	}
+		
+	// }
+	
+	//-----------------------------------------------------------
+	// 5
+
+	// int k, n, m;
+	// std::cin >> k >> n >> m;
+
+	// int digit = 0;
+	// int count = 0;
+	// int digitCount = 0;
+
+	// for (int i = n; i <= m; i++)
+	// {
+	// 	int aux = i;
+	// 	count = 0;
+	// 	digitCount = 0;
+
+	// 	while (aux != 0)
+	// 	{
+	// 		digit = aux % 10;
+	// 		aux /= 10;
+	// 		digitCount++;
+
+	// 		if (digit != 0 && k % digit == 0)
+	// 		{
+	// 			count++;
+	// 		}
+	// 		else break;
+	// 	}
+		
+	// 	if (count == digitCount)
+	// 	{
+	// 		std::cout << i << " ";
+	// 	}
+	// }
+	
+	//--------------------------------------------------
+	// 6
+
+	int number;
+	std::cin >> number;
+
+	int amountDigits = getLength(number);
+	int digit = 0;
+	int middle = 0;
+	int newNumber = 1;
+
+	for (int i = 1; i <= amountDigits; i++)
 	{
-		aux /= 10;
-		digitNumber++;
-	}
+		digit = number / power(10, amountDigits - i);
+		number %= power(10, amountDigits - i);
 
-	for (int i = 1; i <= digitNumber; i++, aux = originalNum)
-	{
-		for (int j = 1; j <= digitNumber ; j++)
+		if (amountDigits % 2 == 0)
 		{
-			d = aux % 10;
-			aux /= 10;
 
-			if (d == i)
+			middle = amountDigits / 2;
+
+			if (i != middle && i != middle + 1)
 			{
-				std::cout << d;
+				if (i == 1)
+				{
+					newNumber = digit * 10;
+				}
+				else if (i != amountDigits)
+				{
+					newNumber = (newNumber + digit) * 10;
+				}
+				else
+				{
+					newNumber += digit;
+				}
 			}
 		}
-	}*/
+		else
+		{
+			middle = (amountDigits / 2) + 1;
 
-	// Un ciclo de 1 a 9 y se ve cuantas veces hay repetida cada numero, y se imprime las veces
+			if (i != middle)
+			{
+				if (i == 1)
+				{
+					newNumber = digit * 10;
+				}
+				else if (i != amountDigits)
+				{
+					newNumber = (newNumber + digit) * 10;
+				}
+				else
+				{
+					newNumber += digit;
+				}
+			}
+		}
+	}
 
-
-
+	std::cout << newNumber << " " << newNumber + 1;
 
 }
