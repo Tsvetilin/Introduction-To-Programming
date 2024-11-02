@@ -62,7 +62,7 @@ short getLength(int num)
 	}
 	return length;
 }
-bool isPermutation(int num,int secondNum)    // тука сигурно има много по-добър начин
+bool isPermutation(int num,int secondNum) 
 {
 	int numClone = 0;
 	int digitCount = 0;
