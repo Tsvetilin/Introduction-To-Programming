@@ -132,3 +132,23 @@ else {
 return 0;*/
 
 //zad8
+/*int n = 0, m = 0;
+
+cin >> n >> m;
+
+if (n >= 0 && m >= 0) {
+
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= m; j++)
+		{
+			cout << "(" << i << ", " << j << ")"<<" ";
+		}
+		cout<< endl;
+	}
+}
+else {
+	cout << "Invalid input";
+}
+
+return 0;*/
