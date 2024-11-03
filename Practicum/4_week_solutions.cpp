@@ -78,18 +78,104 @@ short getLength(int number)
     return counter;
 }
 
+int sortInt(int number) {
+	unsigned long sortedNumber = 0;
+	int digitCount = getLength(number);
+	int d = 0;
+	unsigned long aux = number;
+	int count = 0;
+
+	for (int i = 1; i <= 9; i++, aux = number)
+	{
+		for (int j = 1; j <= digitCount ; j++)
+	 	{
+	 		d = aux % 10;
+	 		aux /= 10;
+
+	 		if (d == i)
+	 		{
+				count++;
+	 			if (count == 1)
+				{
+					sortedNumber = d * 10;
+				}
+				else if (count != digitCount) {
+					sortedNumber = (sortedNumber + d) * 10;
+				}
+				else
+				{
+					sortedNumber += d;
+				}
+	 		}
+	 	}
+	}
+
+	return sortedNumber;
+}
+
+bool isPermutation(int number1, int number2)
+{
+	if (sortInt(number1) == sortInt(number2) && getLength(number1) == getLength(number2))
+	{
+		return true;
+	}
+
+	return false;	
+}
+
+bool isPalindrome(int number)
+{
+	int auxNum = number;
+	int digit = 0;
+	int count = 1;
+	int amountDigits = getLength(number);
+	int middle = amountDigits / 2;
+
+	while (count <= middle)
+	{
+		digit = auxNum % 10;
+		auxNum /= 10;
+
+		if (amountDigits % 2 == 0)
+		{
+			if (digit != number / power(10, amountDigits - count))
+			{
+				return false;
+			}
+		}
+		
+		else
+		{
+			middle = (amountDigits / 2) + 1;
+
+			if (digit != number / power(10, amountDigits - count)  && count != middle)
+			{
+				return false;
+			}
+			
+		}
+		
+		number %= power(10, amountDigits - count);
+		count++;
+	}
+
+	return true;
+	
+}
 
 int main()
 {
 	// std::cout << "Absolute value: " << absoluteValue(-45) << '\n';
 	// std::cout << "Is digit: " << isDigit('#') << '\n';
-    // std::cout << "To upper: " << toUpper('f') << '\n';
-    // std::cout << "To lower: " << toLower('X') << '\n';
-    // std::cout << "To number: " << toNumber('3') << '\n';
-    // std::cout << "To character: " << toCharacter(3) << '\n';
-    // std::cout << "Power: " << power(2, 6) << '\n';
-    // std::cout << "Is prime: " << isPrime(1) << '\n';
-    // std::cout << "Get length: " <<getLength(343553) << '\n';
+    	// std::cout << "To upper: " << toUpper('f') << '\n';
+    	// std::cout << "To lower: " << toLower('X') << '\n';
+    	// std::cout << "To number: " << toNumber('3') << '\n';
+    	// std::cout << "To character: " << toCharacter(3) << '\n';
+    	// std::cout << "Power: " << power(2, 6) << '\n';
+    	// std::cout << "Is prime: " << isPrime(1) << '\n';
+    	// std::cout << "Get length: " << getLength(343553) << '\n';
+	//std::cout << "Is permutation: " << isPermutation(352953, 295335) << '\n';
+	//std::cout << "Is palindrome: " << isPalindrome(3427243) << '\n';
 
 
 	//----------------------------------------------------------------------
@@ -141,7 +227,6 @@ int main()
 	// unsigned long originalNum;
 	// std::cin >> originalNum;
 
-	// unsigned long sortedNumber = 0;
 	// int digitCount = getLength(originalNum);
 	// int d = 0;
 	// unsigned long aux = originalNum;
@@ -220,62 +305,62 @@ int main()
 	//--------------------------------------------------
 	// 6
 
-	int number;
-	std::cin >> number;
+	// int number;
+	// std::cin >> number;
 
-	int amountDigits = getLength(number);
-	int digit = 0;
-	int middle = 0;
-	int newNumber = 1;
+	// int amountDigits = getLength(number);
+	// int digit = 0;
+	// int middle = 0;
+	// int newNumber = 1;
 
-	for (int i = 1; i <= amountDigits; i++)
-	{
-		digit = number / power(10, amountDigits - i);
-		number %= power(10, amountDigits - i);
+	// for (int i = 1; i <= amountDigits; i++)
+	// {
+	// 	digit = number / power(10, amountDigits - i);
+	// 	number %= power(10, amountDigits - i);
 
-		if (amountDigits % 2 == 0)
-		{
+	// 	if (amountDigits % 2 == 0)
+	// 	{
 
-			middle = amountDigits / 2;
+	// 		middle = amountDigits / 2;
 
-			if (i != middle && i != middle + 1)
-			{
-				if (i == 1)
-				{
-					newNumber = digit * 10;
-				}
-				else if (i != amountDigits)
-				{
-					newNumber = (newNumber + digit) * 10;
-				}
-				else
-				{
-					newNumber += digit;
-				}
-			}
-		}
-		else
-		{
-			middle = (amountDigits / 2) + 1;
+	// 		if (i != middle && i != middle + 1)
+	// 		{
+	// 			if (i == 1)
+	// 			{
+	// 				newNumber = digit * 10;
+	// 			}
+	// 			else if (i != amountDigits)
+	// 			{
+	// 				newNumber = (newNumber + digit) * 10;
+	// 			}
+	// 			else
+	// 			{
+	// 				newNumber += digit;
+	// 			}
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		middle = (amountDigits / 2) + 1;
 
-			if (i != middle)
-			{
-				if (i == 1)
-				{
-					newNumber = digit * 10;
-				}
-				else if (i != amountDigits)
-				{
-					newNumber = (newNumber + digit) * 10;
-				}
-				else
-				{
-					newNumber += digit;
-				}
-			}
-		}
-	}
+	// 		if (i != middle)
+	// 		{
+	// 			if (i == 1)
+	// 			{
+	// 				newNumber = digit * 10;
+	// 			}
+	// 			else if (i != amountDigits)
+	// 			{
+	// 				newNumber = (newNumber + digit) * 10;
+	// 			}
+	// 			else
+	// 			{
+	// 				newNumber += digit;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-	std::cout << newNumber << " " << newNumber + 1;
+	// std::cout << newNumber << " " << newNumber + 1;
 
 }
