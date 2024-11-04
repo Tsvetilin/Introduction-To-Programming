@@ -16,21 +16,21 @@ bool isDigit(char symbol) {
 char toUpper(char symbol) {
 	if (symbol >= 'a' && symbol <= 'z') {
 		return symbol + 'A' - 'a';
-  }
+  	}
 	return symbol;
 }
 
 char toLower(char symbol) {
 	if (symbol >= 'A' && symbol <= 'Z') {
 		return symbol + 'a' - 'A';
-  }
+  	}
 	return symbol;
 }
 
 int toNumber(char symbol) {
 	if (isDigit(symbol)) {
 		return symbol - '0';
-  }
+	}
 	return -1;
 }
 
@@ -51,7 +51,7 @@ bool isPrime(unsigned int number) {
 	for (int i = 2; i <= nSquared; i++) {
 		if (number % i == 0) {
 			return false;
-    }
+    		}
 	}
 	return true;
 }
@@ -70,7 +70,7 @@ unsigned getDigitOccurences(unsigned number, int digit) {
 	while (number) {
 		if (number % 10 == digit) {
 			occurences++;
-    }
+		}
 		number /= 10;
 	}
 	return occurences;
@@ -100,7 +100,7 @@ bool isPermutation(int first, int second) {
 	for (int i = 0; i <= 9; i++) {
 		if (getDigitOccurences(first, i) != getDigitOccurences(second, i)) {
 			return false;
-    }
+    		}
 	}
 	return true;
 }
