@@ -160,7 +160,7 @@ else
 - Винаги когато сравняваме дробни числа, използваме някаква фиксирана грешка и **НИКОГА** `==`
 
 ```cpp
-const double EPSILON = 1e9;
+const double EPSILON = 1e-9;
 double x = 0.1 + 0.2;
 double y = 0.3;
 std::cout << x << std::endl;                                           // 0.3

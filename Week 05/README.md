@@ -169,111 +169,127 @@ const size_t ARRAY_SIZE = 1024;
 int arr[ARRAY_SIZE];
 
 size_t n;
+std::cout << "Enter number of elements: ";
 std::cin >> n;
 
-if(!std::cin)
+if (!std::cin)
 {
-    std::cerr << "Could not read number of elements.";
-    return 1;
+	std::cerr << "Could not read number of elements.";
+	return 1;
 }
 
-if(n > ARRAY_SIZE)
+if (n > ARRAY_SIZE)
 {
-    std::cerr << "Invalid number of elements. Max number of elements is " << ARRAY_SIZE;
-    return 2;
+	std::cerr << "Invalid number of elements. Max number of elements is " << ARRAY_SIZE;
+	return 2;
 }
 
-for(size_t i = 0; i < n; i++)
+std::cout << "Enter the elements: ";
+for (size_t i = 0; i < n; i++)
 {
-    std::cin >> n;
+	std::cin >> arr[i];
 }
 
-if(std::cin.bad())
+if (std::cin.bad())
 {
-    std::cerr << "Could not read elements of array.";
-    return 3;
+	std::cerr << "Could not read elements of array.";
+	return 3;
 }
 
 int search;
+std::cout << "Enter element to search: ";
 std::cin >> search;
 
-if(!std::cin)
+if (!std::cin)
 {
-    std::cerr << "Could not read the searched number.";
-    return 4;
+	std::cerr << "Could not read the searched number.";
+	return 4;
 }
 
 int sum = 0;
-size_t indexFound = ARRAY_SIZE; // invalid index of the array
-for(size_t i = 0; i < n; i++)
+size_t indexFound = -1; // searches for last index with the number
+for (size_t i = 0; i < n; i++)
 {
-    sum += arr[i];
-    if(indexFound != ARRAY_SIZE && arr[i] == searched)
-    {
-        indexFound = i;
-    }
+	sum += arr[i];
+	if (arr[i] == search)
+	{
+		indexFound = i;
+	}
 }
+std::cout << "Sum of elements: " << sum << std::endl;
+std::cout << "The element " << search << " is at index " << indexFound << std::endl;
 
 int reversedArray[ARRAY_SIZE];
-for(size_t i = 0; i < n; i++)
+for (size_t i = 0; i < n; i++)
 {
-    reversedArray[i] = arr[n-i-1];
+	reversedArray[i] = arr[n - i - 1];
 }
 
-for(size_t i = 0; i < n; i++)
+std::cout << "The reversed array is: ";
+for (size_t i = 0; i < n; i++)
 {
-    std::cout << reversedArray[i] << " ";
+	std::cout << reversedArray[i] << " ";
+}
+std::cout << std::endl;
+
+
+bool areArraysPalindrome = true;
+for (size_t i = 0; i < n; i++)
+{
+	if (reversedArray[i] != arr[i])
+	{
+		areArraysPalindrome = false;
+		break;
+	}
 }
 
-bool areArraysEqual = true;
-
-for(size_t i = 0; i < n; i++)
+const size_t COUNTER_SIZE = 1e6;
+size_t counter[COUNTER_SIZE] = {}; // probably going to cause stack overflow but we'll let it slide
+for (size_t i = 0; i < n; i++)
 {
-    if(reversedArray[i] != arr[i])
-    {
-        areArraysEqual = false;
-        break;
-    }
+	counter[arr[i]]++;
 }
 
-size_t counter[1e6] = {};
-for(size_t i = 0; i < n; i++)
+for (size_t i = 0; i < COUNTER_SIZE; i++)
 {
-    counter[arr[i]]++;
+	if (counter[i] > 0)
+	{
+		std::cout << "The digit " << i << " is in the array " << counter[i] << " times" << std::endl;;
+	}
 }
 
 // Bubble sort
-for(size_t i = 0; i < n - 1; i++)
+for (size_t i = 0; i < n - 1; i++)
 {
-    bool swapped = false;
-    for(size_t j = 0; j < n - i - 1; j++)
-    {
-        if(arr[j] > arr[j + 1])
-        {
-            std::swap(arr[j], arr[j + 1]); // own swap function here
-            swapped = true;
-        }
-    }
+	bool swapped = false;
+	for (size_t j = 0; j < n - i - 1; j++)
+	{
+		if (arr[j] > arr[j + 1])
+		{
+			std::swap(arr[j], arr[j + 1]); // own swap function here
+			swapped = true;
+		}
+	}
 
-    if(!swapped)
-    {
-        break;
-    }
+	if (!swapped)
+	{
+		break;
+	}
 }
 
 // Selection sort
-for(size_t i = 0; i < n - 1; i++)
+for (size_t i = 0; i < n - 1; i++)
 {
-    size_t minIndex = i;
-    for(size_t j = i + 1; j < n; j++)
-    {
-        if(arr[j] < arr[minIndex])
-        {
-            minIndex = j;
-        }
-    }
+	size_t minIndex = i;
+	for (size_t j = i + 1; j < n; j++)
+	{
+		if (arr[j] < arr[minIndex])
+		{
+			minIndex = j;
+		}
+	}
 
-    std::swap(arr[i], arr[minIndex]); // own swap function here
+	std::swap(arr[i], arr[minIndex]); // own swap function here
 }
 ```
 
