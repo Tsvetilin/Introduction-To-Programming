@@ -206,17 +206,24 @@ if (!std::cin)
 	return 4;
 }
 
+// sum of array elements
 int sum = 0;
-size_t indexFound = -1; // searches for last index with the number
 for (size_t i = 0; i < n; i++)
 {
 	sum += arr[i];
+}
+std::cout << "Sum of elements: " << sum << std::endl;
+
+// linear search
+size_t indexFound = -1;
+for (size_t i = 0; i < n; i++)
+{
 	if (arr[i] == search)
 	{
 		indexFound = i;
+		break;
 	}
 }
-std::cout << "Sum of elements: " << sum << std::endl;
 std::cout << "The element " << search << " is at index " << indexFound << std::endl;
 
 int reversedArray[ARRAY_SIZE];
@@ -231,7 +238,6 @@ for (size_t i = 0; i < n; i++)
 	std::cout << reversedArray[i] << " ";
 }
 std::cout << std::endl;
-
 
 bool areArraysPalindrome = true;
 for (size_t i = 0; i < n; i++)
@@ -306,7 +312,7 @@ for (size_t i = 0; i < n - 1; i++)
 - Подоване на масив като параметър на функция
 
 ```cpp
-void set(int[] arr, size_t ind, int value )
+void set(int arr[], size_t ind, int value )
 {
     size_t size = sizeof(arr) / sizeof(int);
     if(ind < size)
