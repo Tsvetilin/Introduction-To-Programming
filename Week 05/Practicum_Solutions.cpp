@@ -9,7 +9,7 @@ int howManyNumbers(int n);
 
 
 int main() {
-    
+
     //proverkaa za swap
     /*int n = 10;
     int m = 15;
@@ -54,37 +54,39 @@ void deleteIndex(int& n, int k) {
 
     int newN = 0;
     int p = howManyNumbers(n);
-            
-        int temp = n;
-        int br = 0;
-        while (temp != 0) {
+
+    int temp = n;
+    int br = 0;
+    while (temp != 0) {
 
         br++;
         if (br != k) {
 
-        int d = temp % 10;
-        newN = 10 * newN + d;
+            int d = temp % 10;
+            newN = 10 * newN + d;
 
         }
         temp /= 10;
 
 
-                }
-        reverseNumber(newN);
-        n = newN;
+    }
+    reverseNumber(newN);
+    n = newN;
 
 
 }
 
 void reverseNumber(int& n) {
 
+    int temp = 0;
     while (n != 0) {
 
         int d = n % 10;
-        n = 10 * n + d;
+        temp = 10 * temp + d;
         n /= 10;
 
     }
+    n = temp;
 
 }
 
