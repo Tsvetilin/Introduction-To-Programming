@@ -6,6 +6,7 @@ void doubleSwap(double& n, double& m);
 void deleteIndex(int& n, int k);
 void reverseNumber(int& n);
 int howManyNumbers(int n);
+void separateNumbers(int n);
 
 
 int main() {
@@ -23,11 +24,16 @@ int main() {
     std::cout << n << " " << m;*/
 
     //proverka za deleteIndex
-    int n = 0;
+    /*int n = 0;
     size_t k = 1;
     std::cin >> n >> k;
     deleteIndex(n, k);
-    std::cout << n;
+    std::cout << n;*/
+
+    //proverka za separateNumbers
+    int n = 0;
+    std::cin >> n;
+    separateNumbers(n);
 
 
 
@@ -100,5 +106,32 @@ int howManyNumbers(int m) {
 
     }
     return br;
+
+}
+
+void separateNumbers(int n) {
+
+    int temp1 = 0;
+    int temp2 = 0;
+    while (n != 0) {
+
+        int d = n % 10;
+        if (d % 2 == 0) {
+
+            temp1 = temp1 * 10 + d;
+
+        }
+        else {
+
+            temp2 = temp2 * 10 + d;
+
+        }
+        n /= 10;
+        //zashto samo temp2 se preobrushta
+        reverseNumber(temp1);
+        reverseNumber(temp2);
+
+    }
+    std::cout << temp1 << std::endl << temp2;
 
 }
