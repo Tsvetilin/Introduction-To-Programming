@@ -206,25 +206,25 @@ if (!std::cin)
 	return 4;
 }
 
-// sum of array elements
 int sum = 0;
+size_t indexFound = ARRAY_SIZE;
 for (size_t i = 0; i < n; i++)
 {
 	sum += arr[i];
-}
-std::cout << "Sum of elements: " << sum << std::endl;
-
-// linear search
-size_t indexFound = -1;
-for (size_t i = 0; i < n; i++)
-{
-	if (arr[i] == search)
+	if (indexFound == ARRAY_SIZE && arr[i] == search)
 	{
 		indexFound = i;
-		break;
 	}
 }
-std::cout << "The element " << search << " is at index " << indexFound << std::endl;
+std::cout << "Sum of elements: " << sum << std::endl;
+if (indexFound != ARRAY_SIZE)
+{
+	std::cout << "The element " << search << " is at index " << indexFound << std::endl;
+}
+else
+{
+	std::cout << "The element " << search << " is not in the array" << std::endl;
+}
 
 int reversedArray[ARRAY_SIZE];
 for (size_t i = 0; i < n; i++)
