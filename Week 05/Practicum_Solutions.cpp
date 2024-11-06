@@ -127,11 +127,10 @@ void separateNumbers(int n) {
 
         }
         n /= 10;
-        //zashto samo temp2 se preobrushta
-        reverseNumber(temp1);
-        reverseNumber(temp2);
 
     }
+    reverseNumber(temp1);
+    reverseNumber(temp2);
     std::cout << temp1 << std::endl << temp2;
 
 }
