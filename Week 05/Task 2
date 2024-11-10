@@ -1,0 +1,52 @@
+#include <iostream>
+
+bool canBeTransformed(unsigned bin1, unsigned bin2, int n) {
+    int count1 = 0, count2 = 0;
+    for (int i = 0; i < n; ++i) {
+        if (bin1 % 10 == 1) count1++;
+        if (bin2 % 10 == 1) count2++;
+        bin1 /= 10;
+        bin2 /= 10;
+    }
+    return count1 == count2;
+}
+
+int calculateDifferences(unsigned bin1, unsigned bin2, int n, int& diff0to1, int& diff1to0) {
+    diff0to1 = 0;
+    diff1to0 = 0;
+    for (int i = 0; i < n; ++i) {
+        int bit1 = bin1 % 10;
+        int bit2 = bin2 % 10;
+
+        if (bit1 != bit2) {
+            if (bit1 == 0 && bit2 == 1) {
+                diff0to1++;
+            } else if (bit1 == 1 && bit2 == 0) {
+                diff1to0++;
+            }
+        }
+        bin1 /= 10;
+        bin2 /= 10;
+    }
+
+    return (diff0to1 > diff1to0) ? diff0to1 : diff1to0;
+}
+
+int main() {
+    int n;
+    std::cin >> n;
+
+    unsigned bin1, bin2;
+    std::cin >> bin1 >> bin2;
+
+    if (!canBeTransformed(bin1, bin2, n)) {
+        std::cout << "Invalid numbers - The first number cannot be transformed into the second!" << std::endl;
+        return 0;
+    }
+
+    int diff0to1, diff1to0;
+    int minSwaps = calculateDifferences(bin1, bin2, n, diff0to1, diff1to0);
+    std::cout << minSwaps << std::endl;
+
+    return 0;
+}
