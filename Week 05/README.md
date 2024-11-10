@@ -216,6 +216,7 @@ for (size_t i = 0; i < n; i++)
 		indexFound = i;
 	}
 }
+
 std::cout << "Sum of elements: " << sum << std::endl;
 if (indexFound != ARRAY_SIZE)
 {
@@ -249,8 +250,9 @@ for (size_t i = 0; i < n; i++)
 	}
 }
 
-const size_t COUNTER_SIZE = 1e6;
-size_t counter[COUNTER_SIZE] = {}; // probably going to cause stack overflow but we'll let it slide
+// Couting sort / histogram -> only works for positive numbers
+const size_t COUNTER_SIZE = 1e6; // max expected element in the array
+size_t counter[COUNTER_SIZE] = {}; // could cause stack overflow if too large
 for (size_t i = 0; i < n; i++)
 {
 	counter[arr[i]]++;
@@ -260,7 +262,7 @@ for (size_t i = 0; i < COUNTER_SIZE; i++)
 {
 	if (counter[i] > 0)
 	{
-		std::cout << "The digit " << i << " is in the array " << counter[i] << " times" << std::endl;;
+		std::cout << "The number " << i << " is in the array " << counter[i] << " times" << std::endl;;
 	}
 }
 
@@ -311,19 +313,22 @@ for (size_t i = 0; i < n - 1; i++)
 
 - Подаване на масив като параметър на функция
 
+> [!IMPORTANT]
+> Навсякъде в контекста на функции `size_t size = sizeof(arr) / sizeof(int);` връща `2`, понеже вече работим с променлива произволен указател, която няма информация за първоначалния масив
+
 ```cpp
-void set(int arr[], size_t ind, int value )
+void set(int arr[], size_t ind, int value)
 {
-    size_t size = sizeof(arr) / sizeof(int);
+    size_t size = sizeof(arr) / sizeof(int); // 2
     if(ind < size)
     {
         arr[ind] = value;
     }
 }
 
-void set(int* arr, size_t ind, int value )
+void set(int* arr, size_t ind, int value)
 {
-    size_t size = sizeof(arr) / sizeof(int);
+    size_t size = sizeof(arr) / sizeof(int); // 2
     if(ind < size)
     {
         arr[ind] = value;
@@ -333,9 +338,9 @@ void set(int* arr, size_t ind, int value )
     arr[0] = 7; // value = 7;
 }
 
-void set(int* const arr, size_t ind, int value )
+void set(int* const arr, size_t ind, int value)
 {
-    size_t size = sizeof(arr) / sizeof(int);
+    size_t size = sizeof(arr) / sizeof(int); // 2
     if(ind < size)
     {
         arr[ind] = value;
@@ -344,9 +349,9 @@ void set(int* const arr, size_t ind, int value )
     // arr = &value; - Error: Pointer is constant
 }
 
-void set(const int* arr, size_t ind, int value )
+void set(const int* arr, size_t ind, int value)
 {
-    size_t size = sizeof(arr) / sizeof(int);
+    size_t size = sizeof(arr) / sizeof(int); // 2
     if(ind < size)
     {
          // arr[ind] = value; - Error: values are constant
@@ -356,9 +361,9 @@ void set(const int* arr, size_t ind, int value )
     // arr[0] = 7; - Error: values are constant
 }
 
-void set(const int* const arr, size_t ind, int value )
+void set(const int* const arr, size_t ind, int value)
 {
-    size_t size = sizeof(arr) / sizeof(int);
+    size_t size = sizeof(arr) / sizeof(int); // 2
     if(ind < size)
     {
          // arr[ind] = value; - Error: values are constant
