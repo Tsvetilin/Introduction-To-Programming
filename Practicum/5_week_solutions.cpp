@@ -80,7 +80,7 @@ void numberSeparation(int& a, int& b)
     int amountDigits = getLength(a);
     int pairCounter = 0, unpairCounter = 0;
     
-    while (a > 0) {
+    while (a != 0) {
         counter++;
         int digit = a / power(10, amountDigits - counter);
         a %= power(10, amountDigits - counter);
@@ -97,9 +97,83 @@ void numberSeparation(int& a, int& b)
         }
     }
 
-    if (pairCounter > 1) a = pairNum / 10;
+    a = pairNum / 10;
+    b = unpairNum / 10;
+}
+
+//-----------------------------------------------------
+// 5
+int numberExtraction(int number, int a, int b)
+{
+    int counter = 0;
+    int newNumber = 0;
+    int digit = 0;
+    int amountDigits = getLength(number);
+    int newNumberCounter = 0;
+
+    while (number != 0)
+    {
+        digit = number / power(10, amountDigits - (++counter));
+        number %= power(10, amountDigits - counter);
+
+        if (counter >= a && counter <= b)
+        {
+            newNumberCounter++;
+            newNumber = (newNumber + digit) * 10;
+        }
+    }
+
+    newNumber /= 10;
     
-    if (unpairCounter > 1) b = unpairNum / 10;
+    return newNumber;
+    
+}
+
+//-------------------------------------------------------------------
+// 6
+
+void digitChanger(int& num1, int& num2, int index)
+{
+    int aux1 = 0, aux2 = 0;
+    int digit1 = 0, digit2 = 0;
+    int numDigits1 = getLength(num1), numDigits2 = getLength(num2);
+    int counter1 = 0, counter2 = 0;
+    int generalCounter = 0;
+
+
+    while (true)
+    {
+        generalCounter++;
+        counter1++;
+        counter2++;
+
+        if (num1 != 0)
+        {
+            digit1 = num1 / power(10, numDigits1 - (counter1));
+            num1 %= power(10, numDigits1 - counter1);
+
+            if (counter1 != index) aux1 = (aux1 + digit1) * 10;
+        }
+        
+        if (num2 != 0)
+        {
+            digit2 = num2 / power(10, numDigits2 - (counter2));
+            num2 %= power(10, numDigits2 - counter2);
+
+            if (counter2 != index) aux2 = (aux2 + digit2) * 10;
+        }
+
+        if (generalCounter == index && counter1 <= numDigits1 && counter2 <= numDigits2)
+        {
+            aux1 = (aux1 + digit2) * 10;
+            aux2 = (aux2 + digit1) * 10;
+        }
+
+        if (num1 == 0 && num2 == 0) break;
+    }
+
+    num1 = aux1 / 10;
+    num2 = aux2 / 10;
 }
 
 
@@ -131,10 +205,22 @@ int main()
     //--------------------------------------------------
     // 4
 
-    int num1 = 1234567, num2 = 0;
-    numberSeparation(num1, num2);
-    std::cout << num1 << " " << num2 << '\n';
+    // int num1 = 1234567, num2 = 0;
+    // numberSeparation(num1, num2);
+    // std::cout << num1 << " " << num2 << '\n';
 
+    //--------------------------------------------------
+    // 5
+    
+    // int num = 1234567, a = 2, b = 5;
+    // std::cout << numberExtraction(num, a , b);
+
+    //--------------------------------------------------
+    // 6
+
+    int num1 = 1234, num2 = 567, index = 2;
+    digitChanger(num1, num2, index);
+    std::cout << num1 << " " << num2;
 }
 
 
