@@ -1,6 +1,49 @@
 
 #include <iostream>
 
+//__________________________________________________//
+//Task 1 with functions
+
+bool isPrime(unsigned num) {
+	if (num <= 1)
+	{
+		return false;
+	}
+	unsigned sqrt = std::sqrt(num); //don't need the decimal part
+	for (size_t i = 2; i <= sqrt; i++)
+	{
+		if (num % i == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void printPrimeSum(unsigned equalsNumber) {
+	int middle = equalsNumber / 2; //middle to not include the both cases where 20 = 3 + 17 and 20 = 17 + 3
+	for (unsigned i = 2; i <= middle; i++)
+	{
+		if (isPrime(i))
+		{
+			unsigned filler = equalsNumber - i;
+			if (isPrime(filler))
+			{
+				std::cout << equalsNumber << " = " << i << " + " << filler << std::endl;
+			}
+		}
+	}
+}
+
+int main()
+{
+	unsigned n;
+	std::cin >> n;
+	printPrimeSum(n);
+}
+
+//__________________________________________________//
+
 int main()
 {
     //Exercise 1
