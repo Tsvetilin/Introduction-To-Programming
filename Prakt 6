@@ -1,0 +1,77 @@
+void Reverse( int arr[], int len)
+
+{
+    for (size_t i = 0; i < len; i++)
+    {
+        arr[i] = arr[len - 1 - i];
+    }
+    
+
+
+}
+void Remove(int arr[],size_t& len,size_t idx)
+{
+    
+    for (size_t i = idx; i < len-1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+    len--;
+
+}
+void Print(int arr[], size_t length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        std::cout << arr[i] << ' ';
+    }
+
+}
+void Add(int arr[], int result[],size_t len, size_t& lenR, int a, int b)
+{
+    lenR = 0;
+    int to = (b < len) ? b : len;
+    for (size_t i = a; i < to; i++)
+    {
+        result[lenR++] = arr[i];
+    }
+}
+void simetric(int arr[], int len)
+{
+    for (size_t i = 0; i < len-1; i++)
+    {
+        (arr[i] == arr[len - i - 1]) ? std::cout << " Yes " :  std::cout << " No ";
+        
+           
+    }
+}
+//void count(int arr[],int len)
+//{
+ //   int counter = 0;
+   // for (size_t i = 0; i < len-1; i++)
+ //   {
+     //   if(arr[i]=arr[i+1])
+     //   {
+      //      counter++;
+        
+      //  }
+      //  std::cout << counter;
+   // }
+
+//}
+int main()
+{
+    size_t len;
+    std::cin >> len;
+    const int ARRAY_SIZE = 1024;
+    int arr[ARRAY_SIZE];
+    for (size_t i = 0; i < len; i++)
+    {
+       std:: cin >> arr[i] ;
+    }
+    
+
+    
+    
+    
+}
