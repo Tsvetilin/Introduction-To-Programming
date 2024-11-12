@@ -1,7 +1,10 @@
 #include <iostream>
 
+// Some auxiliar functions
 int getLength(int);
 int power(int, int);
+bool isLeapYear(int);
+bool isValidDate(uint day, uint month, uint year);
 
 // Base exercises
 
@@ -253,6 +256,47 @@ uint concat(uint first, uint second)
 
 // 1
 
+void nextDay(uint day, uint month, uint year, uint n)
+{
+    if (isValidDate(day, month, year))
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (month == 2 && isLeapYear(year))
+            {
+                if (day == 29) day = 1, month++;
+                else day++;
+                continue;
+            }
+            else if (month == 2 && !isLeapYear(year))
+            {
+                if (day == 28) day = 1, month++;
+                else day++;
+                continue;
+            }
+
+            if (month == 4 || month == 6 || month == 9 || month == 11)
+            {
+                if (day == 30) day = 1, month++;
+                else day++;
+                continue;
+            }
+            
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+            {
+                if (day == 31 && month != 12) day = 1, month++;
+                else if (day == 31 && month == 12) day = 1, month = 1, year++;
+                else day++;
+                continue;
+            }
+        }
+
+        std::cout << "After " << n << " day(s) will be " 
+        << day << '/' << month << '/' << year << '.' << '\n';
+    }
+    else std::cout << "Input a valid date.";
+}
+
 
 int main()
 {
@@ -313,6 +357,12 @@ int main()
     // 9
 
     //std::cout << concat(123, 4567);
+
+    //-----------------------------------------------------------------
+    // Exercises for practice
+
+    // 1
+    nextDay(4, 11, 2022, 50);
 }
 
 
@@ -346,4 +396,43 @@ int power(int base, int exponent)
     }
 
     return result;
+}
+
+bool isLeapYear(int year)
+{
+    if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) return true;
+    
+    return false;
+}
+
+bool isValidDate(uint day, uint month, uint year)
+{
+    bool isValid = false;
+    int aux = 28;
+
+    switch (month)
+    {
+    case 2:
+        isValid = day > 0 && day <= (isLeapYear(year) ? ++aux : aux);
+        break;
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        isValid = day > 0 && day <= 31;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        isValid = day > 0 && day <= 30;
+        break;    
+    default:
+        break;
+    }
+
+    return isValid;
 }
