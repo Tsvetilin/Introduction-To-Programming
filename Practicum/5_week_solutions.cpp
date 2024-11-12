@@ -176,6 +176,83 @@ void digitChanger(int& num1, int& num2, int index)
     num2 = aux2 / 10;
 }
 
+//--------------------------------------------------------------------------------------
+// 7
+
+int gcd(int first, int second)
+{
+    int divisor = 1;
+    int smallerNum = first < second ? first : second;
+
+    for (size_t i = 1; i <= smallerNum; i++)
+    {
+        if (first % i == 0 && second % i == 0)
+        {
+            divisor = i;
+        }
+    }
+
+    return divisor;
+}
+
+//-------------------------------------------------------
+// 8
+
+int lcm(int first, int second)
+{
+    int multiple = first * second;
+    int biggerNum = first > second ? first : second;
+    
+    for (int i = 1; i <= biggerNum; i++)
+    {
+        if ((biggerNum * i) % first == 0 && (biggerNum * i) % second == 0)
+        {
+            multiple = biggerNum * i;
+            break;
+        }
+        
+    }
+    
+    return multiple;
+}
+
+//------------------------------------------------------------------------
+// 9
+uint concat(uint first, uint second)
+{
+    uint result = 0;
+    uint digit = 0;
+    uint len1 = getLength(first);
+    uint len2 = getLength(second);
+    uint totalLen = len1 + len2;
+
+    for (size_t i = 1, j = 1; i <= totalLen; i++)
+    {
+        if (i <= len1)
+        {
+            digit = first / power(10, len1 - i);
+            first %= power(10, len1 - i);
+
+            result = (result + digit) * 10;
+        }
+        else
+        {
+            digit = second / power(10, len2 - j);
+            second %= power(10, len2 - j);
+
+            result = (result + digit) * 10;
+            j++;
+        }   
+    }
+    
+    return result / 10;
+}
+
+//---------------------------------------------------------
+// Exercices for practice
+
+// 1
+
 
 int main()
 {
@@ -218,9 +295,24 @@ int main()
     //--------------------------------------------------
     // 6
 
-    int num1 = 1234, num2 = 567, index = 2;
-    digitChanger(num1, num2, index);
-    std::cout << num1 << " " << num2;
+    // int num1 = 1234, num2 = 567, index = 2;
+    // digitChanger(num1, num2, index);
+    // std::cout << num1 << " " << num2;
+
+    //---------------------------------------------------
+    // 7
+
+    //std::cout << gcd(15, 25);
+
+    //------------------------------------
+    // 8
+
+    //std::cout << lcm(6, 9);
+
+    //------------------------------------
+    // 9
+
+    //std::cout << concat(123, 4567);
 }
 
 
