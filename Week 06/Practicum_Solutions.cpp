@@ -6,7 +6,7 @@ void swap(int& a, int& b)
 {
     int temp = a;
     a = b;
-    b = a;
+    b = temp;
 }
 
 void writeArray(int* arr, int length)
@@ -26,6 +26,22 @@ void printArray(int* arr, size_t length)
     std::cout << "\n";
 }
 
+void selectionSort(int* arr, size_t len)
+{
+    for (int i = 0; i < len - 1; i++)
+    {
+        size_t minIndex = i;
+        for (int j = i; j < len; j++)
+        {
+            if (arr[minIndex] > arr[j])
+            {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i)
+            swap(arr[i], arr[minIndex]);
+    }
+}
 
 // Ex. 1
 void removeAt(int* arr, size_t& length, size_t index)
@@ -151,15 +167,105 @@ void mergeSort(int* arr1, size_t len1, int* arr2, size_t len2, int* result, size
         {
             result[resultIndex++] = arr2[arr2Index++];
         }
+        resultLength++;
     }
 
     while (arr1Index < len1)
     {
         result[resultIndex++] = arr1[arr1Index++];
+        resultLength++;
     }
     while (arr2Index < len2)
     {
         result[resultIndex++] = arr2[arr2Index++];
+        resultLength++;
+    }
+}
+
+
+// Ex. 8
+void arraysUnion(int* arr1, size_t len1, int* arr2, size_t len2, int* result, size_t& resultLength)
+{
+    selectionSort(arr1, len1); selectionSort(arr2, len2);
+    size_t resultIndex = 0, arr1Index = 0, arr2Index = 0;
+    while (arr1Index < len1 && arr2Index < len2)
+    {
+        if (arr1[arr1Index] < arr2[arr2Index])
+        {
+            if (resultIndex == 0 || result[resultIndex - 1] != arr1[arr1Index])
+            {
+                result[resultIndex++] = arr1[arr1Index];
+                resultLength++;
+            }
+            arr1Index++;
+        }
+        else if(arr2[arr2Index] < arr1[arr1Index])
+        {
+            if (resultIndex == 0 || result[resultIndex - 1] != arr2[arr2Index])
+            {
+                result[resultIndex++] = arr2[arr2Index];
+                resultLength++;
+            }
+            arr2Index++;
+        }
+        else
+        {
+            if (resultIndex == 0 || result[resultIndex - 1] != arr1[arr1Index])
+            {
+                result[resultIndex++] = arr1[arr1Index];
+                resultLength++;
+            }
+            arr1Index++;
+            arr2Index++;
+        }
+    }
+
+    while (arr1Index < len1)
+    {
+        if (resultIndex == 0 || result[resultIndex - 1] != arr1[arr1Index])
+        {
+            result[resultIndex++] = arr1[arr1Index];
+            resultLength++;
+        }
+        arr1Index++;
+    }
+    while (arr2Index < len2)
+    {
+        if (resultIndex == 0 || result[resultIndex - 1] != arr2[arr2Index])
+        {
+            result[resultIndex++] = arr2[arr2Index];
+            resultLength++;
+        }
+        arr2Index++;
+    }
+}
+
+
+// Ex. 9
+void arraysSection(int* arr1, size_t len1, int* arr2, size_t len2, int* result, size_t& resultLength)
+{
+    selectionSort(arr1, len1); selectionSort(arr2, len2);
+    size_t resultIndex = 0, arr1Index = 0, arr2Index = 0;
+    while (arr1Index < len1 && arr2Index < len2)
+    {
+        if (arr1[arr1Index] < arr2[arr2Index])
+        {   
+            arr1Index++;
+        }
+        else if(arr2[arr2Index] < arr1[arr1Index])
+        {
+            arr2Index++;
+        }
+        else
+        {
+            if (resultIndex == 0 || result[resultIndex - 1] != arr1[arr1Index])
+            {
+                result[resultIndex++] = arr1[arr1Index];
+                resultLength++;
+            }
+            arr1Index++;
+            arr2Index++;
+        }
     }
 }
 
@@ -237,5 +343,27 @@ int main()
     int result[ARRAY_SIZE];
     size_t resultLength = 0;
     mergeSort(arr1, len1, arr2, len2, result, resultLength);
-    printArray(result, len1 + len2);*/
+    printArray(result, resultLength);*/
+
+
+    // Ex. 8
+    /*size_t len1, len2;
+    std::cin >> len1 >> len2;
+    int arr1[ARRAY_SIZE], arr2[ARRAY_SIZE];
+    writeArray(arr1, len1); writeArray(arr2, len2);
+    int result[ARRAY_SIZE];
+    size_t resultLength = 0;
+    arraysUnion(arr1, len1, arr2, len2, result, resultLength);
+    printArray(result, resultLength);*/
+
+
+    // Ex. 9
+    /*size_t len1, len2;
+    std::cin >> len1 >> len2;
+    int arr1[ARRAY_SIZE], arr2[ARRAY_SIZE];
+    writeArray(arr1, len1); writeArray(arr2, len2);
+    int result[ARRAY_SIZE];
+    size_t resultLength = 0;
+    arraysSection(arr1, len1, arr2, len2, result, resultLength);
+    printArray(result, resultLength);*/
 }
