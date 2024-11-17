@@ -1,7 +1,7 @@
 #include <iostream>
 
 int gettingSmallerSum(int arr[][100], int, int, int);
-int gettingSum(int arr[][100], int);
+int gettingSum(int arr[][100], int, int);
 
 int main()
 {
