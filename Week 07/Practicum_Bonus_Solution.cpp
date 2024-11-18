@@ -56,10 +56,10 @@ void fromKtoN(char kSystem[], int kSize, int k, char nSystem[], int& nSize, int 
 int main()
 {
 	char arr[] = { 'A', 'B', 'C' };
-	int decSizeArr = 0;
+	int sizeArr = 0;
 	char result[SIZE];
-	fromKtoN(arr, 3, 13, result, decSizeArr, 36);
-	for (size_t i = 0; i < decSizeArr; i++)
+	fromKtoN(arr, 3, 13, result, sizeArr, 36);
+	for (size_t i = 0; i < sizeArr; i++)
 	{
 		std::cout << result[i];
 	}
