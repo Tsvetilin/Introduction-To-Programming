@@ -167,10 +167,11 @@ void fromToNumSys(char* from, int fromSize, int fromNumSys,
 	decToNumSys(dec, toNumSys, to, toSize);
 }
 
+
 int main()
 {
 	// Ex. 1
-	size_t size;
+	/*size_t size;
 	std::cin >> size;
 
 	char arr[ARRAY_SIZE];
@@ -181,7 +182,7 @@ int main()
 
 	incrementOnce(arr, size, numSys);
 
-	printArray(arr, size);
+	printArray(arr, size);*/
 
 
 	// Ex. 2
