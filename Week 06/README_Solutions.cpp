@@ -104,6 +104,13 @@ int getSumOfDiagonal(int matrix[][ARRAY_SIZE], size_t row, size_t col)
 	{
 		sum += matrix[i][j];
 	}
+	if (row != 0 && col != 0)
+	{
+		for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--)
+		{
+			sum += matrix[i][j];
+		}
+	}
 	return sum;
 }
 
@@ -130,21 +137,23 @@ size_t spiralNumber(int matrix[][ARRAY_SIZE])
 			if (topBorder == 0 && i == 0)
 				continue;
 
+			std::cout << "Previous num: " << previousNumber << " " << "Current num: " << matrix[topBorder][i] << "\n";
 			if (previousNumber % 2 == 1)
 			{
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + previousNumber;
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
-			else if(getSumOfDiagonal(matrix, topBorder, i) % 2 == 1)
+			else if (getSumOfDiagonal(matrix, topBorder, i) % 2 == 1)
 			{
+				std::cout << "Diagonal: " << getSumOfDiagonal(matrix, topBorder, i) << "\n";
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + matrix[topBorder][i];
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 
 			previousNumber = matrix[topBorder][i];
@@ -152,21 +161,23 @@ size_t spiralNumber(int matrix[][ARRAY_SIZE])
 		topBorder++;
 		for (int i = topBorder; i <= bottomBorder; i++)
 		{
+			std::cout << "Previous num: " << previousNumber << " " << "Current num: " << matrix[i][rightBorder] << "\n";
 			if (previousNumber % 2 == 1)
 			{
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + previousNumber;
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 			else if (getSumOfDiagonal(matrix, i, rightBorder) % 2 == 1)
 			{
+				std::cout << "Diagonal: " << getSumOfDiagonal(matrix, i, rightBorder) << "\n";
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + matrix[i][rightBorder];
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 
 			previousNumber = matrix[i][rightBorder];
@@ -174,21 +185,23 @@ size_t spiralNumber(int matrix[][ARRAY_SIZE])
 		rightBorder--;
 		for (int i = rightBorder; i >= leftBorder; i--)
 		{
+			std::cout << "Previous num: " << previousNumber << " " << "Current num: " << matrix[bottomBorder][i] << "\n";
 			if (previousNumber % 2 == 1)
 			{
-				std::cout << finalNum << " " << finalNumSize << " ";
+				//std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + previousNumber;
 				finalNumSize++;
-				std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 			else if (getSumOfDiagonal(matrix, bottomBorder, i) % 2 == 1)
 			{
+				std::cout << "Diagonal: " << getSumOfDiagonal(matrix, bottomBorder, i) << "\n";
 				//std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + matrix[topBorder][i];
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 
 			previousNumber = matrix[bottomBorder][i];
@@ -196,21 +209,23 @@ size_t spiralNumber(int matrix[][ARRAY_SIZE])
 		bottomBorder--;
 		for (int i = bottomBorder; i >= topBorder; i--)
 		{
+			std::cout << "Previous num: " << previousNumber << " " << "Current num: " << matrix[i][leftBorder] << "\n";
 			if (previousNumber % 2 == 1)
 			{
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + previousNumber;
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 			else if (getSumOfDiagonal(matrix, i, leftBorder) % 2 == 1)
 			{
+				std::cout << "Diagonal: " << getSumOfDiagonal(matrix, i, leftBorder) << "\n";
 				// std::cout << finalNum << " " << finalNumSize << " ";
 				checkNumSize(finalNum, finalNumSize);
 				finalNum = finalNum * 10 + matrix[topBorder][i];
 				finalNumSize++;
-				// std::cout << finalNum << " " << finalNumSize << "\n";
+				std::cout << finalNum << " " << finalNumSize << "\n\n";
 			}
 
 			previousNumber = matrix[i][leftBorder];
@@ -239,7 +254,7 @@ int main()
 
 
 	// Harder task
-	/*size_t n;
+	size_t n;
 	std::cin >> n;
 
 	if (n > ARRAY_SIZE || n < 3)
@@ -265,5 +280,5 @@ int main()
 		std::cout << "\n";
 	}
 
-	std::cout << spiralNumber(matrix);*/
+	std::cout << spiralNumber(matrix);
 }
