@@ -54,7 +54,15 @@ bool isPermutation(int num, int permutation)
 
 
 // Bonus Ex. 1
-int getSingelElement(int* arr, size_t size);
+int getSingleElement(int* arr, size_t size)
+{
+	int result = 0;
+	for (int i = 0; i < size; i++)
+	{
+		result ^= arr[i];
+	}
+	return result;
+}
 
 
 // Bonus Ex. 2
@@ -126,8 +134,8 @@ int main()
 	std::cout << isPermutation(num, permutation);*/
 
 
-	// Bonus Ex. 2
-	size_t size;
+	// Bonus Ex. 1
+	/*size_t size;
 	std::cin >> size;
 
 	int* arr = new int[size];
@@ -135,5 +143,19 @@ int main()
 	{
 		std::cin >> arr[i];
 	}
-	printSubSets(arr, size);
+
+	std::cout << getSingleElement(arr, size);*/
+
+
+	// Bonus Ex. 2
+	/*size_t size;
+	std::cin >> size;
+
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		std::cin >> arr[i];
+	}
+
+	printSubSets(arr, size);*/
 }
