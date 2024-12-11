@@ -1,124 +1,182 @@
-# Побитови операции
-Прилагат се върху един бит или набор от повече отделни битове на двоични числа.
+#include<iostream>
 
- - Побитово И (**&**)
- - Побитово ИЛИ  (**|**)
- - Побитово ИЗКЛЮЧВАЩО ИЛИ  (**^**)
- - Побитово отместване (**<<**) (**>>**)
+//Задачи от час
+bool isEven(int n);
+int toPowOfTwo(int pow);
 
-|        |           |
-|--------|-----------|
-| a      | 101010100 |
-| b      | 100101110 |
-| a&b    | 100000100 |
-| a \| b | 101111110 |
-| a^b    | 001111010 |
-| a << 2 | 101010000 |
-| a >> 2 | 001010101 |
+bool isEven(int n) {
+	int mask = 1; //0000...1
+	return !(n & mask);
+}
 
+int toPowOfTwo(int pow) {
+	return 1 << pow;
+}
 
-Примери:
+bool checkBit(int num, int index) {
+	int mask = 1 << index;
+	return num & mask;
+	//num >>= index;
+	//return num & 1;
+}
 
- - Функция, която с побитови операции проверява дали число е четно
- - Функция, която с побитови операции повдига 2 на степен k.
- - Връщане на стойност на бит
- - Изчистване на бит (да стане 0)
- - Вдигане на бит (да стане 1)
- - Обръщане на бит(toggleBit)
- - Слагане на подадена стойност на бит.
+int clearBit(int num, int index) {
+	int mask = num & ~(1 << index);
+	return num & mask;
+}
 
+int setBit(int num, int index) {
+	int mask = 1 << index;
+	return num | mask;
+}
 
-## Задачи
+//int toggleBit(int& num, int index) {
+//	int mask = 1 << index;
+//	num ^= mask;
+//	return;
+//}
 
-**1.** Да се напише функция, която приема 3 цели числа **x**, **m** и **n** и връща числото, което се получава, ако от **x** се вземат **n** бита, започвайки от позиция **m**.
+int setBit(int num, int index, bool bit) {
+	if (bit) {
+		return setBit(num, index);
+	}
+	else {
+		return clearBit(num, index);
+	}
+}
 
-**Пример:**
+void printBinary(int num) {
+	for (size_t i = 31; i >= 0; i--) {
+		std::cout << checkBit(num, i);
+	}
+	std::cout << std::endl;
+}
 
-Вход:
-```c++
-16 4 3
-```
-
-Изход:
-```c++
- 4 //*100*00
-```
-
-**2.** Напишете функция, която приема цяло число и връща броя на 1-ците в двоичния му запис.
-
-*Вход: 189,  Изход: 6*
-
-**3.** Напишете функция, която по подадено цяло число n и цяло число k и връща числото, което е "закодирано" в последните k бита на n.
-
-*Вход: 15 2, Изход: 3*
-
-*Вход: 189 3, Изход: 5*
-
-*Вход: 189 4, Изход: 13*
-
-
-**4.** Да се напише функция swap, която приема 2 цели числа **a** и **b** и разменя стойностите им без допълнителна променлива с побитови операции.
-
-**Пример:**
-
-Вход:
-```c++
-120 2 
-```
-
-Изход:
-```c++
-2 120
-```
-
-**5.** Да се напише функция, която приема 3 цели числа **n**, **p** - позиция и бит **b** - 0 или 1 и сменя бита на **n** на позиция **p** с бита **b**.
-
-**Пример:**
-
-Вход:
-```c++
-120 2 1
-```
-
-Изход:
-```c++
-124
-```
-Вход:
-```c++
-120 4 0
-```
-
-Изход:
-```c++
-104
-```
-
-**6.** Да се напише функция, която приема 2 цели числа **a** и **b** и проверява дали битовете на a са пермутация на битовете на b.
-
-**Пример:**
-
-Вход:
-```c++
-7 11
-```
-
-Изход:
-```c++
-1
-```
-
-## Бонус задачи
-
-**Задача 1:** Да се напише функция, която приема масив, в който всяко число се среща 2 пъти с изключение на едно число, което се среща веднъж.
-Напишете функция, която приема такъв масив и връща кое е това число.
-(Подсказка: използвайте побитови операции, за да постигнете линейно решение)
-
-*Вход: [9 18 9 12 18 15 12], Изход: 15*
+//Exercise 1
+int findNumber(int x, int m, int n);
+//Exercise 2
+int countOnes(int x);
+//Exercise 3
+int findLastDigitsInNumber(int num, int k);
+//Exercise 4
+void swap(int& a, int& b);
+//Exercise 5
+int changeBit(int n, int p, int b);
 
 
-**Задача 2:** Напишете функция, която приема масив(разглеждаме го като множество) и отпечатва всички негови подмножества(без значение е редът на отпечатване).
+//Exercise 1
+int findNumber(int x, int m, int n) {
+	int mask = (1 << n) - 1;
+	int shifted = x >> m;
+	return shifted & mask;
+}
 
-*Вход: [1, 2, 3], Изход: [], [1], [2], [3], [1,2], [2,3], [1,3], [1,2,3]*
+//Exercise 2
+int countOnes(int num) {
+	int count = 0;
+	while (num > 0) {
+		count += num & 1; 
+		num >>= 1;        
+	}
+	return count;
+}
 
-*Вход: [5, 3] Изход: [], [5], [3], [5, 3]*
+//Exercise 3
+int findLastDigitsInNumber(int num, int k) {
+	int mask = (1 << k) - 1;
+	return num & mask;
+}
+
+//Exercise 4
+void swap(int& a, int& b) {
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
+}
+
+//Exercise 5
+int changeBit(int n, int p, int b) {
+	if (b == 1) {
+		n |= (1 << p);
+	}
+	else if (b == 0) {
+		n &= ~(1 << p);
+	}
+	return n;
+}
+
+//Exercise 6
+int countBits(int n) {
+	int count = 0;
+	while (n) {
+		count += n & 1;
+		n >>= 1;        
+	}
+	return count;
+}
+
+bool areBitsPermutation(int a, int b) {
+	return countBits(a) == countBits(b);
+}
+
+//Bonus 1
+int findUniqueNumber(int nums[], int size) {
+	int unique = 0;
+	for (int i = 0; i < size; i++) {
+		unique ^= nums[i];
+	}
+	return unique;
+}
+
+//Bonus 2
+void printSubsets(int arr[], int n) {
+	int totalSubsets = 1 << n;
+
+	for (int mask = 0; mask < totalSubsets; mask++) {
+		std::cout << "{ ";
+		for (int i = 0; i < n; i++) {
+			if (mask & (1 << i)) {
+				std::cout << arr[i] << " ";
+			}
+		}
+		std::cout << "}" << std::endl;
+	}
+}
+
+int main() {
+	int num;
+	std::cout << "Enter a number: ";
+	std::cin >> num;
+
+	//
+	//int pos, n;
+	//std::cout << "Enter your position: ";
+	//std::cin >> pos;
+
+	//std::cout << "Enter the number of bits: ";
+	//std::cin >> n;
+
+	//int newNum = findNumber(num, pos, n);
+	//std::cout << newNum << std::endl;
+
+	//printBinary(num);
+	//std::cout << "Number of ones in " << num << " is: " << countOnes(num);
+
+	//std::cout << "Enter how many digits you want to see: ";
+	//int k;
+	//std::cin >> k;
+
+	//std::cout << findLastDigitsInNumber(num, k);
+
+	//int number1;
+	//std::cout << "Enter the value of your first number: ";
+	//std::cin >> number1;
+
+	//int number2;
+	//std::cout << "Enter the value of your second number: ";
+	//std::cin >> number2;
+
+	//swap(number1, number2);
+
+return 0;
+}
