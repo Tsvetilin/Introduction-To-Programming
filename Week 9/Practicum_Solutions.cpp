@@ -1,8 +1,8 @@
 #include <iostream>
 
-int getSize(const char* str)
+size_t getSize(const char* str)
 {
-	int count = 0;
+	size_t count = 0;
 	while (*str)
 	{
 		count++;
@@ -25,7 +25,7 @@ void shiftLeft(char* str)
 void shiftRight(char* str)
 {
 	if (!str) return;
-	
+
 	char* end = str + getSize(str) + 1;
 	while (end != str)
 	{
@@ -152,7 +152,7 @@ void countOfDigits(char* str)
 	{
 		if (digits[i] != 0)
 		{
-			if (!isFirst) 
+			if (!isFirst)
 				std::cout << ",";
 			std::cout << digits[i] << "x" << i;
 			isFirst = false;
@@ -181,6 +181,157 @@ void makeWordsUpper(char* str)
 		isNewWord = false;
 		str++;
 	}
+}
+
+
+// Ex. 6
+void removeSymbols(char* str)
+{
+	if (!str) return;
+	while (*str)
+	{
+		if (!('a' <= *str && *str <= 'z') && 
+			!('A' <= *str && *str <= 'Z') && 
+			!('0' <= *str && *str <= '9') &&
+			!(*str == ' '))
+			shiftLeft(str);
+		str++;
+	}
+}
+
+void getLastWord(char* str, char* word)
+{
+	if (!str || !word) return;
+
+	removeSymbols(str);
+	size_t strLength = getSize(str);
+	size_t indexOfLastWord = 0;
+	for (size_t i = 0; i < strLength; i++)
+	{
+		if (str[i] == ' ')
+			indexOfLastWord = i + 1;
+	}
+
+	str += indexOfLastWord;
+	while (*str)
+	{
+		*word = *str;
+		word++;
+		str++;
+	}
+	*word = '\0';
+}
+
+
+// Ex. 7
+int countOfWords(char* str)
+{
+	if (!str)  return 0;
+
+	removeSymbols(str);
+	int count = 0;
+	bool isNewWord = true;
+	while (*str)
+	{
+		if (*str == ' ')
+		{
+			isNewWord = true;
+			str++;
+			continue;
+		}
+		if (isNewWord)
+			count++;
+		isNewWord = false;
+		str++;
+	}
+	return count;
+}
+
+
+// Ex. 8
+int getAllWords(char* str, char words[][1024])
+{
+	int wordIndex = 0, wordElement = 0;
+	while (*str)
+	{
+		if (*str == ' ')
+		{
+			words[wordIndex][wordElement] = '\0';
+			wordIndex++;
+			wordElement = 0;
+			str++;
+			continue;
+		}
+		words[wordIndex][wordElement] = *str;
+		wordElement++;
+		str++;
+	}
+	words[wordIndex][wordElement] = '\0';
+
+	return wordIndex + 1;
+}
+
+void mostFrequentWord(char* str)
+{
+	if (!str) return;
+
+	removeSymbols(str);
+	toLower(str);
+	char words[10][1024];
+	size_t wordsSize = getAllWords(str, words);
+
+	char* mostFrequentWord = words[0];
+	int count = 1;
+	for (size_t i = 0; i < wordsSize; i++)
+	{
+		int currentCount = 0;
+		for (size_t j = 0; j < wordsSize; j++)
+		{
+			if (areSame(words[i], words[j]))
+				currentCount++;
+		}
+		if (currentCount >= count)
+		{
+			count = currentCount;
+			mostFrequentWord = words[i];
+		}
+	}
+
+	std::cout << mostFrequentWord;
+}
+
+
+// Ex. 9
+int stringCompare(char* str1, char* str2)
+{
+	if (!str1 || !str2) return 255;
+
+	while (*str1 && *str2)
+	{
+		if (*str1 != *str2)
+			return *str1 - *str2;
+		str1++;
+		str2++;
+	}
+	return *str1 - *str2;
+}
+
+void smallestWord(char* str)
+{
+	if (!str) return;
+
+	removeSymbols(str);
+	toLower(str);
+	char words[10][1024];
+	size_t wordsSize = getAllWords(str, words);
+
+	char* smallestWord = words[0];
+		for (size_t i = 0; i < wordsSize; i++)
+	{
+		if(stringCompare(smallestWord, words[i]) > 0)
+			smallestWord = words[i];
+	}
+	std::cout << smallestWord;
 }
 
 int main()
@@ -218,8 +369,33 @@ int main()
 
 
 	// Ex. 5
-	char str[1024];
+	/*char str[1024];
 	std::cin.getline(str, 1024);
 	makeWordsUpper(str);
-	std::cout << str;
+	std::cout << str;*/
+
+
+	// Ex. 6
+	/*char str[1024], word[1024];
+	std::cin.getline(str, 1024);
+	getLastWord(str, word);
+	std::cout << word;*/
+
+
+	// Ex. 7
+	/*char str[1024];
+	std::cin.getline(str, 1024);
+	std::cout << countOfWords(str);*/
+
+
+	// Ex. 8
+	/*char str[1024];
+	std::cin.getline(str, 1024);
+	mostFrequentWord(str);*/
+
+
+	// Ex. 9
+	/*char str[1024];
+	std::cin.getline(str, 1024);
+	smallestWord(str);*/
 }
