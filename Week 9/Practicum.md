@@ -1,191 +1,608 @@
-# Указатели. Символни низове.
+#include<iostream>
 
-## Въведение в указателите.
-Оператор **&**
+const int MAX_CHAR_ARRAY_LEN = 1024;
+const int MAX_COUNTERS = 9;
+const int MAX_COUNTERS_EXERCISE_8 = 1024;
+const int MAX_LENGTH_WORD_EXERCISE_8 = 100;
 
- - Приема променлива от тип Т.
+//Основни задачи
+//Намиране на дължина на символен низ
+int myStrlen(const char* str);
+//Копиране на символен низ
+void myStrcpy(const char* source, char* dest);
+//Сравняване на два символни низа
+int myStrcmp(const char* str1, const char* str2);
+//Конкатенация на два символни низа
+void myStrcat(char* first, const char* second);
 
- - Връща указател от тип T*.
- 
- 
-```c++
-  int number = 10;
-  int* ptr = &number;
-``` 
-
-
-Оператор<b> * </b> (дерефериране)
-- Приема указaтел от тип Т*
-- Връща променлива от тип Т
-
-
-```c++
-  int number = 10;
-  int* ptr = &number;
-  int result = *ptr; 
-  cout << result; //10
-```
-
-Разлика между указател и референция?
-
- - Указателят може да се "re-assign"-ва. Може да приема нови стойност
- - Референцията трябва да се инициализира при създаването.
- - Указателят има неутрална стойност (nullptr), а референцията няма.
- - Може да се направи масив от указатели, но не и масив от референции.
-
-```c++
-   int arr[] = {1, 2, 3};
-int* ptr = arr;
-```
-
-![enter image description here](https://i.ibb.co/cDcX8st/Untitled-Diagram-drawio-3.png)
+//Exercise 1
+void findNewStrWithoutLetter(char* text, char symbol, int textLen);
+//Exercise 2
+char* replaceSubstringInPlace(char* text, const char* where, const char* what);
+//Exercise 3
+void myToUpper(char* text);
+void myToLower(char* text);
+//Exercise 4
+void findTheNumberOfOccurencesOfDigits(char* text, int textLen);
+//Exercise 5
+void findNewStrWithCapLetters(char* text, int textLen);
+//Exercise 6
+char* findLastWordInText(char* input, char* result);
+//Exercise 7
+bool isDelimiter(char c);
+int countWordsInText(char* text, int len);
+//Exercise 8
+bool isLetter(char c);
+char toLowerCase(char c);
+void findTheMostCommonWord(const char* text);
+//Exercise 9
+void findSmallestWord(const char* text);
 
 
-```c++
-	ptr++;
-	cout << ptr[0]; //2;
-	cout << ptr[1]; //3;
-```
+int myStrlen(const char* str) {
+	if (str == nullptr) {
+		return -1;
+	}
 
- ![enter image description here](https://i.ibb.co/xLLsVK5/Untitled-Diagram-drawio-4.png)
+	int counter = 0;
 
-```c++
-int number = 10;
-int* ptrNumber = &number;
+	while (*str) {
+		counter++;
+		str++;
+	}
 
-int copy = *ptrNumber;
-copy++;
-cout << copy << endl; //11
-cout << number << endl; //10
+	return counter;
+}
 
-(*ptrNumber)++;
-cout << number << endl; //11
-cout << *ptrNumber << endl; //11
-cout << ptrNumber << endl; //The adress of number
+void myStrcpy(const char* source, char* dest) {
+	if (!source || !dest) {
+		return;
+	}
+	while (*source) {
+		*dest = *source;
+		dest++;
+		source++;
+	}
+	*dest = '\0';
+}
 
-int& refNumber = *ptrNumber;
-refNumber++;
-cout << refNumber << endl; //12
-cout << number << endl; //12
-cout << &refNumber << ' ' << ptrNumber << endl; //same adress
+int myStrcmp(const char* str1, const char* str2) {
+	if (!str1 || !str2) {
+		return 128;
+	}
 
-const int& constRefNumber = number; //always pointing at the same adress of number
-number++; //fine
-constRefNumber++; //not fine 
-cout << constRefNumber << ' ' << number;
+	while ((*str1) == (*str2) && (*str1)) {
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
+}
 
-int otherVar = 7;
-const int* constNumberPtr = &number;
-constNumberPtr = &otherVar; //fine
-(*constNumberPtr)++; //not fine
+void myStrcat(char* first, const char* second) {
+	if (!first || second==nullptr) {
+		return;
+	}
 
-int* const constPtrNumber = &number;
-constPtrNumber = &otherVar; //not fine
-(*constPtrNumber)++; //fine
+	size_t firstLen = myStrlen(first);
+	first += firstLen;
+	myStrcpy(second, first);
+}
 
-const int* const constPtrConstNumber = &number;
-constPtrConstNumber = &otherVar; //not fine
-(*constPtrConstNumber)++; //not fine
-```
+//Exercise 1
+void findNewStrWithoutLetter(char* text, char symbol, int textLen) {
+	char newText[MAX_CHAR_ARRAY_LEN];
+	int textIndex = 0, newTextIndex = 0;
 
-Какво ще стане, ако дереферираме Nullptr?
+	while (textIndex < textLen) {
+		if (text[textIndex] != symbol) {
+			newText[newTextIndex] = text[textIndex];
+			newTextIndex++;
+		}
+		textIndex++;
+	}
 
-```c++
-int a = 5;
-int* ptrA = &a;
-cout << ptrA[0] << endl; //used only with arrays but still works - syntactic sugar
-cout << ptrA[1] << endl; //still works but undefined behaviour 
+	newText[newTextIndex] = '\0';
+	std::cout << "Modified text: " << newText << std::endl;
+}
 
-int arr[] = { 1, 2 ,3 };
-int* ptrArr = arr;
-cout << ptrArr[0] << endl;
-cout << ptrArr[3] << endl; //still works but undefined behaviour 
+//Exercise 2
+char* replaceSubstringInPlace(char* text, const char* where, const char* what) {
+	int textLen = 0, whereLen = 0, whatLen = 0;
 
-int* nullPointer = nullptr;
-cout << *nullPointer;
-```
+	while (text[textLen] != '\0') textLen++;
+	while (where[whereLen] != '\0') whereLen++;
+	while (what[whatLen] != '\0') whatLen++;
 
-## Въведение в символните низове (стрингове).
+	char* current = text;
 
-   ```c++
-	char str[] = {'t', 'e', 's', 't', '\0'};
-	char str2[] = "test"; //equivalent to str
-	char str3[7] = "test"; 
-```
+	while (*current != '\0') {
+		char* temp = current;
+		int i = 0;
+		while (i < whereLen && *temp == where[i]) {
+			temp++;
+			i++;
+		}
 
-![enter image description here](https://i.ibb.co/ZmRwt6R/Untitled-Diagram-drawio-5.png)
+		if (i == whereLen) {
+			if (whatLen <= whereLen) {
+				for (int j = 0; j < whatLen; ++j) {
+					current[j] = what[j];
+				}
+				int shiftLen = whereLen - whatLen;
+				for (int j = 0; current[whatLen + j] != '\0'; j++) {
+					current[whatLen + j] = current[whereLen + j];
+				}
+				current[textLen - shiftLen] = '\0';
+				textLen -= shiftLen;
+			}
+			else {
+				int shiftLen = whatLen - whereLen;
+				for (int j = textLen; j >= current - text + whereLen; j--) {
+					text[j + shiftLen] = text[j];
+				}
+				textLen += shiftLen;
 
-Примерна имплементация на:
+				for (int j = 0; j < whatLen; ++j) {
+					current[j] = what[j];
+				}
+			}
+			current += whatLen; // Move past the replaced substring
+		}
+		else {
+			current++; // Move to the next character
+		}
+	}
 
-<h3>Live: </h3>
- - strlen (намиране на дължина на стринг) <br></br>
- - strcpy (копиране на стринг) <br></br>
- - strcat (конкатениране на стрингове) <br></br>
- - strcmp (лексикографско сравнение на стрингове) <br></br>
+	return text;
+}
 
-<h3>В задачите: </h3>
- - търсене в текст <br></br>
- - броене на срещанията на конкретен символ в текст <br></br>
- - заместване в стринг. <br></br>
+//Exercise 3
+void myToUpper(char* text) {
+	char newCapText[MAX_CHAR_ARRAY_LEN];
 
-<h3>Задачи</h3>
+	int indexNewText = 0, indexOrigText = 0;
 
-**Задача 1:** Да се напише функция, която приема стринг с произволна дължина **text**, символ **symbol**. Функцията да обработва **text** така, че да не съдържа **symbol** .
+	while (text[indexOrigText] != '\0') {
+		if (text[indexOrigText] >= 'a' && text[indexOrigText] <= 'z') {
+			newCapText[indexNewText] = text[indexOrigText] + 'A' - 'a';
+		}
+		else {
+			newCapText[indexNewText] = text[indexOrigText];
+		}
+		indexNewText++;
+		indexOrigText++;
+	}
 
-**Пример:**
-```c++
-Hello, my friend!
-e
-```
-```c++
-Hllo, my frind!
-```
-**Задача 2:** Напишете функция, която приема 3 стринга - text, where и what и земства в text всяко срещане на where с what.
+	newCapText[indexNewText] = '\0';
 
-*Да се реши без допълнителна памет (in-place).*
+	int newTextLen = myStrlen(newCapText);
 
-*Вход: "I am the worst of the worst", "worst" , "best" , Изход: "I am the best of the best"*
+	for (size_t i = 0; i < newTextLen; ++i) {
+		std::cout << newCapText[i];
+	}
+	std::cout << std::endl;
+}
 
-**Задача 3** Напишете функции toUpper и toLower, които приемат стринг и променят всички главни букви в малки/всички малки букви в главни.
+void myToLower(char* text) {
+	char newLowText[MAX_CHAR_ARRAY_LEN];
 
-**Задача 4:** Да се напише функция, която приема стринг с произволна дължина от цифри, и стринг **result**. Функцията да обработва **result** така, че да предтсавлява стринг, в който пише коя цифра колко пъти се среща.
+	int indexNewText = 0, indexOrigText = 0;
 
-**Пример:**
-```c++
-4231148
-```
-```c++
-2x1,1x2,1x3,2x4,1x8
-```
+	while (text[indexOrigText] != '\0') {
+		if (text[indexOrigText] >= 'A' && text[indexOrigText] <= 'Z') {
+			newLowText[indexNewText] = text[indexOrigText] + 'a' - 'A';
+		}
+		else {
+			newLowText[indexNewText] = text[indexOrigText];
+		}
+		indexNewText++;
+		indexOrigText++;
+	}
 
-**Задача 5:** Да се напише функция, която приема стринг и го обработва така, че всяка нова дума (в началото на текста или след интервал) да започва с главна буква. 
+	newLowText[indexNewText] = '\0';
 
-**Пример:**
-```c++
-hello,  my friend!
-```
-```c++
-Hello,  My Friend!
-```
-**Задача 6:** Да се напише функция, която приема стринг **input** и стринг **result**. Функцията да обработва **result** тала, че в него да е записана последната дума от подадения **input**.
+	int newTextLen = myStrlen(newLowText);
 
-**Пример:**
-```c++
-What is your name
-```
-```c++
-name
-```
+	for (size_t i = 0; i < newTextLen; ++i) {
+		std::cout << newLowText[i];
+	}
+	std::cout << std::endl;
+}
 
-**Задача 7** Напишете функция, която приема стринг и връща броя на думите в него. (Думите са разделени с произволен брой интервали, табулации и препинателни знаци)
+//Exercise 4
+void findTheNumberOfOccurencesOfDigits(char* text, int textLen) {
+	int indexText = 0;
 
-*Вход: "Me? Why always me?, Изход: 4*
+	int counters[MAX_COUNTERS] = {};
 
+	while (text[indexText] != '\0') {
+		if (text[indexText] >= '0' && text[indexText] <= '9') {
+			++counters[text[indexText] - '0'];
+		}
+		++indexText;
+	}
 
-**Задача 8** Напишете функция, която приема стринг и връща най-често срещаната дума.(Думите са разделени с произволен брой интервали, табулации и препинателни знаци). Игнорираме разликата между главни и малки букви за задачата.
+	char results[MAX_COUNTERS][MAX_CHAR_ARRAY_LEN] = {};
 
-*Вход: "Me? Why always me?, Изход: me*
+	for (size_t i = 0; i < MAX_COUNTERS; ++i) {
+		if (counters[i] != 0) {
+			int pos = 0;
 
-**Задача 9** Напишете функция, която приема стринг и връща лексикографско най-малка дума.
+			results[i][pos++] = '0' + i;
+			results[i][pos++] = ' ';
+			results[i][pos++] = 'x';
+			results[i][pos++] = ' ';
 
-*Вход: "Me? Why always me?, Изход: always*
+			int count = counters[i];
+			if (count >= 10) {
+				results[i][pos++] = '0' + (count / 10);
+			}
+			results[i][pos++] = '0' + (count % 10);
+
+			results[i][pos] = '\0';
+		}
+	}
+
+	for (int i = 0; i < MAX_COUNTERS; ++i) {
+		if (results[i][0] != '\0') {
+			std::cout << results[i] << std::endl;
+		}
+	}
+
+	std::cout << std::endl;
+}
+
+//Exercise 5
+void findNewStrWithCapLetters(char* text, int textLen) {
+	char newText[MAX_CHAR_ARRAY_LEN];
+	int counter = 0;
+
+	if (textLen <= 0 || textLen > MAX_CHAR_ARRAY_LEN - 1) {
+		std::cerr << "Invalid text length!" << std::endl;
+		return;
+	}
+
+	if (text[0] >= 'a' && text[0] <= 'z') {
+		newText[counter++] = text[0] + ('A' - 'a');
+	}
+	else {
+		newText[counter++] = text[0];
+	}
+
+	for (int i = 1; i < textLen; ++i) {
+		if (text[i - 1] == ' ' && text[i] >= 'a' && text[i] <= 'z') {
+			newText[counter++] = text[i] + ('A' - 'a'); 
+		}
+		else {
+			newText[counter++] = text[i];
+		}
+	}
+
+	newText[counter] = '\0';
+
+	std::cout << "New text: " << newText << std::endl;
+}
+
+//Exercise 6
+char* findLastWordInText(char* input, char* result) {
+	int inputLen = myStrlen(input);
+
+	if (inputLen == 0) {
+		result[0] = '\0';
+		return result;
+	}
+
+	int counterBackwards = inputLen - 1;
+	while (counterBackwards >= 0 && input[counterBackwards] != ' ') {
+		counterBackwards--;
+	}
+
+	int lastSpaceIndex = counterBackwards + 1;
+
+	int indexResult = 0;
+	for (int i = lastSpaceIndex; i < inputLen; ++i) {
+		result[indexResult++] = input[i];
+	}
+
+	result[indexResult] = '\0';
+
+	return result;
+}
+
+//Exercise 7
+bool isDelimiter(char c) {
+	return (c == ' ' || c == '\t' || c == '\n' || c == ',' || c == '.' || c == '!' || c == '?' || c == ';' || c == ':' || c == '-');
+}
+
+int countWordsInText(char* text, int len) {
+	int wordCount = 0;
+	bool inWord = false;
+
+	for (int i = 0; text[i] != '\0'; ++i) {
+		if (!isDelimiter(text[i])) {
+			if (!inWord) {
+				wordCount++;
+				inWord = true;
+			}
+		}
+		else {
+			inWord = false;
+		}
+	}
+
+	return wordCount;
+}
+
+//Exercise 8
+bool isLetter(char c) {
+	return (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z');
+}
+
+char toLowerCase(char c) {
+	if (c >= 'A' && c <= 'Z') {
+		return c + 'a' - 'A';
+	}
+	return c;
+}
+
+void findTheMostCommonWord(const char* text) {
+	char currentWord[MAX_LENGTH_WORD_EXERCISE_8];
+	char mostCommonWord[MAX_LENGTH_WORD_EXERCISE_8];
+	int maxCount = 0;
+
+	char words[MAX_CHAR_ARRAY_LEN][MAX_LENGTH_WORD_EXERCISE_8];
+	int counts[MAX_COUNTERS_EXERCISE_8] = {};
+	int wordCount = 0;
+
+	int i = 0, j = 0;
+
+	while (text[i] != '\0') {
+		while (text[i] != '\0' && !isLetter(text[i])) {
+			++i;
+		}
+
+		j = 0;
+		while (text[i] != '\0' && isLetter(text[i]) && j < MAX_LENGTH_WORD_EXERCISE_8 - 1) {
+			currentWord[j++] = toLowerCase(text[i++]);
+		}
+		currentWord[j] = '\0';
+
+		if (j == 0) {
+			continue;
+		}
+
+		bool found = false;
+
+		for (int k = 0; k < wordCount; ++k) {
+			if (myStrcmp(words[k], currentWord) == 0) {
+				counts[k]++;
+				if (counts[k] > maxCount) {
+					maxCount = counts[k];
+					myStrcpy(mostCommonWord, words[k]);
+				}
+				found = true;
+				break;
+			}
+		}
+
+		if (!found && wordCount < MAX_CHAR_ARRAY_LEN) {
+			myStrcpy(words[wordCount], currentWord);
+			counts[wordCount] = 1;
+			if (maxCount == 0) {
+				maxCount = 1;
+				myStrcpy(mostCommonWord, currentWord);
+			}
+			wordCount++;
+		}
+	}
+
+	if (maxCount > 0) {
+		std::cout << "Most common word: " << mostCommonWord << " (" << maxCount << " times)" << std::endl;
+	}
+	else {
+		std::cout << "No words found." << std::endl;
+	}
+}
+
+//Exercise 9
+void findSmallestWord(const char* text) {
+	char current_word[MAX_LENGTH_WORD_EXERCISE_8];
+	char smallest_word[MAX_LENGTH_WORD_EXERCISE_8] = "";
+
+	int i = 0, j = 0;
+	while (text[i] != '\0') {
+		while (text[i] != '\0' && !isLetter(text[i])) {
+			i++;
+		}
+
+		j = 0;
+		while (text[i] != '\0' && isLetter(text[i]) && j < 99) {
+		current_word[j++] = toLowerCase(text[i++]);
+		}
+		current_word[j] = '\0';
+
+		if (j == 0) {
+			continue;
+		}
+
+		if (smallest_word[0] == '\0' || strcmp(current_word, smallest_word) < 0) {
+			strcpy(smallest_word, current_word);
+		}
+	}
+
+	if (smallest_word[0] != '\0') {
+		std::cout << "Smallest word: " << smallest_word << std::endl;
+	}
+	else {
+		std::cout << "No words found." << std::endl;
+	}
+}
+
+int main() {
+	//Exercise 1
+	//char text[MAX_CHAR_ARRAY_LEN];
+	//int textLen;
+
+	//std::cout << "Enter the length of your text: ";
+	//std::cin >> textLen;
+
+	//if (!std::cin || textLen < 0 || textLen > MAX_CHAR_ARRAY_LEN) {
+	//	std::cerr << "Invalid input!" << std::endl;
+	//	return 1;
+	//}
+
+	//std::cout << "Enter your text: ";
+	//std::cin.ignore();
+	//std::cin.getline(text, textLen);
+
+	//char symbol;
+	//std::cout << "Enter the character you want to remove: ";
+	//std::cin >> symbol;
+
+	//if (!std::cin) {
+	//	std::cerr << "Invalid input!" << std::endl;
+	//	return 1;
+	//}
+
+	//findNewStrWithoutLetter(text, textLen, symbol);
+
+	//Exercise 2
+	//char text[MAX_CHAR_ARRAY_LEN];
+	//int textLen;
+	//std::cout << "Enter the lenght of your text: ";
+	//std::cin >> textLen;
+	//if (!std::cin || textLen < 0 || textLen > MAX_CHAR_ARRAY_LEN) {
+	//std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+	//	return 1;
+	//}
+
+	//std::cout << "Enter your text: ";
+	//std::cin.ignore();
+	//std::cin.getline(text, textLen + 1);
+
+	//char where[MAX_CHAR_ARRAY_LEN];
+	//int whereLen;
+	//std::cout << "Enter the lenght of the word you want to replace: ";
+	//std::cin >> whereLen;
+	//if (!std::cin || whereLen < 0 || whereLen > MAX_CHAR_ARRAY_LEN) {
+	//std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+	//	return 1;
+	//}
+
+	//std::cout << "Enter the text you want to be replaced: ";
+	//std::cin.ignore();
+	//std::cin.getline(where, whereLen + 1);
+
+	//char what[MAX_CHAR_ARRAY_LEN];
+	/*int whatLen;
+	std::cout << "Enter the lenght of the word you want your previous one to be replaced with:  ";
+	std::cin >> whatLen;
+	if (!std::cin || whatLen < 0 || whatLen > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+		return 1;
+	}
+
+	std::cout << "Enter the word you want your previous one to be replaced with: ";
+	std::cin.ignore();
+	std::cin.getline(what, whatLen + 1);
+
+	std::cout << "Your new text: " << replaceSubstringInPlace(text, where, what) << std::endl;*/
+
+	//Exercise 3
+	/*char text[MAX_CHAR_ARRAY_LEN];
+	int textLen;
+	std::cout << "Enter the lenght of your text: ";
+	std::cin >> textLen;
+	if (!std::cin || textLen < 0 || textLen > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+		return 1;
+	}
+
+	std::cout << "Enter your text: ";
+	std::cin.ignore();
+	std::cin.getline(text, textLen);
+
+	std::cout << "Your text in UPPER CASE: ";
+	myToUpper(text);
+	std::cout << "Your text in lower case: ";
+	myToLower(text);*/
+
+	//Exercise 4
+	//char numStr[MAX_CHAR_ARRAY_LEN];
+	//int len;
+	//std::cout << "Enter the length of your text:";
+	//std::cin >> len;
+	//if (!std::cin || len < 0 || len > MAX_CHAR_ARRAY_LEN) {
+	//std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+	//	return 1;
+	//}
+	//std::cout << "Enter your text: ";
+	//std::cin.ignore();
+	//std::cin.getline(numStr, len);
+	//findTheNumberOfOccurencesOfDigits(numStr, len);
+	
+	//Exercise 5
+    /*char text[MAX_CHAR_ARRAY_LEN];
+	int len;
+	std::cout << "Enter the length of your text: ";
+	std::cin >> len;
+	if (!std::cin || len < 0 || len > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << " !" << std::endl;
+		return 1;
+	}
+	std::cout << "Enter your text: ";
+	std::cin.ignore();
+	std::cin.getline(text, len + 1);
+	findNewStrWithCapLetters(text, len + 1);*/
+
+	//Exercise 6
+    /*char input[MAX_CHAR_ARRAY_LEN];
+	int len;
+	std::cout << "Enter the length of your input text: ";
+	std::cin >> len;
+	if (!std::cin || len < 0 || len > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << "!" << std::endl;
+		return 1;
+	}
+	std::cout << "Enter your text: ";
+	std::cin.ignore();
+	std::cin.getline(input, len + 1);
+
+	char result[MAX_CHAR_ARRAY_LEN];
+	std::cout << "Last word: " << findLastWordInText(input, result) << std::endl;*/
+
+	//Exercise 7
+	/*char text[MAX_CHAR_ARRAY_LEN];
+	int len;
+	std::cout << "Enter the length of your text: ";
+	std::cin >> len;
+	if (!std::cin || len < 0 || len > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << "!" << std::endl;
+		return 1;
+	}
+	std::cout << "The number of words in your text is: " << countWordsInText(text, len);*/
+
+	//Exercise 8
+    /*char text[MAX_CHAR_ARRAY_LEN];
+	int len;
+	std::cout << "Enter the length of your text: ";
+	std::cin >> len;
+	if (!std::cin || len < 0 || len > MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << "!" << std::endl;
+		return 1;
+	}
+	findTheMostCommonWord(text);*/
+
+	//Exercise 9
+	/*char text[MAX_CHAR_ARRAY_LEN];
+	int len;
+	std::cout << "Enter the length of your text: ";
+	std::cin >> len;
+	if (!std::cin || len < 0 || len >MAX_CHAR_ARRAY_LEN) {
+		std::cerr << "Invalid input! The length of your text must be between 0 and " << MAX_CHAR_ARRAY_LEN << "!" << std::endl;
+		return 1;
+	}
+	findSmallestWord(text);*/
+
+	return 0;
+}
