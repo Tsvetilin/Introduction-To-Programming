@@ -1,0 +1,135 @@
+#include <iostream>
+using namespace std;
+const int ARRAY_SIZE = 1000;
+int getlen(char* str)
+{
+    int counter = 0;
+    while (*str)
+    {
+        counter++;
+        str++;
+    }
+    return counter;
+}
+
+ void upperCaseglasna(char* c)
+ {
+     size_t size = getlen(c);
+     while(*c)
+     {
+         
+         switch (*c)
+         {
+         case 'a':
+         case 'o':
+         case 'u':
+         case 'e':
+         case 'i':
+         case 'y':c = c + 'A' - 'a'; break;
+         default: c = c + 'a' - 'A';
+
+
+         }
+         c++;
+         
+         
+         
+        
+     }
+     for (size_t i = 0; i < size; i++)
+     {
+         cout << c[i];
+     }
+     }
+void reversechar(char* str) 
+{
+    size_t size = getlen(str);
+    for (size_t i = 0; i < size/2; i++)
+    {
+        swap(str[i], str[size - 1 - i]);
+    }
+    for (size_t j = 0; j < size; j++)
+    {
+        cout << str[j];
+    }
+
+}
+void glasna( char*str)
+{
+    size_t size = getlen(str);
+    while (*str)
+    {
+        upperCaseglasna(str);
+        str++;
+    }
+    for (size_t i = 0; i < size; i++)
+    {
+        cout << str[i];
+    }
+
+}
+
+void swap(int& a,int& b)
+{
+    int temp = 0;
+    temp = a;
+    a = b;
+    b = temp;
+}
+void myStrCpy(const char* source, char* dest) {
+    if (!source || !dest)
+    {
+        return;
+    }
+    while (*source) {
+        *dest = *source;
+        dest++;
+        source++;
+    }
+    *dest = '\0';
+}
+const int rows = 100;
+const int max_word_len = 1000;
+void fillwords(const char* str, char words[][max_word_len], int& wordsCount)
+{
+    if (str == nullptr || !words) return;
+    wordsCount = 0;
+    char curWord[max_word_len]{};
+    int curwoordidx = 0;
+    int curChar = *str;
+    while(curChar)
+    {
+        
+        if(curChar==' ')
+        {
+            if(curwoordidx==0)
+            {
+                str++;
+                curChar = *str;
+                continue;
+            }
+            curWord[curwoordidx] = '\0';
+            curwoordidx = 0;
+            myStrCpy(curWord, words[wordsCount]);
+            wordsCount++;
+        }
+        else
+        {
+            curWord[curwoordidx] = curChar;
+            curwoordidx++;
+        }
+    
+        str++;
+        curChar = *str;
+    }
+}
+
+int main()
+{
+    
+   // int wordsCount = 0;
+    //char str[rows][max_word_len];
+   // char str[] = "Hi my name is Gosho";
+    char str[] = "iviosavjasopivj";
+    upperCaseglasna(str);
+}
