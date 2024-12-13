@@ -96,7 +96,7 @@ bool isDigit(char sym)
 	return '0' <= sym && sym <= '9';
 }
 
-void censoreNumbers(char* str)
+void censorNumbers(char* str)
 {
 	if (!str) return;
 
