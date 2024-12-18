@@ -49,7 +49,7 @@ int* divisibleNumbers(int* arr1, size_t len1, int* arr2, size_t len2, int k, siz
 
 	int* result = new int[len1 + len2];
 	size_t count = 0;
-	
+
 	for (size_t i = 0; i < len1; i++)
 	{
 		if (arr1[i] % k)
@@ -225,6 +225,89 @@ char* getFirstAndLast(char* str)
 	return result;
 }
 
+
+// Ex. 7
+void shiftRight(char* str)
+{
+	if (!str) return;
+
+	char* strPtr = str;
+	while (*strPtr)
+	{
+		strPtr++;
+	}
+	strPtr++;
+	while (strPtr != str)
+	{
+		*strPtr = *(strPtr - 1);
+		strPtr--;
+	}
+}
+
+char* addSymAt(char* str, size_t* indexes, size_t n, char sym)
+{
+	if (!str || !indexes) return nullptr;
+
+	size_t size = getSize(str);
+	char* result = new char[size + n];
+
+	for (size_t i = 0; i < size; i++)
+	{
+		result[i] = str[i];
+	}
+	result[size] = '\0';
+	for (size_t i = 0; i < n; i++)
+	{
+		shiftRight(result + indexes[i]);
+		*(result + indexes[i] + i) = sym;
+	}
+
+	return result;
+}
+
+
+// Ex. 8
+int countOfPositiveBits(int n)
+{
+	int count = 0;
+	while (n)
+	{
+		count += n & 1;
+		n >>= 1;
+	}
+	return count;
+}
+
+int** getSubArrays(int* arr, size_t n)
+{
+	if (!arr) return nullptr;
+	
+	int** result = new int* [n * (n - 1) + 2];
+	int limit = 1 << n;
+	int mask = 1;
+	while (mask < limit)
+	{
+		result[mask - 1] = new int[countOfPositiveBits(mask) + 1];
+		int index = 0;
+		int maskCopy = mask;
+		size_t arrIndex = 0;
+		while (maskCopy)
+		{
+			if (maskCopy & 1)
+			{
+				result[mask - 1][index++] = arr[arrIndex];
+			}
+			arrIndex++;
+			maskCopy >>= 1;
+		}
+		result[mask - 1][index] = NULL;
+		mask++;
+	}
+	result[n * (n - 1) + 1] = nullptr;
+
+	return result;
+}
+
 int main()
 {
 	// Ex. 1
@@ -291,4 +374,38 @@ int main()
 	char* result = getFirstAndLast(str);
 	std::cout << result;
 	delete[] result;*/
+
+
+	// Ex. 7
+	/*char str[1024];
+	std::cin.getline(str, 1024);
+	size_t n;
+	std::cin >> n;
+	size_t* indexes = new size_t[n];
+	for (size_t i = 0; i < n; i++)
+	{
+		std::cin >> indexes[i];
+	}
+	char sym;
+	std::cin >> sym;
+	char* result = addSymAt(str, indexes, n, sym);
+	std::cout << result;*/
+
+
+	// Ex. 8
+	/*size_t n;
+	std::cin >> n;
+	int* arr = writeArray(n);
+	int** result = getSubArrays(arr, n);
+	
+	while (*result)
+	{
+		while (**result)
+		{
+			std::cout << **result << " ";
+			(*result)++;
+		}
+		std::cout << std::endl;
+		result++;
+	}*/
 }
