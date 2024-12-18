@@ -281,14 +281,15 @@ int main()
 
 Вход: 
 ```
-3 
+3
 1add2add3
-7multuply10
+7multiply10
 10divide2add8
 addmultiply
+4
 ```
 
 Изход:
 ```
-4416
+460
 ```
