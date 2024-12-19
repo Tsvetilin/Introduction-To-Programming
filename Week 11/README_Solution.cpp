@@ -322,9 +322,9 @@ char* createLastCommand(char* command, int* numbers, size_t operationsCount)
 			}
 		}
 	}
-	while (strNumbers[numIndex][elementIndex])
+	while (strNumbers[operationsCount][elementIndex])
 	{
-		*resultPtr = strNumbers[numIndex][elementIndex++];
+		*resultPtr = strNumbers[operationsCount][elementIndex++];
 		resultPtr++;
 	}
 	*resultPtr = '\0';
@@ -362,7 +362,7 @@ int main()
 		numbers[i] = executeCommand(commands[i]);
 		std::cout << "Before changing bit: " << numbers[i] << " ";
 		numbers[i] ^= mask;
-		std::cout << "Before changing bit: " << numbers[i] << "\n";
+		std::cout << "After changing bit: " << numbers[i] << "\n";
 	}
 
 	char* lastCommand = createLastCommand(commands[n], numbers, n - 1);
