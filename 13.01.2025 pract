@@ -1,0 +1,103 @@
+#include <iostream>
+/*
+bool isWhiteSpace(char symbol)
+{
+	return (symbol ==' ');
+}
+
+
+bool isDigit(char symbol)
+{
+	return (symbol >= '0' && symbol <= '9');
+}
+
+bool isCapitalLetter(char symbol)
+{
+	return (symbol >= 'A' && symbol <= 'Z');
+}
+
+int countCharsApplicableTo(char* sentance, bool (*f)(char c))
+{
+	//nullptr handling
+	int count=0;
+	while (*sentance)
+	{
+		if (	(*sentance)) count++;
+		sentance++;
+	}
+	return count;
+}
+
+
+int fib(int n, int* cache)
+{
+	if (n <= 1)
+		return 1;
+	if (cache[n] == 0) {
+		cache[n] = fib(n - 2, cache) + fib(n - 1, cache);
+	}
+	else
+	{
+		return cache[n];
+	}
+	//return fib(n-2, cache) + fib(n - 1, cache);
+}
+
+
+
+int countOfMatchingChars(char* word, char symbol, int counter)
+{
+	if (!*word) return counter;
+	if (*word== symbol) counter++;
+	return countOfMatchingChars(word + 1, symbol, counter);
+}
+
+*/
+void sort(int* array, int size)
+{
+	for (size_t i = 0; i < size-1; i++)
+	{
+		int minIndex = i;
+		for (size_t j = 1; j < size; j++)
+		{
+			minIndex = array[minIndex] < array[j] ? minIndex : j;
+		}
+		std::swap(array[i], array[minIndex]);
+	}
+}
+
+bool binarySearch(int* array,int sizeArr, int number)
+{
+	int middle = *(array + sizeArr / 2);
+	if (middle == number) return true;
+	if (sizeArr < 1) return false;
+
+	if(number<middle) return binarySearch(array, sizeArr/2, 4);
+	if (number > middle) return binarySearch(array+ sizeArr / 2, sizeArr / 2, 4);
+
+
+}
+
+int main()
+{
+	/*
+	char sentance[] = " I am a Businessman 123 ";
+	std::cout<<countCharsApplicableTo(sentance, isCapitalLetter)<<std::endl;
+	std::cout << countCharsApplicableTo(sentance, isDigit) << std::endl;
+	std::cout << countCharsApplicableTo(sentance, isWhiteSpace) << std::endl;
+	
+
+	int cache[100] = {};
+	std::cout << fib(15, cache) << std::endl;
+	
+	char word[] = "alabala";
+	int counter = 0;
+	std::cout << countOfMatchingChars(word, 'a', counter) << std::endl;
+	*/
+
+	int array[] = { 1,5,3,4,5,2,5,1,4 };
+	sort(array, 8);
+	std::cout<< binarySearch(array, 8, 4);
+
+	return 0;
+}

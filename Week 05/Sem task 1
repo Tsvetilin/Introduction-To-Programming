@@ -1,0 +1,65 @@
+#include <iostream>
+
+bool isSorted(const int* arr, size_t size) {
+    for (size_t i = 1; i < size; ++i) {
+        if (arr[i] < arr[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int* mergeSortedArrays(const int* arr1, int size1, const int* arr2, int size2, size_t mergedSize) {
+    int* merged = new int[mergedSize];
+    size_t i = 0, j = 0, k = 0;
+
+    // Merge the arrays
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            merged[k] = arr1[i];
+            i++;  
+        }
+        else {
+            merged[k] = arr2[j];
+            j++;  
+        }
+        k++;  
+    }
+
+    while (i < size1) {
+        merged[k] = arr1[i];
+        k++;
+        i++;
+    }
+
+    while (j < size2) {
+        merged[k] = arr2[j];
+        k++;
+        j++;
+    }
+
+    return merged;
+}
+
+int main() {
+    int n1, n2;
+    std::cin >> n1;
+    std::cin >> n2;
+
+    int* arr1 = new int[n1];
+    int* arr2 = new int[n2];
+
+    for (size_t i = 0; i < n1; ++i) std::cin >> arr1[i];
+    for (size_t i = 0; i < n2; ++i) std::cin >> arr2[i];
+
+    size_t mergedSize = n1 + n2;
+    int* mergedArray = mergeSortedArrays(arr1, n1, arr2, n2, mergedSize);
+
+    std::cout << "Merged array: ";
+    for (size_t i = 0; i < mergedSize; ++i) {
+        std::cout << mergedArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
