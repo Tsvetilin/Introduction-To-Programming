@@ -1,0 +1,171 @@
+// Week3_Practikum.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+class Charachters {
+public:
+	void run() {
+		int m, n;
+		std::cin >> n >> m;
+		char chStart = n, chEnd = m;
+		if ((chStart < 0 || chStart>256) || (chEnd < 0 || chEnd>256)) {
+			std::cout << "Invalid Input";
+			return;
+		}
+		else {
+			for (char i = chStart; i <= chEnd; i++) {
+				std::cout << n++ << " --> " << i << "\n";
+			}
+		}
+	}
+};
+
+class Factoriel {
+public:
+	void run() {
+		int n,faktoriel=1;
+		std::cin >> n;
+		for (int i = 1; i <=n;i++) {
+			faktoriel *= i;
+		}
+		std::cout <<"The Factorial is: "<<faktoriel;
+	}
+};
+
+class SumOfSequence {
+public:
+	void run() {
+		int N,sum=0;
+		std::cin >> N;
+		for (int i = 1; i <=N; i++) {
+			for (int j = 1; j <=i; j++) {
+				sum += j;
+			}
+		}
+		std::cout <<"Sum of sequence: "<<sum;
+	}
+};
+class Factors {
+public:
+	void run() {
+		int Number;
+		std::cin >> Number;
+		for (int i = 1; i < Number; i++) {
+			if (Number%i==0) {
+				std::cout << "The Factor of " << Number << " is: " << i<<"\n";
+			}
+		}
+		
+	}
+};
+class FibonaciSequence {
+public:
+	void run() {
+		int n, lastNum = 0, curNum = 1;
+		std::cin >> n;
+		if (n == 0) return;
+		std::cout << lastNum << " ";
+		for (int i = 0; i < n; i++) {
+			std::cout << curNum << " ";
+			int newNum = lastNum + curNum;
+			lastNum = curNum;
+			curNum = newNum;
+		}
+
+	}
+};
+
+class SumOFRandomNum {
+public:
+	int run() {
+		int n,sum=0;
+		std::cin >> n;
+		if (n == -1 || n<0)
+			return 0;
+		while (true) {
+	
+			int newNum;
+			std::cin >> newNum;
+			
+			if (newNum == -1) {
+				break;
+			}
+			if ((newNum < n) && (newNum % 2 == 0)) {
+				sum += newNum;
+			}
+			
+
+		}
+
+		return sum;
+	}
+
+};
+class PerfectNumbers {
+public:
+	void run() {
+		int n, m;
+		std::cout << "Enter two numbers (m and n) where m <= n: ";
+		std::cin >> m >> n;
+		if (m > n) {
+			std::cout << "Invalid input. Please ensure m is less than or equal to n." << std::endl;
+			return;
+		}
+		for (int i = m; i <= n; i++) {
+			int sum = 0; 
+			for (int j = 1; j < i; j++) {
+				if (i % j == 0) {
+					sum += j;
+				}
+			}
+			if (sum == i) {
+				std::cout << "Perfect number are: " << i <<"\n";
+			}
+		}
+	}
+};
+
+class Matrix {
+public:
+	void run() {
+		int n, m;
+		std::cout << "Enter two numbers (n and m): \n";
+		std::cin >> n >> m;
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <=m; j++) {
+				std::cout << "(" << i << ", " << j << ") ";
+
+			}
+			std::cout << "\n";
+		}
+	}
+};
+int main()
+{
+	//Charachters zad1;
+	//zad1.run();
+	// 
+	//Factoriel zad2;
+	//zad2.run();
+
+	/*SumOfSequence zad3;
+	zad3.run();*/
+
+	/*Factors zad4;
+	zad4.run();*/
+
+	//FibonaciSequence zad5;
+	//zad5.run();
+	
+	//SumOFRandomNum zad6;
+	//int sum = zad6.run();
+	//std::cout << sum;
+	
+	//PerfectNumbers zad7;
+	//zad7.run();
+
+	Matrix zad8;
+	zad8.run();
+	return 0;
+}
+

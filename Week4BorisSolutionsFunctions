@@ -1,0 +1,215 @@
+#include <iostream>
+#include <cmath> 
+#include<vector>
+#include <algorithm>
+#include <string>
+
+bool isPrime(int number) {
+	if (number < 2) return false;  
+	if (number == 2) return true;  
+	if (number % 2 == 0) return false; 
+	else {
+		for (int i = 3; i * i <= number;i+=2) {
+			if (number %i==0) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
+int DigitCounter(unsigned long  number,int wantedDigit) {
+	unsigned long temp = number;
+	int counter = 0;
+	while (temp > 0) {
+		int digit = temp % 10;
+		temp = temp / 10;
+		if (digit == wantedDigit) {
+			counter++;
+		}
+    }
+	return counter;
+}
+int sortDigits(int number) {
+	int temp = number;
+	std::vector<int> arr;
+	int sortedNumber=0;
+	while (temp > 0) {
+		int digit = temp % 10;
+
+		if (digit != 0) {
+			arr.push_back(digit);
+		}
+
+		temp = temp / 10;
+	}
+	std::sort(arr.begin(), arr.end());
+
+	for (int digit : arr) {
+		sortedNumber = sortedNumber * 10 + digit;
+	}
+
+	return sortedNumber;
+}
+
+void reverseNumber(int number) {
+	int temp = number;
+	while (temp > 0) {
+		int digit = temp % 10;
+		if (digit != 0) {
+			std::cout << digit;
+		}
+		temp = temp / 10;
+	}
+}
+
+
+void specialNumber(int number, int firstBorder, int secondBorder) {
+	for (int i = firstBorder; i < secondBorder; i++) {
+		int temp = i; 
+		bool isSpecial = true;
+		while (temp > 0) {
+			int digit = temp % 10;  
+			if (digit == 0 || number % digit != 0) {  
+				isSpecial = false;
+				break;  
+			}
+			temp = temp / 10;  
+		}
+		if (isSpecial) {
+			std::cout << i << " ";
+		}
+	}
+}
+
+int absoluteValue(int number) {
+	return std::abs(number);
+}
+
+bool isDigit(char symbol) {
+	return (symbol >='0' && symbol <= '9');
+}
+
+char toUpper(char symbol) {
+	return (symbol >= 'a' && symbol <= 'z') ? symbol - ('a' - 'A') : symbol;
+}
+
+char toLower(char symbol) {
+	return (symbol >= 'A' && symbol <= 'Z') ? symbol + ('a' - 'A') : symbol;
+}
+
+int toNumber(char symbol) {
+	return (symbol >= '0' && symbol <= '9') ? symbol - '0' : -1; 
+}
+
+char toCharacter(int number) {
+	return (number >= 0 && number <= 9) ? number + '0' : '\0'; 
+}
+
+int power(int base, unsigned int exponent) {
+	int result = 1;
+	for (int i = 0; i < exponent; i++) {
+		result *= base;
+	}
+	return result;
+}
+
+bool isPrime(unsigned int number) {
+	if (number < 2) return false;
+	if (number == 2 || number == 3) return true;
+	if (number % 2 == 0) return false;
+
+	for (unsigned int i = 3; i * i <= number; i += 2) {
+		if (number % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+short getLength(int number) {
+	if (number == 0) return 1; 
+	short counter = 0;
+	while (number != 0) {
+		number /= 10;
+		counter++;
+	}
+	return counter;
+}
+
+bool isPalindrome(int number) {
+	int reverseNum = 0;
+	while (number > 0) {
+		int digit = number % 10;
+		reverseNum = reverseNum * 10 + digit;
+		number = number / 10;
+	}
+	return (reverseNum == number);
+}
+bool isPermutation(int num1, int num2) {
+	std::string str1 = std::to_string(num1);
+	std::string str2 = std::to_string(num2);
+	if (str1.length() != str2.length()) {
+		return false;
+	}
+	std::sort(str1.begin(), str1.end());
+	std::sort(str2.begin(), str2.end());
+	return str1 == str2;
+}
+
+
+
+
+//void Switchcase() {
+//	int a = 13;
+//	int isBig = (a > 3) ? 1 : 0;
+//	switch (isBig) { 
+//	case 1:
+//		std::cout << "big";
+//		break;
+//	}
+//	int isEqualTo3 = (a == 3) ? 1 : 0;
+//	switch (isEqualTo3) {
+//	case 0:
+//		std::cout << "13";
+//		break;
+//	case 1:
+//		std::cout << "error";
+//		break;
+//	}
+//	switch (a) {
+//	case 1:
+//		std::cout << "one";
+//		break;
+//	}
+//
+//}
+
+
+
+
+
+int main()
+{
+	//int number;
+	//std::cin >> number;
+	//std::cout<< isPrime(number);
+
+	//unsigned long number;
+	//int digit;
+	//std::cin >> number>>digit;
+	//int count = DigitCounter(number,digit);
+	//std::cout << count;
+
+	//int number;
+	//std::cin >> number;
+	//std::cout<< sortDigits(number);
+
+	//int number;
+	//std::cin >> number;
+    //reverseNumber(number);
+
+	//int firstBorder, secondBorder, number;
+	//std::cin >> number >> firstBorder >> secondBorder;
+	//specialNumber(number, firstBorder, secondBorder);
+
+
+}

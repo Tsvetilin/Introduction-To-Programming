@@ -1,0 +1,329 @@
+// Week4_Solutions_Practikum.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <cmath>  
+#include <deque>
+#include <vector>
+class PrimeNumbers {
+public:
+	void run() {
+		int n;
+		std::cout << "Enter number";
+		std::cin >> n;
+		for (int i = 2; i < n; i++)
+		{
+			for (int j = 2; j < n; j++)
+			{
+				if (n == (i + j) && isPrime(i) && isPrime(j)) {
+					std::cout << n << " = " << i << " + " << j;
+					return;
+				}
+			}
+		}
+		std::cout << "NO prime numbers were found that when summed gave n";
+	}
+
+	bool isPrime(int n) {
+
+		if (n <= 1) return false;
+		if (n <= 3) return true;
+		if (n % 2 == 0 || n % 3 == 0) return false;
+		for (int i = 5; i * i <= n; i += 6) {
+			if (n % i == 0 || n % (i + 2) == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+};
+
+class Sequence {
+	//a0 = 1 / 2
+	//an + 1 = (an2 + 1) / 2
+public:
+	static void run() {
+		double firstNumber = 0.5;
+		int n;
+		std::cout << "Enter number: ";
+		std::cin >> n;
+
+		for (int i = 0; i < n; i++)
+		{
+			firstNumber = (std::pow(firstNumber, 2) + 1) / 2;
+		}
+		std::cout << "a_" << n << " = " << firstNumber;
+
+	}
+
+};
+
+class Figures {
+public:
+	static void pyramid() {
+		int n;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		for (int i = 0; i <= n; i++)
+		{
+			for (int j = 0; j < i; j++)
+			{
+				std::cout << "$";
+			}
+			std::cout << "\n";
+		}
+	}
+	//frame method
+	static void frame() {
+		int n;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if ((j == 0 || j == n - 1) && (i == 0 || i == n - 1)) {
+					std::cout << " + ";
+				}
+				else if ((j == 0 || j == n - 1)) {
+
+					std::cout << " | ";
+
+				}
+				else {
+					std::cout << " - ";
+				}
+			}
+			std::cout << "\n";
+		}
+	}
+	// bowTie method
+	static void bowTie() {
+		int n, spaces;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		int rows = 2 * n - 1;
+		int columns = 3 * n;
+		int symbolCount = n;
+		int br = 0, temp = 1, br1 = 1;
+		bool afterMid = false;
+
+		for (int i = 1; i <= rows; i++)
+		{
+			spaces = 5 * n - 4 * (temp);
+			//front pyramid
+			for (int j = 1; j <= temp; j++)
+			{
+				std::cout << j << " ";
+			}
+			//logic for mid symbol(-)
+			if (i == n) {
+				for (int m = 0; m < symbolCount; m++)
+				{
+					std::cout << "-";
+				}
+			}
+			else {
+				//or spaces for all other cases
+				for (int k = 0; k < spaces; k++)
+				{
+					std::cout << " ";
+				}
+			}
+			//back pyramid 
+			for (int j = temp; j >= 1; j--)
+			{
+				std::cout << " " << j;
+			}
+			//check when we get the highest point
+			if (i == n) {
+				afterMid = true;
+			}
+			//incremeting the number count of i using temp variable
+			if (afterMid) {
+				temp -= br1;
+			}
+			else {
+				temp++;
+			}
+			std::cout << std::endl;
+			//end logic
+			br++;
+			if (br == 2 * n - 1) {
+				break;
+			}
+		}
+
+	}
+
+	//carpet Help method
+	static void middleRowCarpet(int n) {
+		//logic for odd numbers
+		if (n % 2 == 1) {
+			for (int k = 1; k <= std::floor(n / 2); k++)
+			{
+				std::cout << " ";
+			}
+			std::cout << "X";
+
+			for (int k = 1; k <= std::floor(n / 2); k++)
+			{
+				std::cout << " ";
+			}
+		}
+		//logic for even numbers
+		else {
+			for (int k = 1; k <=(n/2)-2 ; k++)
+			{
+				std::cout << " ";
+			}
+			std::cout << " XX ";
+			for (int k = 1; k <= (n / 2) - 2; k++)
+			{
+				std::cout << " ";
+			}
+		}
+		
+	}
+
+	//carpet main method
+	static void carpet() {
+
+		std::deque<int> numbers;
+		int n;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		int rows = 2 * n + 3;
+		int colunms = n + 2;
+		int counter = 0,midRow= std::ceil((rows) / 2)+1;
+		//put numbers that are used
+		for (int i = n; i >= 1; i--)
+		{
+			numbers.push_front(i);
+		}
+		//start the carpet
+		for (int i = 1; i <= rows; i++)
+		{
+
+			std::cout << "#";
+			//inner cycle
+			for (int j = 1; j <= n; j++)
+			{
+				// start/end symbol(#)
+				if (i == 1 || i == rows) {
+					std::cout << "#";
+				}
+				//call method for the middle
+				else if (i == midRow) {
+					middleRowCarpet(n);
+					break;
+				}
+				// else print the number inside the carpet
+				else {
+					//if is the start or mid+1 no need for switch
+					if (counter == 0 || i == midRow+1) {
+						for (int element : numbers) {
+							std::cout << element;
+						}
+						counter++;
+						break;
+					}
+					//all cases where switch is needed
+					else {
+						int temp = numbers.at(0);
+						numbers.pop_front();
+						numbers.push_back(temp);
+						for (int element : numbers) {
+							std::cout << element;
+						}
+						break;
+					}
+				}
+				
+
+			}
+			std::cout << "#";
+			std::cout << std::endl;
+		}
+	}
+};
+
+class Spyral {
+public:
+	static void Spyral_2() {
+		int n;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		int numEnd = n,numStart = 1,numAll= std::pow(n, 2);
+		for (int i = 1; i <= n; i++)
+		{
+			if (i % 2 == 1) {
+				for (int j = numStart; j <= numEnd; j++)
+				{
+					std::cout << j << " ";
+				}
+				numStart += n;
+				numEnd += n;
+			}
+			else {
+				for (int j = numEnd; j >= numStart; j--)
+				{
+					std::cout << j << " ";
+				}
+				numStart += n;
+				numEnd += n;
+			}
+		
+			std::cout << "\n";
+		}
+	}
+
+	static void Spyral_1() {
+		int n;
+		std::cout << "Enter n: ";
+		std::cin >> n;
+		int br = 1;
+		std::vector<std::vector<int>> arr(n, std::vector<int>(n));
+
+		for (int i = 0; i < n; i++) {
+			if (i % 2 == 0) {
+				// Fill column from top to bottom
+				for (int j = 0; j < n; j++) {
+					arr[j][i] = br;
+					br++;
+				}
+			}
+			else {
+				// Fill column from bottom to top
+				for (int j = n - 1; j >= 0; j--) {
+					arr[j][i] = br;
+					br++;
+				}
+			}
+		}
+
+		// Display the matrix
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				std::cout << arr[i][j] << " ";
+			}
+			std::cout << "\n";
+		}
+	}
+
+};
+
+int main()
+{
+	/*PrimeNumbers zad1;
+	zad1.run();*/
+	//Sequence::run();
+	//Figures::pyramid();
+	//Figures::frame();
+	//Figures::bowTie();
+	//Figures::carpet();
+	//Spyral::Spyral_2();
+	Spyral::Spyral_1();
+
+}
+

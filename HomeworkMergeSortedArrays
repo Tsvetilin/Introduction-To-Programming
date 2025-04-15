@@ -1,0 +1,110 @@
+#include <iostream>
+#include <limits> // For std::numeric_limits
+
+void swap(int& x, int& y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+bool isPositiveInteger(int num) {
+    return num > 0;
+}
+
+bool isValidInput() {
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+    }
+    return true;
+}
+
+int main() {
+    int n = 0, m = 0;
+
+    std::cout << "Enter the number of elements for the first array: ";
+    std::cin >> n;
+    while (!isValidInput() || !isPositiveInteger(n)) {
+        std::cout << "Please enter a valid number for the first array (positive integer): ";
+        std::cin >> n;
+    }
+
+    std::cout << "Enter the number of elements for the second array: ";
+    std::cin >> m;
+    while (!isValidInput() || !isPositiveInteger(m)) {
+        std::cout << "Please enter a valid number for the second array (positive integer): ";
+        std::cin >> m;
+    }
+
+// create arrays
+    int* array1 = new int[n];
+    int* array2 = new int[m];
+    int* sortedArray = new int[n + m];
+
+    std::cout << "Enter the elements of the first array, separated by spaces: ";
+    for (int i = 0; i < n; i++) {
+        std::cin >> array1[i];
+        // Validate input for array elements
+        while (!isValidInput()) {
+            std::cout << "Please enter a valid element (integer): ";
+            std::cin >> array1[i];
+        }
+    }
+
+    std::cout << "Enter the elements of the second array, separated by spaces: ";
+    for (int i = 0; i < m; i++) {
+        std::cin >> array2[i];
+        // Validate input for array elements
+        while (!isValidInput()) {
+            std::cout << "Please enter a valid element (integer): ";
+            std::cin >> array2[i];
+        }
+    }
+
+    // Sort the first array
+    for (int j = 0; j < n - 1; j++) {
+        for (int i = 0; i < n - 1; i++) {
+            if (array1[i] > array1[i + 1]) {
+                swap(array1[i], array1[i + 1]);
+            }
+        }
+    }
+
+    // Sort the second array
+    for (int j = 0; j < m - 1; j++) {
+        for (int i = 0; i < m - 1; i++) {
+            if (array2[i] > array2[i + 1]) {
+                swap(array2[i], array2[i + 1]);
+            }
+        }
+    }
+
+    // Merge the two sorted arrays into one sorted array
+    int counter1 = 0, counter2 = 0, i = 0;
+    while (counter1 < n && counter2 < m) {
+        if (array1[counter1] < array2[counter2]) {
+            sortedArray[i++] = array1[counter1++];
+        }
+        else {
+            sortedArray[i++] = array2[counter2++];
+        }
+    }
+
+
+    while (counter1 < n) {
+        sortedArray[i++] = array1[counter1++];
+    }
+    while (counter2 < m) {
+        sortedArray[i++] = array2[counter2++];
+    }
+
+    std::cout << "Merged and sorted array: ";
+    for (int i = 0; i < n + m; i++) {
+        std::cout << sortedArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+    return 0;
+}
