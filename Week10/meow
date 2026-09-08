@@ -1,0 +1,195 @@
+// week10.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+int const MAX_SIZE = 10000;
+int const MAX_WORD_LEN = 1024;
+int const MAX_WORD_COUNT = 100;
+//zad1
+int str_len(char* a){
+	int count = 0;
+	while (*a != '\0') {
+		a++;
+		count++;
+	}
+	return count;
+
+}
+void swap(char& a, char& b) {
+	char help = a;
+	a = b;
+	b = help;
+}
+void reversed_array(char a[]) {
+	int size = str_len(a);
+	for (int i = 0; i < size / 2; i++) {
+		swap(a[i], a[size - i - 1]);
+	}
+}
+void print(char a[]) {
+	for (int i = 0; i < str_len(a); i++) {
+		std::cout << a[i];
+	}
+}
+bool is_vowel(char el) {
+	if (el == 'e' || el == 'i' || el == 'a' || el == 'o' || el == 'u') {
+		return 1;
+	}
+	return 0;
+}
+bool is_digit(char el) {
+	if (el >= '0' && el<= '9') {
+		return 1;
+	}
+	return 0;
+}
+
+void transform(char a[]) {
+	int size = str_len(a);
+	for (int i = 0; i < size; i++) {
+		if (is_vowel(a[i])) {
+			a[i] = a[i] + 'A' - 'a';
+		}
+		else {
+			if (a[i] >= 'A' && a[i] <= 'Z') {
+
+				a[i] = a[i] + 'a' - 'A';
+			}
+		}
+	}
+}
+void fill_words(char a[], char matrix[][MAX_SIZE], int& wordcount) {
+	int size = str_len(a);
+	int j;
+	for (int i = 0; i < size-1; i++) {
+		
+		
+		if ((a[i] == ' ' && a[i + 1] != ' ')|| (i == 0 && a[i] != ' ')) {
+			int j;
+			if (i == 0) {
+				j = 0;
+			}
+			j = i+1;
+			int len = 0;
+			while ((a[j] != ' ') && (a[j] != '\0')) {
+				matrix[wordcount][len++] = a[j];
+				
+				j++;
+				
+			}
+			std::cout << '\n';
+			matrix[wordcount][len] = '\0';
+			
+			wordcount++;
+		}
+	}
+	std::cout << wordcount;
+}
+void print_MATRIX(char matrix[][MAX_SIZE], int& words_count) {
+
+	for (int i = 0; i < words_count; i++) {
+		int j = 0;
+		while (matrix[i][j] != '\0') {
+			std::cout << matrix[i][j];
+			j++;
+
+		}
+		std::cout << '\n';
+	}
+}
+void censor(char* str) {
+	if (!str) {
+		return;
+	}
+	bool flag = false;
+	int put = 0;
+	int get = 0;
+	while (str[get]) {
+		if (is_digit(*str)) {
+			flag = true;
+		}
+		else {
+			if (flag) {
+				flag = false;
+				str[put++] = '*';
+			}
+			str[put++] = *str;
+		}
+		str++;
+
+	}
+	str[put] = '\0';
+}
+
+
+
+void censored(char a[], int& len) {
+	int size = str_len(a);
+	bool flag = false;
+	for (int i = 0; i < size; i++) {
+		if (is_digit(a[i])) {
+			flag = true;
+			a[i] = '*';
+
+		}
+	}
+}
+int main()
+{
+	//zad1 i zad2
+	//char a[1024];
+	//std::cin.getline(a, 1024);
+	////reversed_array(a);
+	//transform(a);
+	//print(a);
+	
+
+	//zad6
+	//char a[MAX_SIZE];
+	//std::cin.getline(a, MAX_SIZE);
+	//char matrix[100][MAX_SIZE];
+
+	//int words_count = 0;
+	//fill_words(a, matrix, words_count);
+	//print_MATRIX(matrix, words_count);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//int temp = 0;
+	//int x = 42;
+
+	//int* x1 = &x;
+
+	//*x1 = 7;
+	//x1 = &temp;
+	////std::cout << *x1;
+
+	//const int* x2 = &temp; // same as int const *x1
+	//// *x2 = 7;
+	//std::cout << *x2;
+	//x2 = &temp;
+
+	//int* const x3 = &x;
+	//*x3 = 7;
+	//// x3 = &temp;
+
+	//const int* const x4 = &x;
+	//// *x4 = 7;
+	//// x4 = &temp;
+
+	
+}
